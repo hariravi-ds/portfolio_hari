@@ -3,79 +3,58 @@
     <!-- Particle.js background -->
     <div id="particles-js"></div>
 
-    <div class="header">
-      <h2>Hari Prasannaa Thangavel Ravi</h2>
-      <p>Master of Science in Data Science</p>
-      <p>George Washington University</p>
-      <div class="header-icons">
-        <a
-          href="mailto:hariprasannaa.thangavelravi@gwu.edu"
-          aria-label="E-Mail"
-        >
-          <i class="fas fa-envelope"></i>
-        </a>
-        <a
-          href="https://github.com/hariravi-ds"
-          target="_blank"
-          aria-label="GitHub"
-        >
-          <i class="fab fa-github"></i>
-        </a>
-        <a
-          href="https://www.linkedin.com/in/hari-prasannaa"
-          target="_blank"
-          aria-label="LinkedIn"
-        >
-          <i class="fab fa-linkedin"></i>
-        </a>
+    <div class="app-header">
+      <AppHeader />
+    </div>
+    <div class="main-header">
+      <div class="header">
+        <h2>Hari Prasannaa Thangavel Ravi</h2>
+        <p>Master of Science in Data Science</p>
+        <p>George Washington University</p>
+        <div class="header-icons">
+          <a
+            href="mailto:hariprasannaa.thangavelravi@gwu.edu"
+            aria-label="E-Mail"
+          >
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a
+            href="https://github.com/hariravi-ds"
+            target="_blank"
+            aria-label="GitHub"
+          >
+            <i class="fab fa-github"></i>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/hari-prasannaa"
+            target="_blank"
+            aria-label="LinkedIn"
+          >
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </div>
       </div>
     </div>
-    <div
-      class="list-button"
-      @click="toggleMenu"
-      v-if="!showMenu"
-      :class="{ animate: menuButtonClicked }"
-      style="display: flex; flex-direction: column; gap: 4px"
-    >
-      <div style="width: 20px; height: 1px; background: white"></div>
-      <div style="width: 20px; height: 1px; background: white"></div>
-      <div style="width: 20px; height: 1px; background: white"></div>
+    <div class="sections">
+      <SectionComponent title="Experience" id="experience"></SectionComponent>
+      <SectionComponent title="Education" id="education"></SectionComponent>
+      <SectionComponent title="Projects" id="projects"></SectionComponent>
     </div>
-    <MenuBar
-      @closeMenu="toggleMenu"
-      v-if="showMenu"
-      :class="{ slideIn: showMenu }"
-    />
   </div>
 </template>
+
 <script>
-import MenuBar from "./MenuBar.vue";
+import SectionComponent from "./SectionComponent.vue";
+import AppHeader from "./AppHeader.vue";
 import "particles.js";
 
 export default {
   name: "HeaderWithParticles",
   components: {
-    MenuBar,
-  },
-  data() {
-    return {
-      showMenu: false,
-      menuButtonClicked: false,
-    };
-  },
-  methods: {
-    toggleMenu() {
-      this.menuButtonClicked = true;
-      this.showMenu = !this.showMenu;
-
-      // Reset button animation state after it finishes
-      setTimeout(() => {
-        this.menuButtonClicked = false;
-      }, 300); // Match the animation duration
-    },
+    AppHeader,
+    SectionComponent,
   },
   mounted() {
-    // Ensure particles-js container exists
     const particlesContainer = document.getElementById("particles-js");
     if (particlesContainer) {
       window.particlesJS("particles-js", {
@@ -106,6 +85,7 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 body,
 html {
@@ -113,32 +93,46 @@ html {
   padding: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .particle-container {
   position: relative;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 #particles-js {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: #000;
+  z-index: -1;
+}
+
+.app-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.8); /* Transparent black background */
+  border-bottom: 2px solid white;
+}
+
+/* Main Header (Centered Name and Icons) */
+.main-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  text-align: center;
+  color: white;
+  z-index: 1; /* Ensures it's above particles.js */
 }
 
 .header {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: white;
-  z-index: 1;
+  z-index: 2;
 }
 
 .header-icons {
@@ -166,36 +160,15 @@ html {
   border-color: #1e90ff;
 }
 
-.list-button {
-  width: 25px;
-  height: 25px;
-  top: 50%;
-  position: absolute;
-  right: 0;
-  background-color: grey;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  padding: 4px;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+.sections {
+  margin-top: 100vh; /* Start after the full viewport main header */
 }
 
-.list-button.animate {
-  transform: scale(1.2);
-  opacity: 0.8;
-}
-
-.MenuBar {
-  animation: slideIn 0.3s ease forwards;
-}
-
-@keyframes slideIn {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0);
-  }
+.sections > * {
+  padding: 20px;
+  min-height: 100vh; /* Full-screen height for each section */
+  color: white;
+  background: #1a1a1a;
+  margin-bottom: 10px;
 }
 </style>
