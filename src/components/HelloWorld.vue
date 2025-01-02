@@ -36,23 +36,27 @@
       </div>
     </div>
     <div class="sections">
-      <SectionComponent title="Experience" id="experience"></SectionComponent>
-      <SectionComponent title="Education" id="education"></SectionComponent>
-      <SectionComponent title="Projects" id="projects"></SectionComponent>
+      <Education title="Education" id="education"></Education>
+      <Experience title="Experience" id="experience"></Experience>
+      <Skills title="Skills" id="skills"></Skills>
     </div>
   </div>
 </template>
 
 <script>
-import SectionComponent from "./SectionComponent.vue";
 import AppHeader from "./AppHeader.vue";
+import Skills from "./Skills.vue";
+import Education from "./Education.vue";
+import Experience from "./Experience.vue";
 import "particles.js";
 
 export default {
   name: "HeaderWithParticles",
   components: {
     AppHeader,
-    SectionComponent,
+    Skills,
+    Education,
+    Experience,
   },
   mounted() {
     const particlesContainer = document.getElementById("particles-js");
@@ -113,15 +117,16 @@ html {
 }
 
 .app-header {
-  position: fixed;
+  position: sticky;
   top: 0;
   width: 100%;
   z-index: 2;
-  background: rgba(0, 0, 0, 0.8); /* Transparent black background */
-  border-bottom: 2px solid white;
+  background: rgba(0, 0, 0, 0.8);
+  border-bottom: 2px solid #eaeaea;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+  padding: 10px 0;
 }
 
-/* Main Header (Centered Name and Icons) */
 .main-header {
   display: flex;
   justify-content: center;
@@ -129,7 +134,9 @@ html {
   height: 100vh; /* Full viewport height */
   text-align: center;
   color: white;
-  z-index: 1; /* Ensures it's above particles.js */
+  z-index: 1;
+  position: relative;
+  padding-top: 60px;
 }
 
 .header {
@@ -162,12 +169,12 @@ html {
 }
 
 .sections {
-  margin-top: 100vh; /* Start after the full viewport main header */
+  margin-top: 0;
 }
 
 .sections > * {
   padding: 20px;
-  min-height: 100vh; /* Full-screen height for each section */
+  min-height: 100vh;
   color: white;
   background: #1a1a1a;
   margin-bottom: 10px;
