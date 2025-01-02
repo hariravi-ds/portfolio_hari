@@ -1,12 +1,10 @@
 <template>
   <div class="particle-container">
-    <!-- Particle.js background -->
-    <div id="particles-js"></div>
-
     <div class="app-header">
       <AppHeader />
     </div>
     <div class="main-header">
+      <div id="particles-js"></div>
       <div class="header">
         <h2>Hari Prasannaa Thangavel Ravi</h2>
         <p>Master of Science in Data Science</p>
@@ -63,7 +61,7 @@ export default {
     if (particlesContainer) {
       window.particlesJS("particles-js", {
         particles: {
-          number: { value: 50, density: { enable: true, value_area: 800 } },
+          number: { value: 100, density: { enable: true, value_area: 800 } },
           color: { value: "#ffffff" },
           shape: { type: "circle" },
           opacity: { value: 0.5 },
@@ -91,10 +89,14 @@ export default {
 </script>
 
 <style scoped>
-body,
-html {
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+body,
+html {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
@@ -108,7 +110,7 @@ html {
 }
 
 #particles-js {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -121,7 +123,7 @@ html {
   top: 0;
   width: 100%;
   z-index: 2;
-  background: rgba(0, 0, 0, 0.8);
+  background: #000000;
   border-bottom: 2px solid #eaeaea;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
   padding: 10px 0;
@@ -131,12 +133,11 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Full viewport height */
+  height: calc(100vh - 80px);
   text-align: center;
   color: white;
   z-index: 1;
   position: relative;
-  padding-top: 60px;
 }
 
 .header {
