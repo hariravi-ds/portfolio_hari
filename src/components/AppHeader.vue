@@ -46,7 +46,6 @@ export default {
   justify-content: flex-end;
   padding: 24px;
   align-items: center;
-  background-color: #000;
 }
 
 .menu {

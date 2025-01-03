@@ -1,14 +1,14 @@
 <template>
-  <HelloWorld />
+  <BaseComp />
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import BaseComp from "./components/Base.vue";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    BaseComp,
   },
 };
 </script>
