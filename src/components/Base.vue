@@ -6,9 +6,14 @@
     <div class="main-header">
       <div id="particles-js"></div>
       <div class="header">
-        <h2>Hari Prasannaa Thangavel Ravi</h2>
-        <p>Master of Science in Data Science</p>
-        <p>George Washington University</p>
+        <h2 style="font-size: 2.5em">HARI PRASANNAA THANGAVEL RAVI</h2>
+        <p style="font-size: 1.5em">
+          Graduate Student at The George Washington University
+        </p>
+        <p style="font-size: 1.5em">
+          Aspiring
+          <span class="dynamic-role" id="dynamic-role">Data Analyst</span>
+        </p>
         <div class="header-icons">
           <a
             href="mailto:hariprasannaa.thangavelravi@gwu.edu"
@@ -87,6 +92,48 @@ export default {
     } else {
       console.error("particles-js container not found.");
     }
+
+    const roles = [
+      "Data Analyst",
+      "Data Scientist",
+      "Data Engineer",
+      "ML Engineer",
+    ];
+    let roleIndex = 0;
+    const dynamicRoleElement = document.getElementById("dynamic-role");
+
+    function updateRole() {
+      let currentRole = roles[roleIndex];
+      let i = 0;
+
+      const removeInterval = setInterval(() => {
+        if (i <= currentRole.length) {
+          dynamicRoleElement.textContent = currentRole.substring(
+            0,
+            currentRole.length - i
+          );
+          i++;
+        } else {
+          clearInterval(removeInterval);
+
+          roleIndex = (roleIndex + 1) % roles.length;
+          let nextRole = roles[roleIndex];
+          let j = 0;
+
+          const addInterval = setInterval(() => {
+            if (j <= nextRole.length) {
+              dynamicRoleElement.textContent = nextRole.substring(0, j);
+              j++;
+            } else {
+              clearInterval(addInterval);
+            }
+          }, 100);
+        }
+      }, 100);
+    }
+
+    updateRole();
+    setInterval(updateRole, 3000);
   },
 };
 </script>
@@ -181,5 +228,11 @@ html {
   color: white;
   background: #1a1a1a;
   margin-bottom: 10px;
+}
+.dynamic-role {
+  color: #1e90ff;
+  font-weight: bold;
+  font-size: 1.5em;
+  transition: all 0.3s ease-in-out;
 }
 </style>
