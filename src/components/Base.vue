@@ -37,7 +37,7 @@
       <Education title="Education" id="education"></Education>
       <Experience title="Experience" id="experience"></Experience>
       <Skills title="Skills" id="skills"></Skills>
-      <ProjectsGrid></ProjectsGrid>
+      <Projects title="Projects" id="projects"></Projects>
     </div>
   </div>
 </template>
@@ -47,7 +47,7 @@ import AppHeader from "./AppHeader.vue";
 import Skills from "./Skills.vue";
 import Education from "./Education.vue";
 import Experience from "./Experience.vue";
-import ProjectsGrid from "./ProjectsGrid.vue";
+import Projects from "./Projects.vue";
 import "particles.js";
 
 export default {
@@ -57,7 +57,7 @@ export default {
     Skills,
     Education,
     Experience,
-    ProjectsGrid,
+    Projects,
   },
   mounted() {
     const particlesContainer = document.getElementById("particles-js");
