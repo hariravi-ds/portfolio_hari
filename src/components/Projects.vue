@@ -1,6 +1,9 @@
 <template>
   <div class="projects-section">
-    <h1 class="section-title">Latest Works</h1>
+    <div class="title">
+      <div style="font-size: 2em; font-weight: bold">Projects</div>
+      <div>A sample of my projects</div>
+    </div>
     <div class="projects-grid">
       <div
         v-for="(project, index) in projects"
@@ -81,9 +84,15 @@ export default {
 
 .section-title {
   text-align: center;
-  font-size: 3em;
-  margin-bottom: 30px;
-  color: #1abc9c;
+  font-weight: bolder;
+}
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding-bottom: 8px;
 }
 
 .projects-grid {

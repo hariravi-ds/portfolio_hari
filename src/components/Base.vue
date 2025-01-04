@@ -1,12 +1,21 @@
 <template>
-  <div class="particle-container">
+  <div class="particle-container" id="home">
     <div class="app-header">
       <AppHeader />
     </div>
     <div class="main-header">
       <div id="particles-js"></div>
       <div class="header">
-        <h2 style="font-size: 2.5em">HARI PRASANNAA THANGAVEL RAVI</h2>
+        <p class="stdName">HARI PRASANNAA THANGAVEL RAVI</p>
+        <hr
+          style="
+            width: 100px;
+            height: 1px;
+            border: none;
+            color: #333;
+            background-color: #333;
+          "
+        />
         <p style="font-size: 1.5em">
           Graduate Student at The George Washington University
         </p>
@@ -19,30 +28,36 @@
             href="mailto:hariprasannaa.thangavelravi@gwu.edu"
             aria-label="E-Mail"
           >
-            <i class="fas fa-envelope"></i>
+            <i class="fas fa-envelope fa-xl"></i>
           </a>
           <a
             href="https://github.com/hariravi-ds"
             target="_blank"
             aria-label="GitHub"
           >
-            <i class="fab fa-github"></i>
+            <i class="fab fa-github fa-xl"></i>
           </a>
           <a
             href="https://www.linkedin.com/in/hari-prasannaa"
             target="_blank"
             aria-label="LinkedIn"
           >
-            <i class="fab fa-linkedin"></i>
+            <i class="fab fa-linkedin fa-xl"></i>
           </a>
+        </div>
+        <div>
+          <el-button color="#000000" @click="downloadResume()"
+            >Resume</el-button
+          >
         </div>
       </div>
     </div>
     <div class="sections">
-      <Education title="Education" id="education"></Education>
-      <Experience title="Experience" id="experience"></Experience>
-      <Skills title="Skills" id="skills"></Skills>
-      <Projects title="Projects" id="projects"></Projects>
+      <AboutSection id="about"></AboutSection>
+      <Education id="education"></Education>
+      <Experience id="experience"></Experience>
+      <Skills id="skills"></Skills>
+      <Projects id="projects"></Projects>
     </div>
   </div>
 </template>
@@ -53,6 +68,7 @@ import Skills from "./Skills.vue";
 import Education from "./Education.vue";
 import Experience from "./Experience.vue";
 import Projects from "./Projects.vue";
+import AboutSection from "./About.vue";
 import "particles.js";
 
 export default {
@@ -63,22 +79,24 @@ export default {
     Education,
     Experience,
     Projects,
+    AboutSection,
   },
   mounted() {
+    this.scrollMenu();
     const particlesContainer = document.getElementById("particles-js");
     if (particlesContainer) {
       window.particlesJS("particles-js", {
         particles: {
-          number: { value: 100, density: { enable: true, value_area: 800 } },
-          color: { value: "#ffffff" },
+          number: { value: 75, density: { enable: true, value_area: 1000 } },
+          color: { value: "#1a1a1a" },
           shape: { type: "circle" },
           opacity: { value: 0.5 },
           size: { value: 3 },
-          move: { enable: true, speed: 1 },
+          move: { enable: true, speed: 5 },
           line_linked: {
             enable: true,
             distance: 150,
-            color: "#ffffff",
+            color: "#1a1a1a",
             opacity: 0.4,
             width: 1,
           },
@@ -131,9 +149,24 @@ export default {
         }
       }, 100);
     }
-
     updateRole();
-    setInterval(updateRole, 3000);
+    setInterval(updateRole, 4000);
+  },
+  methods: {
+    scrollMenu() {
+      let sectionId = this.$route?.query?.menu;
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    },
+    downloadResume() {
+      let resumeFile = "/resume.pdf";
+      const link = document.createElement("a");
+      link.href = resumeFile;
+      link.download = "HariPrasannaa_Resume.pdf";
+      link.click();
+    },
   },
 };
 </script>
@@ -156,7 +189,7 @@ html {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  background: #000;
+  background: #fff;
 }
 
 #particles-js {
@@ -173,9 +206,8 @@ html {
   top: 0;
   width: 100%;
   z-index: 2;
-  background: #1a1a1a;
-  box-shadow: 0px 2px 8px #1a1a1a;
-  padding: 10px 0;
+  background: white;
+  padding: 10px 15px;
 }
 
 .main-header {
@@ -184,19 +216,22 @@ html {
   align-items: center;
   height: calc(100vh - 80px);
   text-align: center;
-  color: white;
   z-index: 1;
   position: relative;
 }
 
 .header {
   z-index: 2;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
 }
 
 .header-icons {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
 }
 
 .header-icons a {
@@ -207,8 +242,9 @@ html {
   height: 50px;
   margin: 0 8px;
   color: white;
+  background: black;
   text-decoration: none;
-  border: 2px solid white;
+  border: 2px solid black;
   border-radius: 50%;
   transition: all 0.3s ease;
 }
@@ -230,9 +266,15 @@ html {
   margin-bottom: 10px;
 }
 .dynamic-role {
-  color: #1e90ff;
+  color: black;
   font-weight: bold;
   font-size: 1.5em;
   transition: all 0.3s ease-in-out;
+}
+.stdName {
+  display: inline;
+  font-size: 35px;
+  padding-left: 30px;
+  color: #000000;
 }
 </style>
