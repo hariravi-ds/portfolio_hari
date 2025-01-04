@@ -1,8 +1,18 @@
 <template>
   <div class="projects-section">
-    <div class="title">
-      <div style="font-size: 2em; font-weight: bold">Projects</div>
-      <div>A sample of my projects</div>
+    <div class="title">Projects</div>
+    <hr
+      style="
+        width: 100px;
+        height: 1px;
+        border: none;
+        color: #333;
+        background-color: #333;
+      "
+    />
+    <div style="font-style: italic; color: #6c757d">
+      An overview of the projects I've worked on, showcasing my skills and the
+      impact of my work.
     </div>
     <div class="projects-grid">
       <div
@@ -77,27 +87,21 @@ export default {
 <style scoped>
 .projects-section {
   padding: 20px;
-  background-color: #2c3e50;
   color: #ecf0f1;
+  background-color: #f8f9fa;
 }
 
-.section-title {
-  text-align: center;
-  font-weight: bolder;
-}
 .title {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding-bottom: 8px;
+  text-align: center;
+  font-size: 35px;
+  color: #212529;
 }
 
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
+  padding: 48px 24px;
 }
 
 .project-card {

@@ -57,6 +57,7 @@
       <Experience id="experience"></Experience>
       <Skills id="skills"></Skills>
       <Projects id="projects"></Projects>
+      <Contact id="contact"></Contact>
     </div>
   </div>
 </template>
@@ -67,6 +68,7 @@ import Skills from "./Skills.vue";
 import About from "./About.vue";
 import Experience from "./Experience.vue";
 import Projects from "./Projects.vue";
+import Contact from "./Contact.vue";
 import "particles.js";
 
 export default {
@@ -77,6 +79,7 @@ export default {
     About,
     Experience,
     Projects,
+    Contact,
   },
   mounted() {
     this.scrollMenu();
@@ -257,7 +260,6 @@ html {
 
 .sections > * {
   padding: 20px;
-  min-height: 100vh;
   color: white;
   margin-bottom: 10px;
 }
