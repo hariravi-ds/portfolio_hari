@@ -53,8 +53,7 @@
       </div>
     </div>
     <div class="sections">
-      <AboutSection id="about"></AboutSection>
-      <Education id="education"></Education>
+      <About id="about"></About>
       <Experience id="experience"></Experience>
       <Skills id="skills"></Skills>
       <Projects id="projects"></Projects>
@@ -65,10 +64,9 @@
 <script>
 import AppHeader from "./AppHeader.vue";
 import Skills from "./Skills.vue";
-import Education from "./Education.vue";
+import About from "./About.vue";
 import Experience from "./Experience.vue";
 import Projects from "./Projects.vue";
-import AboutSection from "./About.vue";
 import "particles.js";
 
 export default {
@@ -76,10 +74,9 @@ export default {
   components: {
     AppHeader,
     Skills,
-    Education,
+    About,
     Experience,
     Projects,
-    AboutSection,
   },
   mounted() {
     this.scrollMenu();
@@ -262,7 +259,6 @@ html {
   padding: 20px;
   min-height: 100vh;
   color: white;
-  background: #1a1a1a;
   margin-bottom: 10px;
 }
 .dynamic-role {

@@ -44,7 +44,6 @@ export default {
   padding: 20px;
   background-color: #2c3e50;
   color: #ecf0f1;
-  font-family: Arial, sans-serif;
 }
 
 .section-title {

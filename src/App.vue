@@ -14,6 +14,8 @@ export default {
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap");
+
 #app {
   font-family: "Roboto Slab", "Montserrat", "Helvetica Neue", Helvetica, Arial,
     sans-serif;

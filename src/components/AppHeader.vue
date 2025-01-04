@@ -26,7 +26,6 @@ export default {
     return {
       menu_list: [
         "About",
-        "Education",
         "Experience",
         "Projects",
         "Skills",
