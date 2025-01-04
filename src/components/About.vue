@@ -17,34 +17,37 @@
     <div
       style="display: flex; justify-content: row; padding: 48px 24px; gap: 8px"
     >
-      <div style="width: 50%">
+      <div
+        style="
+          width: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        "
+      >
         <img :src="image" alt="photo" class="project-image" />
-        <div class="timeline">
-          <div
-            v-for="(event, index) in journey"
-            :key="index"
-            class="timeline-item"
-          >
-            <div class="timeline-date">{{ event.date }}</div>
-            <div class="timeline-date" style="width: 25px">
-              <div class="timeline-point"></div>
-            </div>
-            <div class="timeline-content">
-              <div class="title">{{ event.title }}</div>
-              <div class="subtitle">{{ event.college }}</div>
-              <div v-if="event.description" class="description">
-                {{ event.description }}
-              </div>
-              <div v-if="event.award" class="award">{{ event.award }}</div>
-            </div>
-          </div>
-        </div>
       </div>
       <div class="aboutContent">
         <div>Hi, I'm Hari.</div>
         <div>{{ about1 }}</div>
         <div>{{ about2 }}</div>
         <div>{{ about3 }}</div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div v-for="(event, index) in journey" :key="index" class="timeline-item">
+        <div class="timeline-date">{{ event.date }}</div>
+        <div class="timeline-date">
+          <div class="timeline-point"></div>
+        </div>
+        <div class="timeline-content">
+          <div class="title">{{ event.title }}</div>
+          <div class="subtitle">{{ event.college }}</div>
+          <div v-if="event.description" class="description">
+            {{ event.description }}
+          </div>
+          <div v-if="event.award" class="award">{{ event.award }}</div>
+        </div>
       </div>
     </div>
   </div>
@@ -104,7 +107,7 @@ export default {
 
 .timeline {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 16px;
   position: relative;
   padding: 24px 12px;
@@ -113,10 +116,11 @@ export default {
 }
 
 .timeline-item {
+  flex: 1;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   gap: 8px;
-  position: relative;
 }
 
 .timeline-date {
@@ -124,8 +128,7 @@ export default {
   color: #6c757d;
   display: flex;
   justify-content: center;
-  width: 125px;
-  padding-top: 32px;
+  width: 100%;
 }
 
 .timeline-content {
@@ -181,18 +184,15 @@ export default {
   content: "";
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
-  width: 2px;
-  height: 165px;
+  transform: translateY(150%);
+  width: 380px;
+  height: 2px;
   background-color: teal;
   z-index: -1;
 }
 
 .timeline-item:last-child .timeline-point::before {
   display: none;
-}
-.timeline-item:first-child .timeline-point::before {
-  height: 140px;
 }
 .project-image {
   width: 400px;
