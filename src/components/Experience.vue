@@ -1,19 +1,46 @@
 <template>
   <div class="journey-section">
-    <h1 class="section-title">Experience</h1>
-    <div class="timeline">
-      <div v-for="(event, index) in journey" :key="index" class="timeline-item">
-        <div class="timeline-date">{{ event.date }}</div>
-        <div class="timeline-date" style="width: 50px">
-          <div class="timeline-point"></div>
+    <div class="section-title">Experience</div>
+    <hr
+      style="
+        width: 100px;
+        height: 1px;
+        border: none;
+        color: #333;
+        background-color: #333;
+      "
+    />
+    <div style="font-style: italic; color: #6c757d">
+      A summary of my professional experience, highlighting key roles and
+      achievements.
+      <div class="timeline">
+        <div
+          v-for="(event, index) in journey"
+          :key="index"
+          class="timeline-item"
+        >
+          <div class="timeline-content">
+            <div
+              style="display: flex; justify-content: center; gap: 8px"
+              class="subtitle"
+            >
+              <i class="fa-solid fa-user-tie"></i>
+              <div>{{ event.experience }}</div>
+            </div>
+            <div class="subtitle">{{ event.date }}</div>
+            <div class="title">{{ event.title }}</div>
+            <div class="subtitle">{{ event.work }}</div>
+          </div>
         </div>
-        <div class="timeline-content">
-          <h2 class="title">{{ event.title }}</h2>
-          <p class="subtitle">{{ event.college }}</p>
-          <p v-if="event.description" class="description">
-            {{ event.description }}
-          </p>
-          <p v-if="event.award" class="award">{{ event.award }}</p>
+      </div>
+      <div style="display: flex; flex-direction: row; gap: 12px">
+        <div
+          style="display: flex; flex-direction: column; gap: 4px"
+          v-for="([key, value], index) in Object.entries(details[0])"
+          :key="index"
+        >
+          <div style="font-weight: bold; text-align: left">{{ key }}</div>
+          <div style="text-align: left">{{ value }}</div>
         </div>
       </div>
     </div>
@@ -25,13 +52,26 @@ export default {
   name: "ExperienceSection",
   data() {
     return {
+      details: [
+        {
+          "Interactive Dashboard Development":
+            "Developed and implemented an interactive dashboard tool using JavaScript and Java, which allowed for customizable widgets and real-time monitoring on TV screens. This led to an 8% increase in the customer base over two years.",
+          "Automation of KPI & Report Generation":
+            "Automated KPI and report generation processes by developing a core framework using optimized SQL indexing, time-series data aggregation, and dynamic ETL processes, reducing manual effort by 30%.",
+          "SQL Optimization and Management":
+            "Enhanced SQL queries for large datasets, optimizing performance through indexing, joins, and advanced aggregation techniques, resulting in 20% faster query execution and improved database efficiency.",
+          "UI Component Library Creation":
+            "Built a custom UI component library using React and JSX, leveraging Context API and styled-components. Improved performance and reusability through optimizations such as memoization and lazy loading.",
+          "Promotion Ahead of Schedule":
+            "Secured a full-time position three months ahead of the typical promotion timeline after transitioning from an intern role, due to exceptional contributions and consistent performance in project delivery.",
+        },
+      ],
       journey: [
         {
-          date: "Aug 2022 - June 2023",
+          date: "May 2022 - July 2024",
+          experience: "2+ years",
           title: "Member Technical Staff",
-          college: "Facilio Technology Solutions, Chennai, India",
-          description:
-            "Fast-tracked to a full-time role ahead of schedule for exceptional performance, contributing to data-centric projects such as creating interactive dashboards for real-time insights, automating KPI reporting with optimized SQL and ETL pipelines to reduce manual effort by 30%, and developing scalable visualization tools using React, enhancing decision-making and data accessibility.",
+          work: "Facilio Technology Solutions, Chennai, India",
         },
       ],
     };
@@ -42,16 +82,14 @@ export default {
 <style scoped>
 .journey-section {
   padding: 20px;
-  background-color: #2c3e50;
+  background-color: white;
   color: #ecf0f1;
 }
 
 .section-title {
   text-align: center;
-  font-size: 2em;
-  margin-bottom: 20px;
-  color: #ffffff;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  font-size: 35px;
+  color: #212529;
 }
 
 .timeline {
@@ -59,7 +97,7 @@ export default {
   flex-direction: column;
   gap: 16px;
   position: relative;
-  padding: 20px;
+  padding: 48px 24px;
   margin: 0 auto;
   width: 60%;
 }
@@ -71,18 +109,9 @@ export default {
   position: relative;
 }
 
-.timeline-date {
-  font-size: 1em;
-  color: #6c757d;
-  display: flex;
-  justify-content: center;
-  width: 175px;
-  padding-top: 32px;
-}
-
 .timeline-content {
   flex: 1;
-  padding: 15px;
+  padding: 12px;
   background-color: #3b3f4a;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -96,51 +125,14 @@ export default {
 }
 
 .title {
-  font-size: 1.5em;
-  margin-bottom: 5px;
+  font-size: 16px;
+  margin-bottom: 4px;
   color: #d1d8e0;
 }
 
 .subtitle {
-  font-size: 1.2em;
-  margin-bottom: 10px;
+  font-size: 12px;
+  margin-bottom: 4px;
   color: #a5a5a5;
-}
-
-.description {
-  font-size: 1em;
-  color: #ecf0f1;
-}
-
-.award {
-  font-size: 1em;
-  margin-top: 10px;
-  color: #1abc9c;
-  font-style: italic;
-}
-
-.timeline-point {
-  width: 10px;
-  height: 10px;
-  background-color: teal;
-  border-radius: 50%;
-  border: 2px solid teal;
-  z-index: 1;
-  position: relative;
-}
-
-.timeline-point::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 2px;
-  height: 225px;
-  background-color: teal;
-  z-index: -1;
-}
-
-.timeline-item:last-child .timeline-point::before {
-  display: none;
 }
 </style>

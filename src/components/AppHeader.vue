@@ -27,8 +27,8 @@ export default {
       menu_list: [
         "About",
         "Experience",
-        "Projects",
         "Skills",
+        "Projects",
         "Publications",
         "Contact",
       ],

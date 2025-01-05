@@ -114,7 +114,7 @@ export default {
 .projects-section {
   padding: 20px;
   color: #ecf0f1;
-  background-color: #f8f9fa;
+  background-color: white;
 }
 
 .title {
