@@ -1,7 +1,6 @@
 <template>
   <div class="footer">
     <div class="footer-content">
-      <p>&copy; Hari Prasannaa Thangavel Ravi 2024</p>
       <div class="header-icons">
         <a
           href="mailto:hariprasannaa.thangavelravi@gwu.edu"
@@ -24,10 +23,7 @@
           <i class="fab fa-linkedin fa-sm"></i>
         </a>
       </div>
-      <div class="footer-links">
-        <a href="/privacy-policy" class="footer-link">Privacy Policy</a>
-        <a href="/terms-of-use" class="footer-link">Terms of Use</a>
-      </div>
+      <p>&copy; Hari Prasannaa Thangavel Ravi 2024</p>
     </div>
   </div>
 </template>
@@ -48,7 +44,8 @@ export default {
 
 .footer-content {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 16px;
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
@@ -82,16 +79,5 @@ export default {
 .header-icons a:hover {
   color: #1e90ff;
   border-color: #1e90ff;
-}
-
-.footer-links a {
-  margin: 0 15px;
-  font-size: 14px;
-  color: #555;
-  text-decoration: none;
-}
-
-.footer-links a:hover {
-  color: #0073e6;
 }
 </style>
