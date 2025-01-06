@@ -1,5 +1,8 @@
 <template>
-  <div class="journey-section">
+  <div
+    class="journey-section image-card"
+    :style="{ backgroundImage: 'url(' + img + ')' }"
+  >
     <div class="section-title">About</div>
     <hr
       style="
@@ -61,6 +64,7 @@ export default {
   name: "AboutSection",
   data() {
     return {
+      img: require("@/assets/subtle.jpeg"),
       journey: [
         {
           date: "Aug 2024 - May 2026 (Expected)",
@@ -212,5 +216,11 @@ export default {
   text-align: left;
   line-height: 1.75;
   font-size: 16px;
+}
+.image-card {
+  overflow: hidden;
+  position: relative;
+  background-size: cover;
+  background-position: center;
 }
 </style>

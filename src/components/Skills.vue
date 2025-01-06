@@ -1,5 +1,8 @@
 <template>
-  <div class="skills-section">
+  <div
+    class="skills-section image-card"
+    :style="{ backgroundImage: 'url(' + img + ')' }"
+  >
     <div class="section-title">Skills</div>
     <hr
       style="
@@ -35,6 +38,7 @@ export default {
   name: "SkillsSection",
   data() {
     return {
+      img: require("@/assets/subtle.jpeg"),
       skillCategories: {
         "Programming and Scripting": [
           "Python",
@@ -128,5 +132,12 @@ export default {
 .skill-item:hover {
   color: #f5f6fa;
   background-color: #a5a5a5;
+}
+
+.image-card {
+  overflow: hidden;
+  position: relative;
+  background-size: cover;
+  background-position: center;
 }
 </style>

@@ -265,7 +265,6 @@ html {
 .sections > * {
   padding: 20px;
   color: white;
-  margin-bottom: 10px;
 }
 .dynamic-role {
   color: black;
