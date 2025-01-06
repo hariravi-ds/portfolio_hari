@@ -28,7 +28,10 @@
         <img :src="image" alt="photo" class="project-image" />
       </div>
       <div class="aboutContent">
-        <div>Hi, I'm Hari.</div>
+        <div style="display: flex; gap: 4px; align-items: center">
+          <i class="fa-regular fa-hand"></i>
+          <div>Hi, I'm Hari.</div>
+        </div>
         <div>{{ about1 }}</div>
         <div>{{ about2 }}</div>
         <div>{{ about3 }}</div>

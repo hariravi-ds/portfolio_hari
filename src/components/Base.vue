@@ -45,10 +45,14 @@
             <i class="fab fa-linkedin fa-xl"></i>
           </a>
         </div>
-        <div>
-          <el-button color="#000000" @click="downloadResume()"
-            >Resume</el-button
-          >
+        <div style="margin-top: 12px">
+          <el-button
+            class="cv-button"
+            color="#000000"
+            size="large"
+            @click="downloadResume()"
+            >Download CV
+          </el-button>
         </div>
       </div>
     </div>
@@ -274,5 +278,21 @@ html {
   font-size: 35px;
   padding-left: 30px;
   color: #000000;
+}
+.cv-button {
+  background: #000000;
+  color: white;
+  font-size: 1.2em;
+  font-weight: bold;
+  border: 2px solid #000000;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.cv-button:hover {
+  background: #1e90ff;
+  border-color: #1e90ff;
+  color: white;
 }
 </style>

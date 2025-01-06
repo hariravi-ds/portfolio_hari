@@ -13,35 +13,33 @@
     <div style="font-style: italic; color: #6c757d">
       A summary of my professional experience, highlighting key roles and
       achievements.
-      <div class="timeline">
-        <div
-          v-for="(event, index) in journey"
-          :key="index"
-          class="timeline-item"
-        >
-          <div class="timeline-content">
-            <div
-              style="display: flex; justify-content: center; gap: 8px"
-              class="subtitle"
-            >
-              <i class="fa-solid fa-user-tie"></i>
-              <div>{{ event.experience }}</div>
-            </div>
-            <div class="subtitle">{{ event.date }}</div>
-            <div class="title">{{ event.title }}</div>
-            <div class="subtitle">{{ event.work }}</div>
+    </div>
+    <div class="timeline">
+      <div v-for="(event, index) in journey" :key="index" class="timeline-item">
+        <div class="timeline-content">
+          <div
+            style="display: flex; justify-content: center; gap: 8px"
+            class="subtitle"
+          >
+            <i class="fa-solid fa-user-tie"></i>
+            <div>{{ event.experience }}</div>
           </div>
+          <div class="subtitle">{{ event.date }}</div>
+          <div class="title">{{ event.title }}</div>
+          <div class="subtitle">{{ event.work }}</div>
         </div>
       </div>
-      <div style="display: flex; flex-direction: row; gap: 12px">
-        <div
-          style="display: flex; flex-direction: column; gap: 4px"
-          v-for="([key, value], index) in Object.entries(details[0])"
-          :key="index"
-        >
-          <div style="font-weight: bold; text-align: left">{{ key }}</div>
-          <div style="text-align: left">{{ value }}</div>
+    </div>
+    <div style="display: flex; flex-direction: row; gap: 12px; color: black">
+      <div
+        style="display: flex; flex-direction: column; gap: 4px"
+        v-for="([key, value], index) in Object.entries(details[0])"
+        :key="index"
+      >
+        <div style="font-weight: bold; text-align: left; font-style: italic">
+          {{ key }}
         </div>
+        <div style="text-align: left">{{ value }}</div>
       </div>
     </div>
   </div>
@@ -97,7 +95,7 @@ export default {
   flex-direction: column;
   gap: 16px;
   position: relative;
-  padding: 48px 24px;
+  padding: 36px 24px;
   margin: 0 auto;
   width: 60%;
 }
