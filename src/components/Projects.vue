@@ -16,6 +16,7 @@
     </div>
     <div class="projects-grid">
       <div
+        @click="openDialog(index)"
         @mouseenter="toggleContent(index, true)"
         @mouseleave="toggleContent(index, false)"
         v-for="(project, index) in projects"
@@ -28,18 +29,36 @@
           <p v-if="project.showContent" class="project-description">
             {{ project.shortDesc }}
           </p>
-          <!-- <div class="project-links">
-            <a
-              v-if="project.github"
-              :href="project.github"
-              target="_blank"
-              class="project-link"
-              >View Code</a
-            >
-          </div> -->
         </div>
       </div>
     </div>
+    <el-dialog v-model="dialogVisible" :show-close="false" width="500">
+      <template #header="{ close, titleClass }">
+        <el-button type="danger" @click="close">
+          <el-icon class="el-icon--left"><CircleCloseFilled /></el-icon>
+        </el-button>
+        <div>
+          <div style="margin: 8px; font-size: 24px" :class="titleClass">
+            {{ selectedProject.title }}
+          </div>
+          <div style="margin-bottom: 30px; color: black">
+            {{ selectedProject.shortDesc }}
+          </div>
+        </div>
+      </template>
+      <h4>Description</h4>
+      <hr style="border-top: 1px solid rgba(0, 0, 0, 0.1)" />
+      <div style="text-align: left">{{ selectedProject.description }}</div>
+      <div>
+        <a
+          v-if="selectedProject.github"
+          :href="selectedProject.github"
+          target="_blank"
+          class="project-link"
+          >View Code</a
+        >
+      </div>
+    </el-dialog>
   </div>
 </template>
 
@@ -48,6 +67,8 @@ export default {
   name: "ProjectsSection",
   data() {
     return {
+      dialogVisible: false,
+      selectedProject: null,
       projects: [
         {
           title: "Current Asthma Prevalence",
@@ -105,6 +126,10 @@ export default {
         return project;
       });
       this.projects = projects;
+    },
+    openDialog(index) {
+      this.selectedProject = this.projects[index];
+      this.dialogVisible = true;
     },
   },
 };
@@ -187,16 +212,16 @@ export default {
   color: #a5a5a5;
   margin-bottom: 15px;
 }
-
-.project-links {
-  display: flex;
-  gap: 10px;
+.el-dialog {
+  font-size: 1.2em;
+  color: #333;
 }
-
 .project-link {
   text-decoration: none;
   color: #1abc9c;
   font-weight: bold;
+  margin-top: 15px;
+  display: inline-block;
 }
 
 .project-link:hover {
