@@ -1,8 +1,8 @@
 <template>
   <div class="header-container">
     <div
-      :class="[selectedMenu == 'home' ? 'selected' : 'menu-item']"
-      @click="scrollFn('home')"
+      :class="[selectedMenu == 'Home' ? 'selected' : 'menu-item']"
+      @click="scrollFn('Home')"
     >
       Home
     </div>
@@ -11,8 +11,8 @@
         style="font-size: 14.4px"
         v-for="(menu, index) in menu_list"
         :key="index"
-        @click="scrollFn(menu.toLowerCase())"
-        :class="[selectedMenu == menu.toLowerCase() ? 'selected' : 'menu-item']"
+        @click="scrollFn(menu)"
+        :class="[selectedMenu == menu ? 'selected' : 'menu-item']"
       >
         {{ menu }}
       </div>
@@ -24,11 +24,53 @@ export default {
   name: "AppHeader",
   data() {
     return {
+      activeSection: null,
       menu_list: ["About", "Experience", "Skills", "Projects", "Contact"],
-      selectedMenu: "home",
+      selectedMenu: "Home",
     };
   },
+  mounted() {
+    window.addEventListener("scroll", this.detectActiveSection);
+    this.detectActiveSection();
+  },
+  watch: {
+    "$route.query": {
+      handler() {
+        let sectionId = this.$route?.query?.menu;
+        if (sectionId) {
+          this.scrollTo(sectionId);
+        }
+      },
+      immediate: true,
+    },
+    activeSection: {
+      handler(newVal, oldVal) {
+        if (newVal != oldVal) {
+          let { menu_list } = this;
+          if (newVal != null && menu_list.includes(newVal)) {
+            this.selectedMenu = newVal;
+          } else {
+            this.selectedMenu = "Home";
+          }
+        }
+      },
+    },
+  },
   methods: {
+    detectActiveSection() {
+      const sections = document.querySelectorAll("div[id]");
+      let currentSection = null;
+
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+
+        if (rect.top >= 0 && rect.top < window.innerHeight / 2) {
+          currentSection = section.id;
+        }
+      });
+
+      this.activeSection = currentSection;
+    },
     scrollFn(menu) {
       this.selectedMenu = menu;
       this.$router.push({ query: { menu: menu } });
@@ -40,6 +82,9 @@ export default {
         section.scrollIntoView({ behavior: "smooth" });
       }
     },
+  },
+  beforeUnmount() {
+    window.removeEventListener("scroll", this.detectActiveSection);
   },
 };
 </script>

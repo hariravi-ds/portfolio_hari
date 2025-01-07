@@ -61,11 +61,11 @@
       </div>
     </div>
     <div class="sections">
-      <About id="about"></About>
-      <Experience id="experience"></Experience>
-      <Skills id="skills"></Skills>
-      <Projects id="projects"></Projects>
-      <Contact id="contact"></Contact>
+      <About id="About"></About>
+      <Experience id="Experience"></Experience>
+      <Skills id="Skills"></Skills>
+      <Projects id="Projects"></Projects>
+      <Contact id="Contact"></Contact>
     </div>
   </div>
 </template>
@@ -95,7 +95,6 @@ export default {
     Contact,
   },
   mounted() {
-    this.scrollMenu();
     const particlesContainer = document.getElementById("particles-js");
     if (particlesContainer) {
       window.particlesJS("particles-js", {
@@ -166,13 +165,6 @@ export default {
     setInterval(updateRole, 4000);
   },
   methods: {
-    scrollMenu() {
-      let sectionId = this.$route?.query?.menu;
-      const section = document.getElementById(sectionId);
-      if (section) {
-        section.scrollIntoView({ behavior: "smooth" });
-      }
-    },
     downloadResume() {
       let resumeFile = "/resume.pdf";
       const link = document.createElement("a");
