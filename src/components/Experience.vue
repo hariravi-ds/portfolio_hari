@@ -1,5 +1,8 @@
 <template>
-  <div class="journey-section">
+  <div
+    class="journey-section image-card"
+    :style="{ backgroundImage: 'url(' + image + ')' }"
+  >
     <div class="section-title">Experience</div>
     <hr
       style="
@@ -50,6 +53,7 @@ export default {
   name: "ExperienceSection",
   data() {
     return {
+      image: require("@/assets/subtle2.jpeg"),
       details: [
         {
           "Interactive Dashboard Development":

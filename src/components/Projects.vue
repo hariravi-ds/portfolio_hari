@@ -230,14 +230,4 @@ export default {
 .project-link:hover {
   text-decoration: underline;
 }
-
-.image-card {
-  overflow: hidden;
-  position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease,
-    background-image 0.3s ease;
-  background-size: cover;
-  background-position: center;
-  cursor: pointer;
-}
 </style>

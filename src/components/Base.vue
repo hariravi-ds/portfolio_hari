@@ -1,5 +1,9 @@
 <template>
-  <div class="particle-container" id="home">
+  <div
+    class="particle-container image-card"
+    id="home"
+    :style="{ backgroundImage: 'url(' + image + ')' }"
+  >
     <div class="app-header">
       <AppHeader />
     </div>
@@ -77,6 +81,11 @@ import "particles.js";
 
 export default {
   name: "HeaderWithParticles",
+  data() {
+    return {
+      image: require("@/assets/subtle2.jpeg"),
+    };
+  },
   components: {
     AppHeader,
     Skills,
@@ -193,7 +202,6 @@ html {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  background: #fff;
 }
 
 #particles-js {

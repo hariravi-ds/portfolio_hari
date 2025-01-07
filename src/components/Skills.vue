@@ -133,11 +133,4 @@ export default {
   color: #f5f6fa;
   background-color: #a5a5a5;
 }
-
-.image-card {
-  overflow: hidden;
-  position: relative;
-  background-size: cover;
-  background-position: center;
-}
 </style>

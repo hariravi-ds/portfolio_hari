@@ -217,10 +217,4 @@ export default {
   line-height: 1.75;
   font-size: 16px;
 }
-.image-card {
-  overflow: hidden;
-  position: relative;
-  background-size: cover;
-  background-position: center;
-}
 </style>

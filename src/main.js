@@ -15,6 +15,8 @@ const routes = [
   },
 ];
 
+import "../public/global.css"
+
 // Create the router instance
 const router = createRouter({
   history: createWebHistory(),
