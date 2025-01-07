@@ -58,7 +58,7 @@
       <hr style="border-top: 1px solid rgba(0, 0, 0, 0.1); margin: 16px 0px" />
       <div class="mb16">{{ selectedProject.desc1 }}</div>
       <div class="mb16">{{ selectedProject.desc2 }}</div>
-      <div class="img-container">
+      <div v-if="selectedProject.images" class="img-container">
         <div v-for="(img, index) in selectedProject.images" :key="index">
           <img style="height: 175px; width: 275px" :src="img" alt="photo" />
         </div>
@@ -110,8 +110,12 @@ export default {
           subtitle: "Nov 2024 - Dec 2024",
           shortDesc:
             "Analyzed vehicle attributes to uncover relationships with CO2 emissions",
-          description:
-            "Analyzed a dataset of 40,000 vehicle records, developing statistical and machine learning models to uncover relationships between vehicle attributes and CO2 emissions. Applied feature selection techniques, such as VIF analysis, to identify key predictors, and implemented a robust data cleaning pipeline, including handling missing values and encoding categorical variables, for focused analysis on diesel and petrol vehicles.",
+          desc1:
+            "Developed statistical and machine learning models, including linear regression, clustering, and classification trees, to analyze relationships between vehicle attributes and CO2 emissions from a dataset of 40,000+ records.",
+          desc2:
+            "Implemented feature selection techniques like exhaustive methods and VIF analysis to identify key predictors of vehicle emissions, optimizing model performance and interpretability.",
+          desc3:
+            "Preprocessed high-dimensional data by handling missing values, encoding categorical variables, and removing irrelevant features, ensuring a robust pipeline for focused analysis on diesel and petrol vehicles.",
           image: require("@/assets/fuel.jpeg"),
           github: "https://github.com/hariravi-ds/DATS6101-Team4-Project2",
           showContent: false,
@@ -122,7 +126,7 @@ export default {
           shortDesc:
             "Analyzed and visualized key trends in global rice production",
           desc1:
-            "Spearheaded the development of a predictive model with 20,000 observations, employing statistical testing, feature selection, hyperparameter tuning, and cross-validation to boost forecasting accuracy.",
+            "Spearheaded the development of a predictive model with 20,000+ observations, employing statistical testing, feature selection, hyperparameter tuning, and cross-validation to boost forecasting accuracy.",
           desc2:
             "Performed advanced exploratory data analysis in R, applying techniques such as data normalization, outlier detection, and multicollinearity analysis, followed by linear regression to uncover key trends.",
           desc3:
@@ -144,6 +148,11 @@ export default {
             "Optimized machine learning models, including Random Forest and Decision Tree classifiers, improving prediction accuracy to 95.18%, and coordinated team efforts to meet project milestones. ",
           image: require("@/assets/heart.jpeg"),
           github: "https://github.com/hariravi-ds/heart-disease-predictor",
+          images: [
+            require("@/assets/heart/image1.png"),
+            require("@/assets/heart/image2.png"),
+            require("@/assets/heart/image3.png"),
+          ],
           showContent: false,
         },
       ],
