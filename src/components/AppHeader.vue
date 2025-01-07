@@ -24,14 +24,7 @@ export default {
   name: "AppHeader",
   data() {
     return {
-      menu_list: [
-        "About",
-        "Experience",
-        "Skills",
-        "Projects",
-        "Publications",
-        "Contact",
-      ],
+      menu_list: ["About", "Experience", "Skills", "Projects", "Contact"],
       selectedMenu: "home",
     };
   },
