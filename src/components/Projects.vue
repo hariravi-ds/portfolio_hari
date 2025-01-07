@@ -36,22 +36,34 @@
       </div>
     </div>
     <el-dialog v-model="dialogVisible" :show-close="false" width="500">
-      <template #header="{ close, titleClass }">
-        <el-button type="danger" @click="close">
-          <el-icon class="el-icon--left"><CircleCloseFilled /></el-icon>
-        </el-button>
+      <template #header="{ close }">
+        <div
+          style="position: absolute; right: 25px; cursor: pointer"
+          type="danger"
+        >
+          <el-icon :size="32" class="el-icon--left" @click="close"
+            ><CircleCloseFilled
+          /></el-icon>
+        </div>
         <div>
-          <div style="margin: 8px; font-size: 24px" :class="titleClass">
+          <div style="margin: 8px" class="f24">
             {{ selectedProject.title }}
           </div>
-          <div style="margin-bottom: 30px; color: black">
+          <div style="margin-bottom: 30px" class="f16">
             {{ selectedProject.shortDesc }}
           </div>
         </div>
       </template>
-      <h4>Description</h4>
-      <hr style="border-top: 1px solid rgba(0, 0, 0, 0.1)" />
-      <div style="text-align: left">{{ selectedProject.description }}</div>
+      <div>Description</div>
+      <hr style="border-top: 1px solid rgba(0, 0, 0, 0.1); margin: 16px 0px" />
+      <div class="mb16">{{ selectedProject.desc1 }}</div>
+      <div class="mb16">{{ selectedProject.desc2 }}</div>
+      <div class="img-container">
+        <div v-for="(img, index) in selectedProject.images" :key="index">
+          <img style="height: 175px; width: 275px" :src="img" alt="photo" />
+        </div>
+      </div>
+      <div class="mb16">{{ selectedProject.desc3 }}</div>
       <div>
         <a
           v-if="selectedProject.github"
@@ -78,21 +90,19 @@ export default {
           title: "Current Asthma Prevalence",
           subtitle: "Nov 2024 - Dec 2024",
           shortDesc: "Assessed the current asthma prevalence across the US",
-          description:
-            "Designed and optimized machine learning models, achieving up to 86% R² in predicting asthma prevalence with SVR and GPR. Applied advanced feature engineering techniques like cyclic encoding for spatial data, target encoding, and Ridge Regression to handle multicollinearity. Conducted EDA on a large-scale dataset (241k rows), visualizing insights through choropleth maps and Q-Q plots, improving model assumptions and residual analysis.",
+          desc1:
+            "Analyzed a large-scale dataset (241k rows, 22 columns) sourced from CDC PLACES, identifying key patterns using exploratory data analysis (EDA) and visualizations, including U.S. choropleth maps, residual plots, and Q-Q plots to validate model assumptions and assess residual normality.",
+          desc2:
+            "Conducted advanced feature engineering techniques, including cyclic encoding for spatial features (latitude/longitude), target encoding, and handling multicollinearity using Ridge Regression. Improved target variable distribution through log transformation and Winsorization to reduce skewness and outliers.",
+          desc3:
+            "Developed and optimized predictive models using Linear Regression, Ridge Regression, Support Vector Regression (SVR), and Gaussian Process Regression (GPR), achieving up to 86% R² in SVR and 81% R² in GPR for predicting asthma prevalence.",
           image: require("@/assets/asthma.jpeg"),
           github: "https://github.com/hariravi-ds/DATS_6103_Project2",
-          showContent: false,
-        },
-        {
-          title: "Global Rice Production Analysis",
-          subtitle: "Sep 2024 - Oct 2024",
-          shortDesc:
-            "Analyzed and visualized key trends in global rice production",
-          description:
-            "Spearheaded the development of a predictive model with 20,000 observations, utilizing statistical testing, feature selection, and cross-validation to enhance forecasting accuracy. Conducted advanced exploratory data analysis in R, applied linear regression to identify key trends, and designed 5 interactive Power BI dashboards using DAX and custom visualizations to transform complex data into actionable insights.",
-          image: require("@/assets/rice.jpeg"),
-          github: "https://github.com/hariravi-ds/DATS6101-Team4",
+          images: [
+            require("@/assets/casthma/image1.png"),
+            require("@/assets/casthma/image2.png"),
+            require("@/assets/casthma/image3.png"),
+          ],
           showContent: false,
         },
         {
@@ -107,14 +117,33 @@ export default {
           showContent: false,
         },
         {
+          title: "Global Rice Production Analysis",
+          subtitle: "Sep 2024 - Oct 2024",
+          shortDesc:
+            "Analyzed and visualized key trends in global rice production",
+          desc1:
+            "Spearheaded the development of a predictive model with 20,000 observations, employing statistical testing, feature selection, hyperparameter tuning, and cross-validation to boost forecasting accuracy.",
+          desc2:
+            "Performed advanced exploratory data analysis in R, applying techniques such as data normalization, outlier detection, and multicollinearity analysis, followed by linear regression to uncover key trends.",
+          desc3:
+            "Designed and developed 5 interactive dashboards in Power BI, utilizing DAX functions and custom visualizations to transform complex data into actionable insights, ensuring interpretability for analysis. ",
+          image: require("@/assets/rice.jpeg"),
+          github: "https://github.com/hariravi-ds/DATS6101-Team4",
+          showContent: false,
+        },
+        {
           title: "Heart Disease Predictor",
           subtitle: "IBM | Jul 2022 - Nov 2022",
           shortDesc:
             "Developed a heart disease prediction system with an interactive dashboard to identify high-risk individuals",
-          description:
-            "Led a team of 4 to develop an IBM-supported heart disease prediction system using IBM Cognos, featuring an interactive dashboard to identify high-risk individuals. Conducted data preprocessing in Python on 10,000+ patient records, including cleaning, transformation, and exploratory data analysis. Optimized machine learning models, such as Random Forest and Decision Tree classifiers, achieving a 95.18% prediction accuracy while coordinating team efforts to meet project milestones.",
+          desc1:
+            "Led a team of 4 members to design an IBM-supported heart disease prediction system using IBM Cognos, creating an interactive dashboard to visualize patient data and identify high-risk individuals.",
+          desc2:
+            "Performed data preprocessing in Python, including data cleaning, transformation, and exploratory data analysis on 10,000+ patient records, ensuring high-quality inputs for accurate model training. ",
+          desc3:
+            "Optimized machine learning models, including Random Forest and Decision Tree classifiers, improving prediction accuracy to 95.18%, and coordinated team efforts to meet project milestones. ",
           image: require("@/assets/heart.jpeg"),
-          github: "https://github.com/example/heart-disease-predictor",
+          github: "https://github.com/hariravi-ds/heart-disease-predictor",
           showContent: false,
         },
       ],
@@ -215,10 +244,6 @@ export default {
   color: #a5a5a5;
   margin-bottom: 15px;
 }
-.el-dialog {
-  font-size: 1.2em;
-  color: #333;
-}
 .project-link {
   text-decoration: none;
   color: #1abc9c;
@@ -229,5 +254,12 @@ export default {
 
 .project-link:hover {
   text-decoration: underline;
+}
+
+.img-container {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  margin: 30px 0px;
 }
 </style>

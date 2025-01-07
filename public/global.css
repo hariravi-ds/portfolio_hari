@@ -11,3 +11,30 @@
 .flex {
     display: flex;
 }
+
+.el-dialog__header {
+  color: black;
+  height: 85px;
+}
+
+.el-dialog {
+  padding: 24px 48px;
+  width: 1000px;
+  border-radius: 16px;
+}
+
+.f16 {
+  font-size: 16px;
+}
+
+.f24 {
+  font-size: 24px;
+}
+
+.mb16 {
+  margin-bottom: 16px;
+}
+
+.el-dialog__body {
+  text-align: start;
+}
