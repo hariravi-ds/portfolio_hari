@@ -82,7 +82,7 @@ export default {
   name: "ProjectsSection",
   data() {
     return {
-      image: require("@/assets/ai.jpeg"),
+      image: require("@/assets/ai.jpg"),
       dialogVisible: false,
       selectedProject: null,
       projects: [
@@ -96,7 +96,7 @@ export default {
             "Conducted advanced feature engineering techniques, including cyclic encoding for spatial features (latitude/longitude), target encoding, and handling multicollinearity using Ridge Regression. Improved target variable distribution through log transformation and Winsorization to reduce skewness and outliers.",
           desc3:
             "Developed and optimized predictive models using Linear Regression, Ridge Regression, Support Vector Regression (SVR), and Gaussian Process Regression (GPR), achieving up to 86% R² in SVR and 81% R² in GPR for predicting asthma prevalence.",
-          image: require("@/assets/asthma.jpeg"),
+          image: require("@/assets/asthma.jpg"),
           github: "https://github.com/hariravi-ds/DATS_6103_Project2",
           images: [
             require("@/assets/casthma/image1.png"),
@@ -116,8 +116,13 @@ export default {
             "Implemented feature selection techniques like exhaustive methods and VIF analysis to identify key predictors of vehicle emissions, optimizing model performance and interpretability.",
           desc3:
             "Preprocessed high-dimensional data by handling missing values, encoding categorical variables, and removing irrelevant features, ensuring a robust pipeline for focused analysis on diesel and petrol vehicles.",
-          image: require("@/assets/fuel.jpeg"),
+          image: require("@/assets/co2.jpeg"),
           github: "https://github.com/hariravi-ds/DATS6101-Team4-Project2",
+          images: [
+            require("@/assets/vehicle/image1.png"),
+            require("@/assets/vehicle/image2.png"),
+            require("@/assets/vehicle/image3.png"),
+          ],
           showContent: false,
         },
         {
@@ -131,8 +136,32 @@ export default {
             "Performed advanced exploratory data analysis in R, applying techniques such as data normalization, outlier detection, and multicollinearity analysis, followed by linear regression to uncover key trends.",
           desc3:
             "Designed and developed 5 interactive dashboards in Power BI, utilizing DAX functions and custom visualizations to transform complex data into actionable insights, ensuring interpretability for analysis. ",
-          image: require("@/assets/rice.jpeg"),
+          image: require("@/assets/rice.jpg"),
           github: "https://github.com/hariravi-ds/DATS6101-Team4",
+          images: [
+            require("@/assets/rice/image1.png"),
+            require("@/assets/rice/image2.png"),
+            require("@/assets/rice/image3.png"),
+          ],
+          showContent: false,
+        },
+        {
+          title: "Healthcare Data Management System",
+          subtitle: "Nov 2024 - Dec 2025",
+          shortDesc:
+            "Comparative Analysis of SQL and MongoDB for Efficient Healthcare Data Management",
+          desc1:
+            "Conducted a comparative analysis of SQL and MongoDB for managing large healthcare datasets, including patient records and appointment data, by simulating real-world scenarios with 100,000+ records",
+          desc2:
+            "Demonstrated SQL's superiority in transactional operations and data integrity, while highlighting MongoDB's scalability and flexibility in handling semi-structured data, providing actionable insights for hybrid database adoption",
+          desc3:
+            "Proposed a hybrid database model leveraging SQL for structured data and MongoDB for dynamic datasets, ensuring adaptability for evolving healthcare workflows",
+          image: require("@/assets/dbms.jpg"),
+          images: [
+            require("@/assets/dbms/image1.png"),
+            require("@/assets/dbms/image2.png"),
+            require("@/assets/dbms/image3.png"),
+          ],
           showContent: false,
         },
         {
@@ -146,7 +175,7 @@ export default {
             "Performed data preprocessing in Python, including data cleaning, transformation, and exploratory data analysis on 10,000+ patient records, ensuring high-quality inputs for accurate model training. ",
           desc3:
             "Optimized machine learning models, including Random Forest and Decision Tree classifiers, improving prediction accuracy to 95.18%, and coordinated team efforts to meet project milestones. ",
-          image: require("@/assets/heart.jpeg"),
+          image: require("@/assets/heart.jpg"),
           github: "https://github.com/hariravi-ds/heart-disease-predictor",
           images: [
             require("@/assets/heart/image1.png"),
@@ -192,8 +221,8 @@ export default {
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  padding: 48px 24px;
+  gap: 48px;
+  padding: 48px 96px;
 }
 
 .project-card {
