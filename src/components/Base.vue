@@ -61,12 +61,12 @@
       </div>
     </div>
     <div class="sections">
-      <About id="About"></About>
-      <Experience id="Experience"></Experience>
-      <Skills id="Skills"></Skills>
-      <Projects id="Projects"></Projects>
-      <Organization id="Organizations"></Organization>
-      <Contact id="Contact"></Contact>
+      <About id="about"></About>
+      <Experience id="experience"></Experience>
+      <Skills id="skills"></Skills>
+      <Projects id="projects"></Projects>
+      <Organization id="organizations"></Organization>
+      <Contact id="contact"></Contact>
     </div>
   </div>
 </template>

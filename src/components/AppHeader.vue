@@ -1,7 +1,7 @@
 <template>
   <div class="header-container">
     <div
-      :class="[selectedMenu == 'Home' ? 'selected' : 'menu-item']"
+      :class="[selectedMenu.toLowerCase() == 'home' ? 'selected' : 'menu-item']"
       @click="scrollFn('Home')"
     >
       Home
@@ -12,7 +12,7 @@
         v-for="(menu, index) in menu_list"
         :key="index"
         @click="scrollFn(menu)"
-        :class="[selectedMenu == menu ? 'selected' : 'menu-item']"
+        :class="[selectedMenu.toLowerCase() == menu ? 'selected' : 'menu-item']"
       >
         {{ menu }}
       </div>
@@ -33,7 +33,7 @@ export default {
         "Organizations",
         "Contact",
       ],
-      selectedMenu: "Home",
+      selectedMenu: "home",
     };
   },
   mounted() {
@@ -80,7 +80,7 @@ export default {
     },
     scrollFn(menu) {
       this.selectedMenu = menu;
-      this.$router.push({ query: { menu: menu } });
+      this.$router.push({ query: { menu: menu.toLowerCase() } });
       this.scrollTo(menu);
     },
     scrollTo(sectionId) {
