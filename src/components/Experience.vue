@@ -13,7 +13,7 @@
         background-color: #333;
       "
     />
-    <div style="font-style: italic; color: #6c757d">
+    <div style="font-style: italic; color: #6c757d; margin-bottom: 36px">
       A summary of my professional experience, highlighting key roles and
       achievements.
     </div>
@@ -33,7 +33,7 @@
         </div>
       </div>
     </div>
-    <div style="display: flex; flex-direction: row; gap: 12px; color: black">
+    <div class="main-block">
       <div
         style="display: flex; flex-direction: column; gap: 4px"
         v-for="([key, value], index) in Object.entries(details[0])"
@@ -99,7 +99,7 @@ export default {
   flex-direction: column;
   gap: 16px;
   position: relative;
-  padding: 36px 24px;
+  padding: 0px 24px;
   margin: 0 auto;
   width: 60%;
 }
@@ -115,7 +115,7 @@ export default {
   flex: 1;
   padding: 12px;
   background-color: #3b3f4a;
-  border-radius: 10px;
+  border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   border: 1px solid #6c757d;
   transition: background-color 0.3s ease, transform 0.3s ease;
@@ -127,14 +127,22 @@ export default {
 }
 
 .title {
-  font-size: 16px;
+  font-size: 18px;
   margin-bottom: 4px;
   color: #d1d8e0;
 }
 
 .subtitle {
-  font-size: 12px;
+  font-size: 14px;
   margin-bottom: 4px;
   color: #a5a5a5;
+}
+
+.main-block {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  color: black;
+  padding: 36px;
 }
 </style>

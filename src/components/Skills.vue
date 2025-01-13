@@ -101,7 +101,7 @@ export default {
 .skill-category {
   margin: 20px;
   flex: 1 1 300px;
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 15px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }

@@ -65,6 +65,7 @@
       <Experience id="Experience"></Experience>
       <Skills id="Skills"></Skills>
       <Projects id="Projects"></Projects>
+      <Organization id="Organizations"></Organization>
       <Contact id="Contact"></Contact>
     </div>
   </div>
@@ -77,6 +78,7 @@ import About from "./About.vue";
 import Experience from "./Experience.vue";
 import Projects from "./Projects.vue";
 import Contact from "./Contact.vue";
+import Organization from "./Organisations.vue";
 import "particles.js";
 
 export default {
@@ -93,6 +95,7 @@ export default {
     Experience,
     Projects,
     Contact,
+    Organization,
   },
   mounted() {
     const particlesContainer = document.getElementById("particles-js");

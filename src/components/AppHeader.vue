@@ -25,7 +25,14 @@ export default {
   data() {
     return {
       activeSection: null,
-      menu_list: ["About", "Experience", "Skills", "Projects", "Contact"],
+      menu_list: [
+        "About",
+        "Experience",
+        "Skills",
+        "Projects",
+        "Organizations",
+        "Contact",
+      ],
       selectedMenu: "Home",
     };
   },

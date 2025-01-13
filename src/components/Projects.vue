@@ -227,7 +227,7 @@ export default {
 
 .project-card {
   background-color: #34495e;
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
   position: relative;
   transition: transform 0.3s ease, box-shadow 0.3s ease,

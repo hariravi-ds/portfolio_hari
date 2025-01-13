@@ -119,7 +119,7 @@ export default {
   position: relative;
   padding: 24px 12px;
   margin: 0 auto;
-  width: 80%;
+  width: 85%;
 }
 
 .timeline-item {
@@ -139,10 +139,13 @@ export default {
 }
 
 .timeline-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   flex: 1;
-  padding: 15px;
+  padding: 12px;
   background-color: #3b3f4a;
-  border-radius: 10px;
+  border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   border: 1px solid #6c757d;
   transition: background-color 0.3s ease, transform 0.3s ease;
@@ -154,19 +157,19 @@ export default {
 }
 
 .title {
-  font-size: 16px;
+  font-size: 18px;
   margin-bottom: 5px;
   color: #d1d8e0;
 }
 
 .subtitle {
-  font-size: 12px;
+  font-size: 14px;
   margin-bottom: 8px;
   color: #a5a5a5;
 }
 
 .description {
-  font-size: 12px;
+  font-size: 14px;
   color: #ecf0f1;
 }
 
@@ -192,7 +195,7 @@ export default {
   position: absolute;
   left: 50%;
   transform: translateY(150%);
-  width: 380px;
+  width: 400px;
   height: 2px;
   background-color: teal;
   z-index: -1;
