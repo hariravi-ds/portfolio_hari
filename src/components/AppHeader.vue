@@ -12,7 +12,11 @@
         v-for="(menu, index) in menu_list"
         :key="index"
         @click="scrollFn(menu)"
-        :class="[selectedMenu.toLowerCase() == menu ? 'selected' : 'menu-item']"
+        :class="[
+          selectedMenu.toLowerCase() == menu.toLowerCase()
+            ? 'selected'
+            : 'menu-item',
+        ]"
       >
         {{ menu }}
       </div>
@@ -54,10 +58,13 @@ export default {
       handler(newVal, oldVal) {
         if (newVal != oldVal) {
           let { menu_list } = this;
-          if (newVal != null && menu_list.includes(newVal)) {
+          if (
+            newVal != null &&
+            menu_list.includes(newVal[0].toUpperCase() + newVal.slice(1))
+          ) {
             this.selectedMenu = newVal;
           } else {
-            this.selectedMenu = "Home";
+            this.selectedMenu = "home";
           }
         }
       },
