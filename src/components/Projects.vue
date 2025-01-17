@@ -58,9 +58,13 @@
       <hr style="border-top: 1px solid rgba(0, 0, 0, 0.1); margin: 16px 0px" />
       <div class="mb16">{{ selectedProject.desc1 }}</div>
       <div class="mb16">{{ selectedProject.desc2 }}</div>
-      <div v-if="selectedProject.images" class="img-container">
-        <div v-for="(img, index) in selectedProject.images" :key="index">
-          <img style="height: 175px; width: 275px" :src="img" alt="photo" />
+      <div v-if="selectedProject.images" class="image-wrapper">
+        <div
+          v-for="(img, index) in selectedProject.images"
+          :key="index"
+          class="image-container"
+        >
+          <img :src="img" alt="photo" />
         </div>
       </div>
       <div class="mb16">{{ selectedProject.desc3 }}</div>
@@ -106,6 +110,27 @@ export default {
           showContent: false,
         },
         {
+          title: "Credit Card Fraud Detection",
+          subtitle: "Nov 2024 - Jan 2025",
+          shortDesc:
+            "Developed a machine learning model to detect credit card fraud with optimized recall and precision",
+          desc1:
+            "Developed end-to-end pipelines for data preprocessing, including feature engineering, outlier detection, and class imbalance handling using advanced resampling techniques such as SMOTE and Tomek Links to optimize model performance.",
+          desc2:
+            "Designed and implemented machine learning models, including Logistic Regression, Random Forest, and Neural Networks, achieving a 25% improvement in fraud detection recall through hyperparameter tuning and ensemble modeling.",
+          desc3:
+            "Created interactive visualizations using Matplotlib and Seaborn to interpret data trends and model performance metrics, including ROC-AUC and Precision-Recall curves, enabling actionable insights for fraud detection strategies.",
+          image: require("@/assets/credit.jpg"),
+          github: "https://github.com/hariravi-ds/Fraud_Detection",
+          images: [
+            require("@/assets/creditcard/image1.png"),
+            require("@/assets/creditcard/image2.png"),
+            require("@/assets/creditcard/image3.png"),
+            require("@/assets/creditcard/image4.png"),
+          ],
+          showContent: false,
+        },
+        {
           title: "CO2 Emissions in Modern Vehicles",
           subtitle: "Nov 2024 - Dec 2024",
           shortDesc:
@@ -126,6 +151,25 @@ export default {
           showContent: false,
         },
         {
+          title: "Healthcare Data Management System",
+          subtitle: "Nov 2024 - Dec 2025",
+          shortDesc:
+            "Comparative Analysis of SQL and MongoDB for Efficient Healthcare Data Management",
+          desc1:
+            "Conducted a comparative analysis of SQL and MongoDB for managing large healthcare datasets, including patient records and appointment data, by simulating real-world scenarios with 100,000+ records",
+          desc2:
+            "Demonstrated SQL's superiority in transactional operations and data integrity, while highlighting MongoDB's scalability and flexibility in handling semi-structured data, providing actionable insights for hybrid database adoption",
+          desc3:
+            "Proposed a hybrid database model leveraging SQL for structured data and MongoDB for dynamic datasets, ensuring adaptability for evolving healthcare workflows",
+          image: require("@/assets/dbms.jpg"),
+          images: [
+            require("@/assets/dbms/image1.png"),
+            require("@/assets/dbms/image2.png"),
+            require("@/assets/dbms/image3.png"),
+          ],
+          showContent: false,
+        },
+        {
           title: "Global Rice Production Analysis",
           subtitle: "Sep 2024 - Oct 2024",
           shortDesc:
@@ -142,25 +186,6 @@ export default {
             require("@/assets/rice/image1.png"),
             require("@/assets/rice/image2.png"),
             require("@/assets/rice/image3.png"),
-          ],
-          showContent: false,
-        },
-        {
-          title: "Healthcare Data Management System",
-          subtitle: "Nov 2024 - Dec 2025",
-          shortDesc:
-            "Comparative Analysis of SQL and MongoDB for Efficient Healthcare Data Management",
-          desc1:
-            "Conducted a comparative analysis of SQL and MongoDB for managing large healthcare datasets, including patient records and appointment data, by simulating real-world scenarios with 100,000+ records",
-          desc2:
-            "Demonstrated SQL's superiority in transactional operations and data integrity, while highlighting MongoDB's scalability and flexibility in handling semi-structured data, providing actionable insights for hybrid database adoption",
-          desc3:
-            "Proposed a hybrid database model leveraging SQL for structured data and MongoDB for dynamic datasets, ensuring adaptability for evolving healthcare workflows",
-          image: require("@/assets/dbms.jpg"),
-          images: [
-            require("@/assets/dbms/image1.png"),
-            require("@/assets/dbms/image2.png"),
-            require("@/assets/dbms/image3.png"),
           ],
           showContent: false,
         },
@@ -294,10 +319,21 @@ export default {
   text-decoration: underline;
 }
 
-.img-container {
+.image-wrapper {
   display: flex;
-  flex-direction: row;
-  gap: 16px;
-  margin: 30px 0px;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 16px;
+}
+
+.image-container {
+  flex: 1 1 auto;
+  max-width: calc(100% / var(--image-count));
+}
+
+.image-container img {
+  width: 100%;
+  height: 175px;
+  object-fit: cover;
 }
 </style>
