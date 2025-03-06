@@ -56,14 +56,14 @@ export default {
       image: require("@/assets/subtle2.jpeg"),
       details: [
         {
-          "Interactive Dashboard Development":
-            "Developed and implemented an interactive dashboard tool using JavaScript and Java, which allowed for customizable widgets and real-time monitoring on TV screens. This led to an 8% increase in the customer base over two years.",
+          "Interactive BI platform Development":
+            "Designed and built Business Intelligence (BI) platform using JavaScript and Java, enabling real-time monitoring and customizable widgets, driving 8% customer base growth over two years.",
           "Automation of KPI & Report Generation":
             "Automated KPI and report generation processes by developing a core framework using optimized SQL indexing, time-series data aggregation, and dynamic ETL processes, reducing manual effort by 30%.",
-          "SQL Optimization and Management":
-            "Enhanced SQL queries for large datasets, optimizing performance through indexing, joins, and advanced aggregation techniques, resulting in 20% faster query execution and improved database efficiency.",
-          "UI Component Library Creation":
-            "Built a custom UI component library using React and JSX, leveraging Context API and styled-components. Improved performance and reusability through optimizations such as memoization and lazy loading.",
+          "SQL Optimization":
+            "Streamlined ETL workflows and time series data aggregation by optimizing SQL queries reducing manual work and improving report generation speed by 15%.",
+          "Development of RESTful APIs":
+            "Developed RESTful APIs with well-defined endpoints for internal and external use, leveraging Swagger for documentation and Postman for unit testing, ensuring performance.",
           "Promotion Ahead of Schedule":
             "Secured a full-time position three months ahead of the typical promotion timeline after transitioning from an intern role, due to exceptional contributions and consistent performance in project delivery.",
         },
