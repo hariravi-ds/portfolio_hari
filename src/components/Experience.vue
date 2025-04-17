@@ -57,7 +57,7 @@ export default {
       details: [
         {
           "Interactive BI platform Development":
-            "Designed and built Business Intelligence (BI) platform using JavaScript and Java, enabling real-time monitoring and customizable widgets, driving 8% customer base growth over two years.",
+            "Engineered Business Intelligence (BI) platform using JavaScript and Java, enabling real-time monitoring and customizable widgets, driving 8% customer base growth over two years.",
           "Automation of KPI & Report Generation":
             "Automated KPI and report generation processes by developing a core framework using optimized SQL indexing, time-series data aggregation, and dynamic ETL processes, reducing manual effort by 30%.",
           "SQL Optimization":

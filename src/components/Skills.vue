@@ -64,6 +64,7 @@ export default {
           "Hyperparameter Tuning",
         ],
         Tools: [
+          "AWS",
           "Git",
           "JIRA",
           "Postman",

@@ -41,25 +41,40 @@ export default {
       image: require("@/assets/subtle2.jpeg"),
       details: [
         {
-          Equinox: {
+          // Equinox: {
+          //   role: "Member",
+          //   timeline: "Oct 2024 - Present",
+          //   desc: "Engaged in fitness and wellness activities, participating in group fitness classes and community events.",
+          // },
+          "George Washington University Student Association": {
+            role: "CCAS Graduate Senator",
+            timeline: "Aug 2025 - Present",
+            desc: "Represent graduate student interests within CCAS by participating in policy discussions and academic affairs.",
+          },
+          "Data Science for Sustainable Development": {
             role: "Member",
-            timeline: "Oct 2024 - Present",
-            desc: "Engaged in fitness and wellness activities, participating in group fitness classes and community events.",
+            timeline: "Aug 2025 - Present",
+            desc: "Collaborate on data-driven research projects supporting the UN Sustainable Development Goals (SDGs).",
           },
           "Robotics & Artificial Intelligence Club": {
             role: "Student Tutor",
             timeline: "Jun 2021 - May 2023",
             desc: "Led Python workshops for over 50 incoming freshmen, fostering teamwork and collaborative learning among students without prior programming experience.",
           },
-          "Forum of Data Science Engineers": {
-            role: "Student Tutor",
-            timeline: "Jun 2020 - May 2022",
-            desc: "Provided free tutoring in data science and mathematics, helping students improve academically and build confidence. Developed personalized learning plans for effective education.",
-          },
           "Youth Red Cross": {
             role: "Volunteer",
             timeline: "Jun 2019 - May 2023",
             desc: "Spearheaded various health-related initiatives, including blood donation drives engaging over 500 participants, raising awareness of public health issues.",
+          },
+          "Institution of Electronics and Telecommunication Engineers (IETE)": {
+            role: "Member",
+            timeline: "Aug 2019 - May 2023",
+            desc: "Engaged in knowledge-sharing events and conferences, staying updated on the latest trends in telecommunications and electronics engineering.",
+          },
+          "Forum of Data Science Engineers": {
+            role: "Student Tutor",
+            timeline: "Jun 2020 - May 2022",
+            desc: "Provided free tutoring in data science and mathematics, helping students improve academically and build confidence. Developed personalized learning plans for effective education.",
           },
         },
       ],

@@ -78,7 +78,7 @@ export default {
           title: "Member Technical Staff",
           college: "Facilio Technology Solutions, Chennai, India",
           description:
-            "Developed interactive dashboards, automated KPI generation with optimized SQL processes, built reusable UI components, and trained multiple international clients, enhancing engagement and product adoption.",
+            "Developed Business Intelligence tool, automated KPI and report generation with optimized ETL pipelines, built reusable UI components, and trained multiple international clients, enhancing product adoption.",
         },
         {
           date: "Jun 2019 - Apr 2023",
