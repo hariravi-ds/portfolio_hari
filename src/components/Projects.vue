@@ -91,6 +91,53 @@ export default {
       selectedProject: null,
       projects: [
         {
+          title: "AWS-Based Conversational AI for Banking Support",
+          subtitle: "Feb 2025 - Apr 2025",
+          shortDesc:
+            "Built an AWS-powered banking support chatbot with custom ML inference, real-time user interaction, and automated fraud alerting.",
+          desc1:
+            "Developed a banking support chatbot using AWS Lex and Lambda, enabling users to handle tasks such as card activation, balance inquiries, and fraud alerts through natural language interaction.",
+          desc2:
+            "Integrated a custom-built machine learning model via Amazon ECR for handling low-confidence queries, improving accuracy and response quality in sensitive banking scenarios.",
+          desc3:
+            "Implemented secure, scalable infrastructure for real-time chatbot interactions, including logging with CloudWatch, user context storage with DynamoDB, and automated alerting via SNS for critical cases like fraud detection.",
+          image: require("@/assets/chatbot.jpeg"),
+          github: "https://github.com/DarsiniLakshmiah/BankingIT_ChatBot",
+          showContent: false,
+        },
+        {
+          title: "Wildfire Data Analysis",
+          subtitle: "Feb 2025 - Apr 2025",
+          shortDesc:
+            "Analyzed the multifaceted impact of California wildfires using Tableau, combining structural, financial, and air quality data to inform disaster awareness and prevention strategies.",
+          desc1:
+            "Designed a comprehensive data visualization dashboard in Tableau to analyze the impact of California wildfires using multi-source datasets on structural damage, financial loss, air quality, and casualties.",
+          desc2:
+            "Integrated EPA air quality data (2000–2023) to examine the health and environmental effects of wildfires, identifying pollutant spikes and high-risk regions.",
+          desc3:
+            "Extended the analysis to a national scale, evaluating total disaster-related deaths and financial costs to contextualize California’s wildfire crisis within broader U.S. disaster trends.",
+          image: require("@/assets/cal_fire.jpeg"),
+          // github:
+          //   "https://github.com/hariravi-ds/Traffic-Flow-Forecasting-Using-Spatial-CNNs",
+          showContent: false,
+        },
+        {
+          title: "Traffic Flow Forecasting using CNN & Unsupervised Learning",
+          subtitle: "Mar 2025 - Apr 2025",
+          shortDesc:
+            "Built a deep learning model to forecast traffic patterns using CNNs and unsupervised clustering on spatially mapped sensor data.",
+          desc1:
+            "Designed and implemented a spatiotemporal traffic forecasting system using CNNs on synthetic heatmap data generated from real-world sensor layouts.",
+          desc2:
+            "Mapped urban sensor networks into a 2D grid using MDS and built a supervised deep learning pipeline achieving low MSE (≈45) on future traffic prediction.",
+          desc3:
+            "Applied KMeans clustering and PCA for unsupervised pattern discovery, enabling comparative analysis of traffic states with interpretability across sequences.",
+          image: require("@/assets/traffic.jpeg"),
+          github:
+            "https://github.com/hariravi-ds/Traffic-Flow-Forecasting-Using-Spatial-CNNs",
+          showContent: false,
+        },
+        {
           title: "Current Asthma Prevalence",
           subtitle: "Nov 2024 - Dec 2024",
           shortDesc: "Assessed the current asthma prevalence across the US",
@@ -246,7 +293,7 @@ export default {
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 48px;
+  gap: 24px;
   padding: 48px 96px;
 }
 
@@ -257,7 +304,7 @@ export default {
   position: relative;
   transition: transform 0.3s ease, box-shadow 0.3s ease,
     background-image 0.3s ease;
-  height: 300px;
+  height: 250px;
   background-size: cover;
   background-position: center;
   cursor: pointer;
