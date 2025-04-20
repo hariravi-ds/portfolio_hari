@@ -18,7 +18,7 @@
       my work.
     </div>
     <div
-      style="display: flex; justify-content: row; padding: 48px 24px; gap: 8px"
+      style="display: flex; justify-content: row; padding: 36px 24px; gap: 8px"
     >
       <div
         style="
@@ -31,13 +31,14 @@
         <img :src="image" alt="photo" class="project-image" />
       </div>
       <div class="aboutContent">
-        <div style="display: flex; gap: 4px; align-items: center">
-          <i class="fa-regular fa-hand"></i>
-          <div>Hi, I'm Hari.</div>
+        <div v-for="(val, index) in about" :key="index">{{ val }}</div>
+        <div>
+          <div v-for="(val, index) in about2" :key="index">{{ val }}</div>
         </div>
-        <div>{{ about1 }}</div>
-        <div>{{ about2 }}</div>
-        <div>{{ about3 }}</div>
+        <div>
+          P.S. Check out my work below—I’m always open to ideas that merge
+          innovation with impact!
+        </div>
       </div>
     </div>
     <div class="timeline">
@@ -87,12 +88,17 @@ export default {
           description: "CGPA: 9.52 out of 10",
         },
       ],
-      about1:
-        "I am an aspiring professional in data analytics, engineering and machine learning with 2 years of professional experience. Currently pursuing a Master’s degree in Data Science at The George Washington University, I have been recognized with the Global Leaders Award for exceptional contributions.",
-      about2:
-        "Proficient in Python, SQL, JavaScript, and data visualization tools like Power BI and Tableau, I have experience in machine learning, predictive modeling, and data engineering. I’ve successfully led projects such as the Heart Disease Predictor, achieving 95.18% accuracy, and the Global Rice Production Analysis, which delivered actionable insights through advanced statistical techniques and interactive dashboards.",
-      about3:
-        "Additionally, I’ve developed predictive models like SVR and GPR, achieving up to 86% R² for predicting asthma prevalence, and analyzed large-scale CDC PLACES data using visualizations like U.S. choropleth maps and Q-Q plots. My skills include automating KPIs with optimized SQL processes, building reusable UI components, and collaborating with cross-functional teams to drive impactful solutions. I am passionate about leveraging data to solve complex problems and committed to continuous learning and innovation.",
+      about: [
+        "👋 Hi there! I’m Hari Prasannaa, a Data Science graduate student at George Washington University (GWU) with a strong analytical mindset and a flair for visual storytelling. Based in Washington, DC, and originally from Chennai, India, I bridge cultures and code—passionate about machine learning, cloud tech, and building tools that make businesses smarter.",
+        "Data isn’t just my job—it’s my playground🚀. I thrive on designing scalable systems, like the custom BI platforms I engineered with real-time analytics, and optimizing workflows through data analysis and SQL solutions that untangle complex data pipelines. During my 2 years as a Member Technical Staff at Facilio Technology Solutions, I contributed to developing an innovative building management solution and data visualization tools for high-profile clients, collaborating with cross-functional teams to deliver intuitive and scalable systems. My toolkit? Python, JavaScript, SQL, AWS, Tableau and machine learning frameworks (Scikit-learn, TensorFlow), backed by a relentless curiosity for NLP and ethical AI.",
+        "When I’m not geeking out over data, you’ll find me mentoring peers—I’ve led Python workshops for incoming freshmen and hosted ML webinars to demystify tech for newcomers. I’m especially drawn to challenges in healthcare analytics, fintech, and sustainable tech, where data can spark real-world change.",
+      ],
+      about2: [
+        "Let’s connect if you’re into:",
+        "✅ Collaborative problem-solving (I love cross-functional teams!).",
+        "✅ Tech-for-good initiatives (think healthcare equity or green energy analytics).",
+        "✅ Coffee chats about the future of AI, or why Chennai’s filter coffee beats everything ☕.",
+      ],
       image: require("@/assets/photo.png"),
     };
   },
@@ -211,7 +217,7 @@ export default {
   border-radius: 50%;
 }
 .aboutContent {
-  width: 50%;
+  width: 55%;
   color: black;
   display: flex;
   flex-direction: column;
