@@ -12,13 +12,19 @@
         v-for="(menu, index) in menu_list"
         :key="index"
         @click="scrollFn(menu)"
-        :class="[
-          selectedMenu.toLowerCase() == menu.toLowerCase()
-            ? 'selected'
-            : 'menu-item',
-        ]"
+        :class="{
+          'menu-item': true,
+          selected: selectedMenu.toLowerCase() === menu.toLowerCase(),
+        }"
       >
         {{ menu }}
+      </div>
+      <div
+        class="menu-item"
+        style="border-radius: 8px; border: 1px solid; padding: 4px"
+        @click="downloadResume()"
+      >
+        Resume
       </div>
     </div>
   </div>
@@ -35,7 +41,7 @@ export default {
         "Skills",
         "Projects",
         "Organizations",
-        "Contact",
+        // "Contact",
       ],
       selectedMenu: "home",
     };
@@ -71,6 +77,13 @@ export default {
     },
   },
   methods: {
+    downloadResume() {
+      let resumeFile = "/resume.pdf";
+      const link = document.createElement("a");
+      link.href = resumeFile;
+      link.download = "HariPrasannaa_Resume.pdf";
+      link.click();
+    },
     detectActiveSection() {
       const sections = document.querySelectorAll("div[id]");
       let currentSection = null;
@@ -125,6 +138,9 @@ export default {
   color: black;
   font-size: 14.4px;
   transition: color 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .selected {
   color: black;

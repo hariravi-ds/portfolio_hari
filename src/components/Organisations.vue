@@ -49,7 +49,7 @@ export default {
           "George Washington University Student Association": {
             role: "CCAS Graduate Senator",
             timeline: "Aug 2025 - Present",
-            desc: "Represent graduate student interests within CCAS by participating in policy discussions and academic affairs.",
+            desc: "Represent graduate student interests within the Columbian College of Arts and Sciences (CCAS) School by participating in policy discussions and academic affairs.",
           },
           "Data Science for Sustainable Development": {
             role: "Member",

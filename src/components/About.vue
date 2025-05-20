@@ -204,8 +204,8 @@ export default {
   display: none;
 }
 .project-image {
-  width: 400px;
-  height: 400px;
+  width: 500px;
+  height: 500px;
   object-fit: cover;
   border-radius: 50%;
 }
@@ -217,6 +217,6 @@ export default {
   gap: 16px;
   text-align: left;
   line-height: 1.75;
-  font-size: 16px;
+  font-size: 14px;
 }
 </style>

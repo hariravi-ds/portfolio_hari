@@ -49,15 +49,6 @@
             <i class="fab fa-linkedin fa-xl"></i>
           </a>
         </div>
-        <div style="margin-top: 12px">
-          <el-button
-            class="cv-button"
-            color="#000000"
-            size="large"
-            @click="downloadResume()"
-            >Download CV
-          </el-button>
-        </div>
       </div>
     </div>
     <div class="sections">
@@ -166,15 +157,6 @@ export default {
     }
     updateRole();
     setInterval(updateRole, 4000);
-  },
-  methods: {
-    downloadResume() {
-      let resumeFile = "/resume.pdf";
-      const link = document.createElement("a");
-      link.href = resumeFile;
-      link.download = "HariPrasannaa_Resume.pdf";
-      link.click();
-    },
   },
 };
 </script>
