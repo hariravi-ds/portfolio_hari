@@ -44,7 +44,7 @@
     <div class="timeline">
       <div v-for="(event, index) in journey" :key="index" class="timeline-item">
         <div class="timeline-date">{{ event.date }}</div>
-        <div class="timeline-date">
+        <div style="align-items: center; display: flex">
           <div class="timeline-point"></div>
         </div>
         <div class="timeline-content">
@@ -71,27 +71,22 @@ export default {
           date: "Aug 2024 - May 2026 (Expected)",
           title: "Master of Science in Data Science",
           college: "The George Washington University, Washington, DC",
-          description: "CGPA: 3.77 out of 4",
+          description: "CGPA: 3.88 out of 4",
           award: "Global Leaders Award",
-        },
-        {
-          date: "Jun 2022 - Jul 2024",
-          title: "Member Technical Staff",
-          college: "Facilio Technology Solutions, Chennai, India",
-          description:
-            "Developed Business Intelligence tool, automated KPI and report generation with optimized ETL pipelines, built reusable UI components, and trained multiple international clients, enhancing product adoption.",
         },
         {
           date: "Jun 2019 - Apr 2023",
           title: "Bachelor of Engineering in ECE",
           college: "Sri Venkateswara College of Engineering, Chennai, India",
-          description: "CGPA: 9.52 out of 10",
+          description: "CGPA: 3.97 out of 4",
         },
       ],
       about: [
-        "👋 Hi there! I’m Hari Prasannaa, a Data Science graduate student at George Washington University (GWU) with a strong analytical mindset and a flair for visual storytelling. Based in Washington, DC, and originally from Chennai, India, I bridge cultures and code—passionate about machine learning, cloud tech, and building tools that make businesses smarter.",
-        "Data isn’t just my job—it’s my playground🚀. I thrive on designing scalable systems, like the custom BI platforms I engineered with real-time analytics, and optimizing workflows through data analysis and SQL solutions that untangle complex data pipelines. During my 2 years as a Member Technical Staff at Facilio Technology Solutions, I contributed to developing an innovative building management solution and data visualization tools for high-profile clients, collaborating with cross-functional teams to deliver intuitive and scalable systems. My toolkit? Python, JavaScript, SQL, AWS, Tableau and machine learning frameworks (Scikit-learn, TensorFlow), backed by a relentless curiosity for NLP and ethical AI.",
-        "When I’m not geeking out over data, you’ll find me mentoring peers—I’ve led Python workshops for incoming freshmen and hosted ML webinars to demystify tech for newcomers. I’m especially drawn to challenges in healthcare analytics, fintech, and sustainable tech, where data can spark real-world change.",
+        "👋 Hi there! I’m Hari Prasannaa, a Data Science graduate student at George Washington University with a strong analytical mindset and a flair for visual storytelling. Based in Washington, DC, and originally from Chennai, India, I bridge cultures and code—passionate about machine learning, cloud tech, and building tools that make businesses smarter.",
+        "Data isn’t just my job—it’s my playground🚀. I thrive on building real-world solutions that drive impact. At MyEdMaster, I’m designing behavior-driven recommendation algorithms to better match equity-focused candidates with startups. Simultaneously, with Data Science for Sustainable Development, I’m helping optimize university-wide energy use through predictive modeling and anomaly detection, boosting sustainability outcomes with data.",
+        "Previously, during my 2 years as a Member Technical Staff at Facilio, I helped develop a smart building management platform and engineered BI dashboards and APIs that improved customer satisfaction and system reliability.",
+        "My stack includes Python, SQL, React.js, AWS, Tableau, and ML frameworks like Scikit-learn and TensorFlow. I’m also fascinated by NLP and ethical AI, and love using data to make smart systems smarter.",
+        "When I’m not geeking out over data, I mentor peers—leading Python bootcamps and hosting ML webinars to demystify tech for newcomers. I also serve as a Graduate Senator in the GWU Student Association, where I advocate for student needs and help shape initiatives that improve the graduate experience. I’m especially drawn to challenges where data can spark real-world change.",
       ],
       about2: [
         "Let’s connect if you’re into:",
@@ -120,7 +115,7 @@ export default {
 
 .timeline {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 16px;
   position: relative;
   padding: 24px 12px;
@@ -129,19 +124,19 @@ export default {
 }
 
 .timeline-item {
-  flex: 1;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   gap: 8px;
 }
 
 .timeline-date {
+  width: 10%;
   font-size: 12px;
   color: #6c757d;
   display: flex;
   justify-content: center;
-  width: 100%;
+  align-items: center;
 }
 
 .timeline-content {
@@ -199,10 +194,8 @@ export default {
 .timeline-point::before {
   content: "";
   position: absolute;
-  left: 50%;
-  transform: translateY(150%);
-  width: 400px;
-  height: 2px;
+  width: 2px;
+  height: 150px;
   background-color: teal;
   z-index: -1;
 }
