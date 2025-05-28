@@ -13,15 +13,16 @@
         background-color: #333;
       "
     />
-    <div style="font-style: italic; color: #6c757d; margin-bottom: 12px">
+    <div class="section-subtitle">
       A summary of my professional experience, highlighting key roles and
       achievements.
     </div>
     <div class="timeline">
       <div v-for="(event, index) in journey" :key="index" class="timeline-item">
         <div class="timeline-date">{{ event.date }}</div>
-        <div style="align-items: center; display: flex">
+        <div class="timeline-icon-wrapper">
           <div class="timeline-point"></div>
+          <div v-if="index !== journey.length - 1" class="timeline-line"></div>
         </div>
         <div class="timeline-content">
           <div class="subtitle">{{ event.experience }}</div>
@@ -32,14 +33,10 @@
             <div
               v-for="(value, key) in event.description"
               :key="key"
-              style="text-align: left; margin-bottom: 12px"
+              class="description-item"
             >
-              <div
-                style="font-weight: 700; font-size: 1rem; margin-bottom: 4px"
-              >
-                {{ key }}
-              </div>
-              <div style="font-weight: 300; line-height: 1.5">{{ value }}</div>
+              <div class="description-key">{{ key }}</div>
+              <div class="description-value">{{ value }}</div>
             </div>
           </div>
         </div>
@@ -62,7 +59,7 @@ export default {
           work: "Facilio Technology Solutions",
           location: "Chennai, India",
           description: {
-            "Interactive BI platform Development":
+            "Interactive BI Platform Development":
               "Engineered Business Intelligence (BI) platform using JavaScript and Java, enabling real-time monitoring and customizable widgets, driving 8% customer base growth over two years.",
             "Automation of KPI & Report Generation":
               "Automated KPI and report generation processes by developing a core framework using optimized SQL indexing, time-series data aggregation, and dynamic ETL processes, reducing manual effort by 30%.",
@@ -121,25 +118,6 @@ export default {
   color: #212529;
 }
 
-.timeline-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: start;
-  flex: 1;
-  padding: 16px;
-  background-color: #3b3f4a;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  border: 1px solid #6c757d;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.timeline-content:hover {
-  background-color: #4b566e;
-  transform: translateY(-5px);
-}
-
 .timeline {
   display: flex;
   flex-direction: column;
@@ -166,27 +144,49 @@ export default {
   align-items: center;
 }
 
+.timeline-icon-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4px;
+  margin-right: 8px;
+  width: 20px;
+}
+
 .timeline-point {
   width: 10px;
   height: 10px;
   background-color: teal;
-  border-radius: 50%;
   border: 2px solid teal;
+  border-radius: 50%;
   z-index: 1;
-  position: relative;
 }
 
-.timeline-point::before {
-  content: "";
-  position: absolute;
+.timeline-line {
   width: 2px;
-  height: 350px;
+  flex-grow: 1;
   background-color: teal;
-  z-index: -1;
+  margin-top: 2px;
 }
 
-.timeline-item:last-child .timeline-point::before {
-  display: none;
+.timeline-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  flex: 1;
+  padding: 16px;
+  background-color: #3b3f4a;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border: 1px solid #6c757d;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.timeline-content:hover {
+  background-color: #4b566e;
+  transform: translateY(-5px);
 }
 
 .title {
@@ -199,5 +199,23 @@ export default {
   font-size: 14px;
   margin-bottom: 8px;
   color: #a5a5a5;
+}
+
+.description-item {
+  text-align: left;
+  margin-bottom: 12px;
+}
+
+.description-key {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 4px;
+  color: #ffffff;
+}
+
+.description-value {
+  font-weight: 300;
+  line-height: 1.5;
+  color: #dcdcdc;
 }
 </style>
