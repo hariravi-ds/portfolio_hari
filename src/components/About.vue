@@ -44,8 +44,9 @@
     <div class="timeline">
       <div v-for="(event, index) in journey" :key="index" class="timeline-item">
         <div class="timeline-date">{{ event.date }}</div>
-        <div style="align-items: center; display: flex">
+        <div class="timeline-icon-wrapper">
           <div class="timeline-point"></div>
+          <div v-if="index !== journey.length - 1" class="timeline-line"></div>
         </div>
         <div class="timeline-content">
           <div class="title">{{ event.title }}</div>
@@ -180,28 +181,29 @@ export default {
   color: #1abc9c;
   font-style: italic;
 }
-
+.timeline-icon-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4px;
+  margin-right: 8px;
+  width: 20px;
+}
 .timeline-point {
   width: 10px;
   height: 10px;
   background-color: teal;
-  border-radius: 50%;
   border: 2px solid teal;
+  border-radius: 50%;
   z-index: 1;
-  position: relative;
 }
 
-.timeline-point::before {
-  content: "";
-  position: absolute;
+.timeline-line {
   width: 2px;
-  height: 150px;
+  flex-grow: 1;
   background-color: teal;
-  z-index: -1;
-}
-
-.timeline-item:last-child .timeline-point::before {
-  display: none;
+  margin-top: 8px;
 }
 .project-image {
   width: 500px;

@@ -53,25 +53,6 @@ export default {
       image: require("@/assets/subtle2.jpeg"),
       journey: [
         {
-          date: "May 2022 - July 2024",
-          experience: "2+ years",
-          title: "Member Technical Staff",
-          work: "Facilio Technology Solutions",
-          location: "Chennai, India",
-          description: {
-            "Interactive BI Platform Development":
-              "Engineered Business Intelligence (BI) platform using JavaScript and Java, enabling real-time monitoring and customizable widgets, driving 8% customer base growth over two years.",
-            "Automation of KPI & Report Generation":
-              "Automated KPI and report generation processes by developing a core framework using optimized SQL indexing, time-series data aggregation, and dynamic ETL processes, reducing manual effort by 30%.",
-            "SQL Optimization":
-              "Streamlined ETL workflows and time series data aggregation by optimizing SQL queries reducing manual work and improving report generation speed by 15%.",
-            "Development of RESTful APIs":
-              "Developed RESTful APIs with well-defined endpoints for internal and external use, leveraging Swagger for documentation and Postman for unit testing, ensuring performance.",
-            "Promotion Ahead of Schedule":
-              "Secured a full-time position three months ahead of the typical promotion timeline after transitioning from an intern role, due to exceptional contributions and consistent performance in project delivery.",
-          },
-        },
-        {
           date: "Mar 2025 - Present",
           experience: "3 months",
           title: "Data Science Intern",
@@ -97,6 +78,25 @@ export default {
               "Conducted anomaly detection using PCA and clustering on energy usage data across 50+ buildings to optimize resource allocation.",
             "Operational Trend Analysis":
               "Applied Random Forest models to uncover operational trends, enhancing decision-making in university-wide energy strategy.",
+          },
+        },
+        {
+          date: "May 2022 - July 2024",
+          experience: "2+ years",
+          title: "Member Technical Staff",
+          work: "Facilio Technology Solutions",
+          location: "Chennai, India",
+          description: {
+            "Interactive BI Platform Development":
+              "Engineered Business Intelligence (BI) platform using JavaScript and Java, enabling real-time monitoring and customizable widgets, driving 8% customer base growth over two years.",
+            "Automation of KPI & Report Generation":
+              "Automated KPI and report generation processes by developing a core framework using optimized SQL indexing, time-series data aggregation, and dynamic ETL processes, reducing manual effort by 30%.",
+            "SQL Optimization":
+              "Streamlined ETL workflows and time series data aggregation by optimizing SQL queries reducing manual work and improving report generation speed by 15%.",
+            "Development of RESTful APIs":
+              "Developed RESTful APIs with well-defined endpoints for internal and external use, leveraging Swagger for documentation and Postman for unit testing, ensuring performance.",
+            "Promotion Ahead of Schedule":
+              "Secured a full-time position three months ahead of the typical promotion timeline after transitioning from an intern role, due to exceptional contributions and consistent performance in project delivery.",
           },
         },
       ],
@@ -167,7 +167,7 @@ export default {
   width: 2px;
   flex-grow: 1;
   background-color: teal;
-  margin-top: 2px;
+  margin-top: 8px;
 }
 
 .timeline-content {
