@@ -13,7 +13,7 @@
         background-color: #333;
       "
     />
-    <div class="section-subtitle">
+    <div style="font-style: italic; color: #6c757d; margin-bottom: 12px">
       A summary of my professional experience, highlighting key roles and
       achievements.
     </div>

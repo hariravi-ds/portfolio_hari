@@ -4,66 +4,67 @@
     id="home"
     :style="{ backgroundImage: 'url(' + image + ')' }"
   >
-    <div class="app-header">
+    <!-- <div class="app-header">
       <AppHeader />
-    </div>
-    <div class="main-header">
-      <div id="particles-js"></div>
-      <div class="header">
-        <p class="stdName">HARI PRASANNAA THANGAVEL RAVI</p>
-        <hr
-          style="
-            width: 100px;
-            height: 1px;
-            border: none;
-            color: #333;
-            background-color: #333;
-          "
-        />
-        <p style="font-size: 1.5em">
-          Graduate Student at The George Washington University
-        </p>
-        <p style="font-size: 1.5em">
-          Aspiring
-          <span class="dynamic-role" id="dynamic-role">Data Analyst</span>
-        </p>
-        <div class="header-icons">
-          <a
-            href="mailto:hariprasannaa.thangavelravi@gwu.edu"
-            aria-label="E-Mail"
-          >
-            <i class="fas fa-envelope fa-xl"></i>
-          </a>
-          <a
-            href="https://github.com/hariravi-ds"
-            target="_blank"
-            aria-label="GitHub"
-          >
-            <i class="fab fa-github fa-xl"></i>
-          </a>
-          <a
-            href="https://www.linkedin.com/in/hari-prasannaa"
-            target="_blank"
-            aria-label="LinkedIn"
-          >
-            <i class="fab fa-linkedin fa-xl"></i>
-          </a>
+    </div> -->
+    <div style="display: flex; flex-direction: row">
+      <div class="main-header" style="width: 50%">
+        <div id="particles-js"></div>
+        <div class="header">
+          <p class="stdName">HARI PRASANNAA THANGAVEL RAVI</p>
+          <hr
+            style="
+              width: 100%;
+              height: 1px;
+              border: none;
+              background-color: #333;
+            "
+          />
+          <p style="font-size: 1.2em">
+            Graduate Student at The George Washington University
+          </p>
+          <p style="font-size: 1.2em">
+            Aspiring
+            <span class="dynamic-role" id="dynamic-role">Data Analyst</span>
+          </p>
+          <div class="header-icons">
+            <a
+              href="mailto:hariprasannaa.thangavelravi@gwu.edu"
+              aria-label="E-Mail"
+            >
+              <i class="fas fa-envelope fa-lg"></i>
+            </a>
+            <a
+              href="https://github.com/hariravi-ds"
+              target="_blank"
+              aria-label="GitHub"
+            >
+              <i class="fab fa-github fa-xl"></i>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/hari-prasannaa"
+              target="_blank"
+              aria-label="LinkedIn"
+            >
+              <i class="fab fa-linkedin fa-xl"></i>
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="sections">
-      <About id="about"></About>
-      <Experience id="experience"></Experience>
-      <Skills id="skills"></Skills>
-      <Projects id="projects"></Projects>
-      <Organization id="organizations"></Organization>
-      <Contact id="contact"></Contact>
+      <div class="sections" style="width: 50%">
+        <About id="about"></About>
+        <Experience id="experience"></Experience>
+        <Skills id="skills"></Skills>
+        <Projects id="projects"></Projects>
+        <Organization id="organizations"></Organization>
+        <Contact id="contact"></Contact>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import AppHeader from "./AppHeader.vue";
+//import AppHeader from "./AppHeader.vue";
 import Skills from "./Skills.vue";
 import About from "./About.vue";
 import Experience from "./Experience.vue";
@@ -80,7 +81,7 @@ export default {
     };
   },
   components: {
-    AppHeader,
+    //AppHeader,
     Skills,
     About,
     Experience,
@@ -155,6 +156,8 @@ export default {
         }
       }, 100);
     }
+
+    dynamicRoleElement.textContent = roles[roleIndex];
     updateRole();
     setInterval(updateRole, 4000);
   },
@@ -207,6 +210,7 @@ html {
   text-align: center;
   z-index: 1;
   position: relative;
+  overflow-y: hidden;
 }
 
 .header {
@@ -227,8 +231,8 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   margin: 0 8px;
   color: white;
   background: black;
@@ -259,7 +263,7 @@ html {
 }
 .stdName {
   display: inline;
-  font-size: 35px;
+  font-size: 32px;
   padding-left: 30px;
   color: #000000;
 }
