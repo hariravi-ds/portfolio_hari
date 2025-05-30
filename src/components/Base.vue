@@ -1,9 +1,5 @@
 <template>
-  <div
-    class="particle-container image-card"
-    id="home"
-    :style="{ backgroundImage: 'url(' + image + ')' }"
-  >
+  <div class="particle-container image-card" id="home">
     <!-- <div class="app-header">
       <AppHeader />
     </div> -->
@@ -171,19 +167,21 @@ export default {
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
-body,
-html {
+
+html,
+body {
   width: 100%;
   height: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .particle-container {
-  position: relative;
+  display: flex;
+  flex-direction: row;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
 }
-
 #particles-js {
   position: absolute;
   top: 0;
@@ -192,7 +190,6 @@ html {
   height: 100%;
   z-index: -1;
 }
-
 .app-header {
   position: fixed;
   top: 0;
@@ -201,16 +198,18 @@ html {
   background: white;
   padding: 10px 15px;
 }
-
 .main-header {
+  width: 50%;
+  height: 100vh;
+  position: sticky;
+  top: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  text-align: center;
+  background-size: cover;
+  background-position: center;
   z-index: 1;
-  position: relative;
-  overflow-y: hidden;
+  overflow: hidden;
 }
 
 .header {
@@ -220,11 +219,13 @@ html {
   flex-direction: column;
   justify-content: center;
   gap: 16px;
+  text-align: center;
 }
 
 .header-icons {
   display: flex;
   justify-content: center;
+  margin-top: 20px;
 }
 
 .header-icons a {
@@ -248,25 +249,31 @@ html {
 }
 
 .sections {
-  margin-top: 0;
+  width: 50%;
+  height: 100vh;
+  overflow-y: auto;
+  padding-right: 10px;
 }
 
 .sections > * {
   padding: 20px;
   color: white;
 }
+
 .dynamic-role {
   color: black;
   font-weight: bold;
   font-size: 1.5em;
   transition: all 0.3s ease-in-out;
 }
+
 .stdName {
   display: inline;
   font-size: 32px;
   padding-left: 30px;
   color: #000000;
 }
+
 .cv-button {
   background: #000000;
   color: white;
@@ -278,6 +285,7 @@ html {
   transition: all 0.3s ease;
   cursor: pointer;
 }
+
 .cv-button:hover {
   background: #1e90ff;
   border-color: #1e90ff;
