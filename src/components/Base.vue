@@ -1,8 +1,5 @@
 <template>
   <div class="particle-container image-card" id="home">
-    <!-- <div class="app-header">
-      <AppHeader />
-    </div> -->
     <div style="display: flex; flex-direction: row">
       <div class="main-header" style="width: 50%">
         <div id="particles-js"></div>
@@ -23,6 +20,7 @@
             Aspiring
             <span class="dynamic-role" id="dynamic-role">Data Analyst</span>
           </p>
+          <AppHeader />
           <div class="header-icons">
             <a
               href="mailto:hariprasannaa.thangavelravi@gwu.edu"
@@ -60,7 +58,7 @@
 </template>
 
 <script>
-//import AppHeader from "./AppHeader.vue";
+import AppHeader from "./AppHeader.vue";
 import Skills from "./Skills.vue";
 import About from "./About.vue";
 import Experience from "./Experience.vue";
@@ -77,7 +75,7 @@ export default {
     };
   },
   components: {
-    //AppHeader,
+    AppHeader,
     Skills,
     About,
     Experience,
@@ -190,14 +188,6 @@ body {
   height: 100%;
   z-index: -1;
 }
-.app-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 2;
-  background: white;
-  padding: 10px 15px;
-}
 .main-header {
   width: 50%;
   height: 100vh;
@@ -272,23 +262,5 @@ body {
   font-size: 32px;
   padding-left: 30px;
   color: #000000;
-}
-
-.cv-button {
-  background: #000000;
-  color: white;
-  font-size: 1.2em;
-  font-weight: bold;
-  border: 2px solid #000000;
-  padding: 10px 20px;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.cv-button:hover {
-  background: #1e90ff;
-  border-color: #1e90ff;
-  color: white;
 }
 </style>

@@ -1,31 +1,29 @@
 <template>
-  <div class="header-container">
+  <div class="menu">
     <div
-      :class="[selectedMenu.toLowerCase() == 'home' ? 'selected' : 'menu-item']"
-      @click="scrollFn('Home')"
+      style="font-size: 12px"
+      v-for="(menu, index) in menu_list"
+      :key="index"
+      @click="scrollFn(menu)"
+      class="menu-item"
     >
-      Home
-    </div>
-    <div class="menu">
-      <div
-        style="font-size: 14.4px"
-        v-for="(menu, index) in menu_list"
-        :key="index"
-        @click="scrollFn(menu)"
-        :class="{
-          'menu-item': true,
-          selected: selectedMenu.toLowerCase() === menu.toLowerCase(),
+      <hr
+        style="height: 2px; background-color: #000; border: none"
+        :style="{
+          width:
+            selectedMenu.toLowerCase() === menu.toLowerCase()
+              ? '150px'
+              : '100px',
         }"
-      >
-        {{ menu }}
-      </div>
-      <div
-        class="menu-item"
-        style="border-radius: 8px; border: 1px solid; padding: 4px"
-        @click="downloadResume()"
-      >
-        Resume
-      </div>
+      />
+      <div>{{ menu }}</div>
+    </div>
+    <div
+      class="menu-item"
+      style="border-radius: 8px; border: 1px solid; padding: 4px"
+      @click="downloadResume()"
+    >
+      Resume
     </div>
   </div>
 </template>
@@ -43,7 +41,7 @@ export default {
         "Organizations",
         // "Contact",
       ],
-      selectedMenu: "home",
+      selectedMenu: "about",
     };
   },
   mounted() {
@@ -116,21 +114,16 @@ export default {
 };
 </script>
 <style scoped>
-.header-container {
-  width: 100%;
-  height: 50px;
+.menu {
   display: flex;
-  justify-content: space-between;
+  height: 50px;
+  width: 100%;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
   text-transform: uppercase;
   font-size: 14.4px;
   padding: 24px;
-  align-items: center;
-}
-
-.menu {
-  display: flex;
-  flex-direction: row;
-  gap: 24px;
 }
 
 .menu-item {
@@ -139,13 +132,8 @@ export default {
   font-size: 14.4px;
   transition: color 0.3s ease;
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.selected {
-  color: black;
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  align-items: flex-start;
+  gap: 8px;
 }
 
 .menu-item:hover {
