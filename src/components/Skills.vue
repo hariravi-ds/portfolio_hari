@@ -4,15 +4,7 @@
     :style="{ backgroundImage: 'url(' + img + ')' }"
   >
     <div class="section-title">Skills</div>
-    <hr
-      style="
-        width: 100px;
-        height: 1px;
-        border: none;
-        color: #333;
-        background-color: #333;
-      "
-    />
+    <hr class="underline" />
     <div style="font-style: italic; color: #6c757d">
       A concise overview of the key technical skills and tools I specialize in.
     </div>
@@ -84,12 +76,6 @@ export default {
   padding: 20px;
   background-color: #f8f9fa;
   color: #ecf0f1;
-}
-
-.section-title {
-  text-align: center;
-  font-size: 35px;
-  color: #212529;
 }
 
 .skills-container {

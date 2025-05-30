@@ -4,15 +4,7 @@
     :style="{ backgroundImage: 'url(' + image + ')' }"
   >
     <div class="section-title">Organizations</div>
-    <hr
-      style="
-        width: 100px;
-        height: 1px;
-        border: none;
-        color: #333;
-        background-color: #333;
-      "
-    />
+    <hr class="underline" />
     <div style="font-style: italic; color: #6c757d">
       Highlighting the organizations I've contributed to and my role.
     </div>
@@ -90,15 +82,9 @@ export default {
   color: #ecf0f1;
 }
 
-.section-title {
-  text-align: center;
-  font-size: 35px;
-  color: #212529;
-}
-
 .main-block {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-direction: column;
   gap: 24px;
   padding: 24px 48px;
 }
@@ -119,7 +105,7 @@ export default {
 }
 
 .title {
-  font-size: 18px;
+  font-size: 16px;
   margin-bottom: 5px;
   color: #d1d8e0;
   text-align: left;

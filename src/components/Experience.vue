@@ -4,15 +4,7 @@
     :style="{ backgroundImage: 'url(' + image + ')' }"
   >
     <div class="section-title">Experience</div>
-    <hr
-      style="
-        width: 100px;
-        height: 1px;
-        border: none;
-        color: #333;
-        background-color: #333;
-      "
-    />
+    <hr class="underline" />
     <div style="font-style: italic; color: #6c757d; margin-bottom: 12px">
       A summary of my professional experience, highlighting key roles and
       achievements.
@@ -112,20 +104,12 @@ export default {
   color: #ecf0f1;
 }
 
-.section-title {
-  text-align: center;
-  font-size: 35px;
-  color: #212529;
-}
-
 .timeline {
   display: flex;
   flex-direction: column;
   gap: 16px;
   position: relative;
   padding: 24px 12px;
-  margin: 0 auto;
-  width: 85%;
 }
 
 .timeline-item {
@@ -136,7 +120,7 @@ export default {
 }
 
 .timeline-date {
-  width: 10%;
+  width: 20%;
   font-size: 12px;
   color: #6c757d;
   display: flex;

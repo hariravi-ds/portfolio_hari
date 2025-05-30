@@ -3,16 +3,8 @@
     class="projects-section image-card"
     :style="{ backgroundImage: 'url(' + image + ')' }"
   >
-    <div class="title">Projects</div>
-    <hr
-      style="
-        width: 100px;
-        height: 1px;
-        border: none;
-        color: #333;
-        background-color: #333;
-      "
-    />
+    <div class="section-title">Projects</div>
+    <hr class="underline" />
     <div style="font-style: italic; color: #6c757d">
       An overview of the projects I've worked on, showcasing my skills and the
       impact of my work.
@@ -282,12 +274,6 @@ export default {
 .projects-section {
   padding: 20px;
   color: #ecf0f1;
-}
-
-.title {
-  text-align: center;
-  font-size: 35px;
-  color: #212529;
 }
 
 .projects-grid {

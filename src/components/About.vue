@@ -4,15 +4,7 @@
     :style="{ backgroundImage: 'url(' + img + ')' }"
   >
     <div class="section-title">About</div>
-    <hr
-      style="
-        width: 100px;
-        height: 1px;
-        border: none;
-        color: #333;
-        background-color: #333;
-      "
-    />
+    <hr class="underline" />
     <div style="font-style: italic; color: #6c757d">
       A brief introduction to who I am, my values, and the driving forces behind
       my work.
@@ -20,7 +12,7 @@
     <div
       style="display: flex; justify-content: row; padding: 36px 24px; gap: 8px"
     >
-      <div
+      <!-- <div
         style="
           width: 50%;
           display: flex;
@@ -29,7 +21,7 @@
         "
       >
         <img :src="image" alt="photo" class="project-image" />
-      </div>
+      </div> -->
       <div class="aboutContent">
         <div v-for="(val, index) in about" :key="index">{{ val }}</div>
         <div>
@@ -108,20 +100,12 @@ export default {
   background-color: #f8f9fa;
 }
 
-.section-title {
-  text-align: center;
-  font-size: 35px;
-  color: #212529;
-}
-
 .timeline {
   display: flex;
   flex-direction: column;
   gap: 16px;
   position: relative;
   padding: 24px 12px;
-  margin: 0 auto;
-  width: 85%;
 }
 
 .timeline-item {
@@ -132,7 +116,7 @@ export default {
 }
 
 .timeline-date {
-  width: 10%;
+  width: 20%;
   font-size: 12px;
   color: #6c757d;
   display: flex;
@@ -212,7 +196,6 @@ export default {
   border-radius: 50%;
 }
 .aboutContent {
-  width: 55%;
   color: black;
   display: flex;
   flex-direction: column;

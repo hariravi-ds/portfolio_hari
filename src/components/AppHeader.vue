@@ -116,7 +116,7 @@ export default {
 <style scoped>
 .menu {
   display: flex;
-  height: 50px;
+  height: 100%;
   width: 100%;
   flex-direction: column;
   gap: 12px;

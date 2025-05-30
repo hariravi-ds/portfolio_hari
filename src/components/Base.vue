@@ -1,18 +1,11 @@
 <template>
-  <div class="particle-container image-card" id="home">
+  <div class="particle-container" id="home">
     <div style="display: flex; flex-direction: row">
       <div class="main-header" style="width: 50%">
         <div id="particles-js"></div>
         <div class="header">
           <p class="stdName">HARI PRASANNAA THANGAVEL RAVI</p>
-          <hr
-            style="
-              width: 100%;
-              height: 1px;
-              border: none;
-              background-color: #333;
-            "
-          />
+          <hr style="width: 100%" class="underline" />
           <p style="font-size: 1.2em">
             Graduate Student at The George Washington University
           </p>
@@ -259,8 +252,7 @@ body {
 
 .stdName {
   display: inline;
-  font-size: 32px;
-  padding-left: 30px;
+  font-size: 28px;
   color: #000000;
 }
 </style>
