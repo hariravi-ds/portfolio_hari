@@ -5,7 +5,7 @@
   >
     <div class="section-title">Organizations</div>
     <hr class="underline" />
-    <div style="font-style: italic; color: #6c757d">
+    <div class="italic text-gray-500">
       Highlighting the organizations I've contributed to and my role.
     </div>
     <div class="main-block">
@@ -14,11 +14,14 @@
         v-for="([key, value], index) in Object.entries(details[0])"
         :key="index"
       >
-        <div class="title">
-          {{ key }}
+        <div class="icon-title-wrapper">
+          <div class="icon-circle">{{ key.charAt(0) }}</div>
+          <div class="flex flex-col items-start">
+            <div class="org-name">{{ key }}</div>
+            <div class="role-title">{{ value.role }}</div>
+            <div class="timeline">{{ value.timeline }}</div>
+          </div>
         </div>
-        <div class="subtitle">{{ value.role }}</div>
-        <div class="subtitle">{{ value.timeline }}</div>
         <div class="description">{{ value.desc }}</div>
       </div>
     </div>
@@ -33,11 +36,6 @@ export default {
       image: require("@/assets/subtle2.jpeg"),
       details: [
         {
-          // Equinox: {
-          //   role: "Member",
-          //   timeline: "Oct 2024 - Present",
-          //   desc: "Engaged in fitness and wellness activities, participating in group fitness classes and community events.",
-          // },
           "George Washington University Student Association": {
             role: "CCAS Graduate Senator",
             timeline: "Aug 2025 - Present",
@@ -58,7 +56,7 @@ export default {
             timeline: "Jun 2019 - May 2023",
             desc: "Spearheaded various health-related initiatives, including blood donation drives engaging over 500 participants, raising awareness of public health issues.",
           },
-          "Institution of Electronics and Telecommunication Engineers (IETE)": {
+          "Institution of Electronics and Telecommunication Engineers": {
             role: "Member",
             timeline: "Aug 2019 - May 2023",
             desc: "Engaged in knowledge-sharing events and conferences, staying updated on the latest trends in telecommunications and electronics engineering.",
@@ -90,38 +88,73 @@ export default {
 }
 
 .sub-block {
-  flex: 1;
-  padding: 15px;
-  background-color: #3b3f4a;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  border: 1px solid #6c757d;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  backdrop-filter: blur(8px);
+  background: linear-gradient(
+    145deg,
+    rgba(47, 53, 66, 0.75),
+    rgba(34, 40, 49, 0.75)
+  );
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, background 0.3s ease;
 }
 
 .sub-block:hover {
-  background-color: #4b566e;
   transform: translateY(-5px);
+  background: linear-gradient(
+    145deg,
+    rgba(60, 66, 77, 0.9),
+    rgba(40, 45, 55, 0.9)
+  );
 }
 
-.title {
-  font-size: 16px;
-  margin-bottom: 5px;
-  color: #d1d8e0;
-  text-align: left;
+.icon-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.icon-circle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: #ffffff20;
+  color: #fff;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
 }
 
-.subtitle {
+.org-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #d1d8e0;
+}
+
+.role-title {
+  font-weight: bold;
   font-size: 14px;
-  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+.timeline {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 13px;
+  font-style: italic;
   color: #a5a5a5;
-  text-align: left;
+  margin-top: 2px;
 }
 
 .description {
   font-size: 14px;
   color: #ecf0f1;
   text-align: left;
+  margin-top: 10px;
 }
 </style>

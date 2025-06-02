@@ -5,21 +5,21 @@
   >
     <div class="section-title">Skills</div>
     <hr class="underline" />
-    <div style="font-style: italic; color: #6c757d">
+    <div class="italic text-gray-500 mb-6">
       A concise overview of the key technical skills and tools I specialize in.
     </div>
-    <div class="skills-container">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <div
         v-for="(skills, category) in skillCategories"
         :key="category"
-        class="skill-category"
+        class="bg-white/70 backdrop-blur-lg rounded-xl p-5 shadow-md"
       >
-        <h2 class="category-title">{{ category }}</h2>
-        <ul class="skill-list">
-          <li v-for="skill in skills" :key="skill" class="skill-item">
+        <h3 class="text-lg font-semibold text-gray-800 mb-3">{{ category }}</h3>
+        <div class="flex flex-wrap gap-2">
+          <span v-for="skill in skills" :key="skill" class="skill-badge">
             {{ skill }}
-          </li>
-        </ul>
+          </span>
+        </div>
       </div>
     </div>
   </div>
@@ -72,53 +72,7 @@ export default {
 </script>
 
 <style scoped>
-.skills-section {
-  padding: 20px;
-  background-color: #f8f9fa;
-  color: #ecf0f1;
-}
-
-.skills-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 24px;
-}
-
-.skill-category {
-  margin: 20px;
-  flex: 1 1 300px;
-  border-radius: 12px;
-  padding: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.category-title {
-  font-size: 1.5em;
-  margin-bottom: 10px;
-  color: black;
-}
-
-.skill-list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  list-style-type: none;
-  padding: 0;
-}
-
-.skill-item {
-  border: 1px solid;
-  border-radius: 12px;
-  padding: 5px 0;
-  font-size: 1.1em;
-  transition: color 0.3s ease, background-color 0.3s ease;
-  cursor: pointer;
-  background: #3b3f4a;
-}
-
-.skill-item:hover {
-  color: #f5f6fa;
-  background-color: #a5a5a5;
+.skill-badge {
+  @apply bg-gray-800 text-white px-3 py-1 rounded-full text-sm hover:bg-gray-700 transition;
 }
 </style>
