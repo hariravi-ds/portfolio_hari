@@ -17,7 +17,7 @@
       An overview of the projects I've worked on, showcasing my skills and the
       impact of my work.
     </div>
-    <div class="projects-grid">
+    <div class="projects-scroll">
       <div
         @click="openDialog(index)"
         @mouseenter="toggleContent(index, true)"
@@ -280,7 +280,7 @@ export default {
 
 <style scoped>
 .projects-section {
-  padding: 20px;
+  padding: 64px;
   color: #ecf0f1;
 }
 
@@ -290,35 +290,35 @@ export default {
   color: #212529;
 }
 
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+.projects-scroll {
+  display: flex;
   gap: 24px;
-  padding: 48px 96px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  padding: 20px 0;
+}
+
+.projects-scroll::-webkit-scrollbar {
+  display: none;
 }
 
 .project-card {
-  background-color: #34495e;
-  border-radius: 12px;
-  overflow: hidden;
-  position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease,
-    background-image 0.3s ease;
-  height: 250px;
+  flex: 0 0 auto;
+  width: 315px;
+  height: 315px;
   background-size: cover;
   background-position: center;
+  border-radius: 12px;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  scroll-snap-align: start;
   cursor: pointer;
 }
 
 .project-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-  background-size: cover;
-  background-position: center;
-}
-
-.project-image {
-  display: none;
 }
 
 .project-info {
@@ -343,17 +343,11 @@ export default {
   margin-bottom: 10px;
 }
 
-.project-subtitle {
-  font-size: 1.2em;
-  color: #a5a5a5;
-  margin-bottom: 10px;
-}
-
 .project-description {
   font-size: 1em;
   color: #a5a5a5;
-  margin-bottom: 15px;
 }
+
 .project-link {
   text-decoration: none;
   color: #1abc9c;

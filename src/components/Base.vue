@@ -248,7 +248,7 @@ html {
 }
 
 .sections > * {
-  padding: 20px;
+  /* padding: 20px; */
   color: white;
 }
 .dynamic-role {
