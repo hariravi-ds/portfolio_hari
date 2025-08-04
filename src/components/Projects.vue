@@ -4,20 +4,21 @@
     :style="{ backgroundImage: 'url(' + image + ')' }"
   >
     <div class="title">Projects</div>
-    <hr
-      style="
-        width: 100px;
-        height: 1px;
-        border: none;
-        color: #333;
-        background-color: #333;
-      "
-    />
-    <div style="font-style: italic; color: #6c757d">
+    <hr class="section-divider" />
+    <div class="subtitle">
       An overview of the projects I've worked on, showcasing my skills and the
       impact of my work.
     </div>
-    <div class="projects-scroll">
+
+    <button
+      v-show="showLeftButton"
+      class="scroll-btn left-btn"
+      @click="scrollLeft"
+    >
+      <el-icon><ArrowLeftBold /></el-icon>
+    </button>
+
+    <div ref="scrollContainer" class="projects-scroll">
       <div
         @click="openDialog(index)"
         @mouseenter="toggleContent(index, true)"
@@ -35,20 +36,24 @@
         </div>
       </div>
     </div>
+
+    <button
+      v-show="showRightButton"
+      class="scroll-btn right-btn"
+      @click="scrollRight"
+    >
+      <el-icon><ArrowRightBold /></el-icon>
+    </button>
+
     <el-dialog v-model="dialogVisible" :show-close="false" width="500">
       <template #header="{ close }">
-        <div
-          style="position: absolute; right: 25px; cursor: pointer"
-          type="danger"
-        >
-          <el-icon :size="32" class="el-icon--left" @click="close"
-            ><CircleCloseFilled
-          /></el-icon>
+        <div style="position: absolute; right: 25px; cursor: pointer">
+          <el-icon :size="32" class="el-icon--left" @click="close">
+            <CircleCloseFilled />
+          </el-icon>
         </div>
         <div>
-          <div style="margin: 8px" class="f24">
-            {{ selectedProject.title }}
-          </div>
+          <div style="margin: 8px" class="f24">{{ selectedProject.title }}</div>
           <div style="margin-bottom: 30px" class="f16">
             {{ selectedProject.shortDesc }}
           </div>
@@ -89,6 +94,8 @@ export default {
       image: require("@/assets/ai.jpg"),
       dialogVisible: false,
       selectedProject: null,
+      showLeftButton: false,
+      showRightButton: true,
       projects: [
         {
           title: "AWS-Based Conversational AI for Banking Support",
@@ -259,20 +266,33 @@ export default {
       ],
     };
   },
+  mounted() {
+    this.checkScrollButtons();
+    this.$refs.scrollContainer.addEventListener(
+      "scroll",
+      this.checkScrollButtons
+    );
+  },
   methods: {
     toggleContent(ind, val) {
-      let { projects } = this;
-      projects = projects.map((project, index) => {
-        if (index == ind) {
-          project = { ...project, showContent: val };
-        }
-        return project;
-      });
-      this.projects = projects;
+      this.projects[ind].showContent = val;
     },
     openDialog(index) {
       this.selectedProject = this.projects[index];
       this.dialogVisible = true;
+    },
+    scrollLeft() {
+      this.$refs.scrollContainer.scrollBy({ left: -350, behavior: "smooth" });
+    },
+    scrollRight() {
+      this.$refs.scrollContainer.scrollBy({ left: 350, behavior: "smooth" });
+    },
+    checkScrollButtons() {
+      const container = this.$refs.scrollContainer;
+      this.showLeftButton = container.scrollLeft > 0;
+      this.showRightButton =
+        container.scrollWidth - container.scrollLeft >
+        container.clientWidth + 10;
     },
   },
 };
@@ -282,6 +302,7 @@ export default {
 .projects-section {
   padding: 64px;
   color: #ecf0f1;
+  position: relative;
 }
 
 .title {
@@ -290,13 +311,29 @@ export default {
   color: #212529;
 }
 
+.section-divider {
+  width: 100px;
+  height: 1px;
+  border: none;
+  background-color: #333;
+  margin: 10px auto;
+}
+
+.subtitle {
+  font-style: italic;
+  color: #6c757d;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 .projects-scroll {
   display: flex;
   gap: 24px;
+  padding: 20px 80px;
   overflow-x: auto;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
-  padding: 20px 0;
+  min-height: 330px;
 }
 
 .projects-scroll::-webkit-scrollbar {
@@ -346,6 +383,32 @@ export default {
 .project-description {
   font-size: 1em;
   color: #a5a5a5;
+}
+
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.left-btn {
+  left: 10px;
+}
+
+.right-btn {
+  right: 10px;
 }
 
 .project-link {
