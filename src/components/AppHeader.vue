@@ -1,30 +1,36 @@
 <template>
   <div class="header-container">
-    <div
-      :class="[selectedMenu.toLowerCase() == 'home' ? 'selected' : 'menu-item']"
-      @click="scrollFn('Home')"
-    >
-      Home
+    <div @click="scrollFn('Home')" style="border-radius: 24px; cursor: pointer">
+      <img
+        src="/favicon.jpeg"
+        alt="Home Icon"
+        style="height: 50px; width: 50px; border-radius: 50%; object-fit: cover"
+      />
     </div>
     <div class="menu">
-      <div
-        style="font-size: 14.4px"
-        v-for="(menu, index) in menu_list"
-        :key="index"
-        @click="scrollFn(menu)"
-        :class="{
-          'menu-item': true,
-          selected: selectedMenu.toLowerCase() === menu.toLowerCase(),
-        }"
-      >
-        {{ menu }}
+      <div class="glass-effect" style="display: flex; gap: 24px">
+        <div
+          style="font-size: 14.4px"
+          v-for="(menu, index) in menu_list"
+          :key="index"
+          @click="scrollFn(menu)"
+          :class="{
+            'menu-item': true,
+            selected: selectedMenu.toLowerCase() === menu.toLowerCase(),
+          }"
+        >
+          {{ menu }}
+        </div>
       </div>
-      <div
-        class="menu-item"
-        style="border-radius: 8px; border: 1px solid; padding: 4px"
-        @click="downloadResume()"
-      >
-        Resume
+      <div class="menu glass-effect">
+        <div
+          class="menu-item"
+          @click="downloadResume()"
+          style="display: flex; gap: 8px"
+        >
+          <el-icon :size="16"><Download /></el-icon>
+          <span>Resume</span>
+        </div>
       </div>
     </div>
   </div>
@@ -36,6 +42,7 @@ export default {
     return {
       activeSection: null,
       menu_list: [
+        "Home",
         "About",
         "Experience",
         "Skills",
@@ -91,7 +98,10 @@ export default {
       sections.forEach((section) => {
         const rect = section.getBoundingClientRect();
 
-        if (rect.top >= 0 && rect.top < window.innerHeight / 2) {
+        if (
+          rect.top < window.innerHeight * 0.6 &&
+          rect.bottom > window.innerHeight * 0.2
+        ) {
           currentSection = section.id;
         }
       });
@@ -101,7 +111,6 @@ export default {
     scrollFn(menu) {
       this.selectedMenu = menu;
       this.$router.push({ query: { menu: menu.toLowerCase() } });
-      this.scrollTo(menu);
     },
     scrollTo(sectionId) {
       const section = document.getElementById(sectionId);
@@ -123,7 +132,6 @@ export default {
   justify-content: space-between;
   text-transform: uppercase;
   font-size: 14.4px;
-  padding: 24px;
   align-items: center;
 }
 
@@ -150,5 +158,16 @@ export default {
 
 .menu-item:hover {
   color: #1e90ff;
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  border-radius: 28px;
+  padding: 12px;
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 </style>

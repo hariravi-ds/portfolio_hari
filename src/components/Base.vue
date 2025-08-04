@@ -195,7 +195,7 @@ html {
   top: 0;
   width: 100%;
   z-index: 2;
-  background: white;
+  background: transparent;
   padding: 10px 15px;
 }
 
