@@ -4,30 +4,23 @@
     :style="{ backgroundImage: 'url(' + image + ')' }"
   >
     <div class="section-title">Organizations</div>
-    <hr
-      style="
-        width: 100px;
-        height: 1px;
-        border: none;
-        color: #333;
-        background-color: #333;
-      "
-    />
-    <div style="font-style: italic; color: #6c757d">
+    <hr class="divider" />
+    <div class="section-subtitle">
       Highlighting the organizations I've contributed to and my role.
     </div>
     <div class="main-block">
       <div
-        class="sub-block"
+        class="org-card"
         v-for="([key, value], index) in Object.entries(details[0])"
         :key="index"
       >
-        <div class="title">
-          {{ key }}
+        <div class="org-icon">{{ key.charAt(0) }}</div>
+        <div class="org-content">
+          <h3 class="org-title">{{ key }}</h3>
+          <p class="role">{{ value.role }}</p>
+          <p class="date">{{ value.timeline }}</p>
+          <p class="description">{{ value.desc }}</p>
         </div>
-        <div class="subtitle">{{ value.role }}</div>
-        <div class="subtitle">{{ value.timeline }}</div>
-        <div class="description">{{ value.desc }}</div>
       </div>
     </div>
   </div>
@@ -41,11 +34,6 @@ export default {
       image: require("@/assets/subtle2.jpeg"),
       details: [
         {
-          // Equinox: {
-          //   role: "Member",
-          //   timeline: "Oct 2024 - Present",
-          //   desc: "Engaged in fitness and wellness activities, participating in group fitness classes and community events.",
-          // },
           "George Washington University Student Association": {
             role: "CCAS Graduate Senator",
             timeline: "Aug 2025 - Present",
@@ -87,7 +75,6 @@ export default {
 .journey-section {
   padding: 20px;
   background-color: white;
-  color: #ecf0f1;
 }
 
 .section-title {
@@ -97,45 +84,69 @@ export default {
 }
 
 .main-block {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  padding: 24px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0 20px;
 }
 
-.sub-block {
-  flex: 1;
-  padding: 15px;
-  background-color: #3b3f4a;
+.org-card {
+  display: flex;
+  align-items: flex-start;
+  background: #3b3f4a;
+  color: #fff;
+  padding: 16px;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  border: 1px solid #6c757d;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.sub-block:hover {
+.org-card:hover {
   background-color: #4b566e;
-  transform: translateY(-5px);
+  transform: translateY(-3px);
 }
 
-.title {
-  font-size: 18px;
-  margin-bottom: 5px;
-  color: #d1d8e0;
-  text-align: left;
+.org-icon {
+  flex-shrink: 0;
+  background: #5a5f73;
   font-weight: bold;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  margin-right: 1rem;
 }
 
-.subtitle {
+.org-content {
+  flex: 1;
+}
+
+.org-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #d1d8e0;
+}
+
+.role {
   font-size: 14px;
-  margin-bottom: 8px;
+  font-weight: bold;
   color: #a5a5a5;
-  text-align: left;
+  margin: 2px 0;
+}
+
+.date {
+  font-size: 13px;
+  font-style: italic;
+  color: #ccc;
+  margin-bottom: 8px;
 }
 
 .description {
   font-size: 14px;
   color: #ecf0f1;
-  text-align: left;
 }
 </style>

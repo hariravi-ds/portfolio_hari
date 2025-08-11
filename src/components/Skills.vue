@@ -83,13 +83,6 @@ export default {
   color: #212529;
 }
 
-.section-subtitle {
-  font-style: italic;
-  color: #6c757d;
-  text-align: center;
-  margin-top: 8px;
-}
-
 .skills-container {
   display: flex;
   flex-wrap: wrap;
