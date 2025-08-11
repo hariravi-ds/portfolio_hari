@@ -4,16 +4,8 @@
     :style="{ backgroundImage: 'url(' + img + ')' }"
   >
     <div class="section-title">Skills</div>
-    <hr
-      style="
-        width: 100px;
-        height: 1px;
-        border: none;
-        color: #333;
-        background-color: #333;
-      "
-    />
-    <div style="font-style: italic; color: #6c757d">
+    <hr class="divider" />
+    <div class="section-subtitle">
       A concise overview of the key technical skills and tools I specialize in.
     </div>
     <div class="skills-container">
@@ -23,11 +15,11 @@
         class="skill-category"
       >
         <h2 class="category-title">{{ category }}</h2>
-        <ul class="skill-list">
-          <li v-for="skill in skills" :key="skill" class="skill-item">
+        <div class="skill-list">
+          <span v-for="skill in skills" :key="skill" class="skill-pill">
             {{ skill }}
-          </li>
-        </ul>
+          </span>
+        </div>
       </div>
     </div>
   </div>
@@ -83,7 +75,6 @@ export default {
 .skills-section {
   padding: 20px;
   background-color: #f8f9fa;
-  color: #ecf0f1;
 }
 
 .section-title {
@@ -92,47 +83,52 @@ export default {
   color: #212529;
 }
 
+.section-subtitle {
+  font-style: italic;
+  color: #6c757d;
+  text-align: center;
+  margin-top: 8px;
+}
+
 .skills-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
   padding: 24px;
+  gap: 20px;
 }
 
 .skill-category {
-  margin: 20px;
-  flex: 1 1 300px;
+  background: white;
   border-radius: 12px;
-  padding: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  flex: 1 1 300px;
 }
 
 .category-title {
-  font-size: 1.5em;
-  margin-bottom: 10px;
-  color: black;
+  font-size: 1.3em;
+  margin-bottom: 15px;
+  color: #212529;
 }
 
 .skill-list {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-  list-style-type: none;
-  padding: 0;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.skill-item {
-  border: 1px solid;
-  border-radius: 12px;
-  padding: 5px 0;
-  font-size: 1.1em;
-  transition: color 0.3s ease, background-color 0.3s ease;
-  cursor: pointer;
-  background: #3b3f4a;
+.skill-pill {
+  background: #2f3241;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.95em;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.skill-item:hover {
-  color: #f5f6fa;
-  background-color: #a5a5a5;
+.skill-pill:hover {
+  background: #6c757d;
+  transform: translateY(-2px);
 }
 </style>

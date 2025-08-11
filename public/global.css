@@ -1,15 +1,15 @@
 .image-card {
-    overflow: hidden;
-    position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease,
-      background-image 0.3s ease;
-    background-size: cover;
-    background-position: center;
-    background-color: rgb(255, 255, 255, 05);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
+    background-image 0.3s ease;
+  background-size: cover;
+  background-position: center;
+  background-color: rgb(255, 255, 255, 05);
 }
 
 .flex {
-    display: flex;
+  display: flex;
 }
 
 .el-dialog__header {
@@ -37,4 +37,12 @@
 
 .el-dialog__body {
   text-align: start;
+}
+
+.divider {
+  width: 100px;
+  height: 1px;
+  border: none;
+  color: #333;
+  background-color: #333;
 }
