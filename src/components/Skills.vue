@@ -42,11 +42,11 @@ export default {
           "Seaborn",
           "Tableau",
           "Power BI",
+          "Looker",
           "IBM Cognos",
-          "Statistical Analysis",
-          "Exploratory Data Analysis (EDA)",
         ],
-        "Machine Learning": [
+        "Statistical & Machine Learning": [
+          "Exploratory Data Analysis (EDA)",
           "Scikit-learn",
           "Feature Engineering",
           "Regression",
@@ -55,8 +55,9 @@ export default {
           "TensorFlow",
           "Hyperparameter Tuning",
         ],
+        "Data Engineering & Orchestration": ["Apache", "Airflow"],
+        "Cloud Platforms": ["AWS", "GCP"],
         Tools: [
-          "AWS",
           "Git",
           "JIRA",
           "Postman",

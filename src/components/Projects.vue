@@ -108,7 +108,7 @@ export default {
             "Trained XGBoost models on ~5M employee records, applied SHAP for feature explainability, and validated fairness across departments and demographics to maintain trust in predictions.",
           desc3:
             "Integrated churn probability outputs into BigQuery and Looker dashboards with ROI simulations, enabling leadership to identify at-risk employees and measure the cost savings of targeted retention campaigns.",
-          image: require("@/assets/cal_fire.jpeg"),
+          image: require("@/assets/churn.png"),
           // github:
           //   "https://github.com/hariravi-ds/Traffic-Flow-Forecasting-Using-Spatial-CNNs",
           showContent: false,
