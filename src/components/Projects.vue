@@ -98,6 +98,22 @@ export default {
       showRightButton: true,
       projects: [
         {
+          title: "Employee Churn Prediction Pipeline",
+          subtitle: "July 2025 - Sep 2025",
+          shortDesc:
+            "End-to-end ML pipeline for Employee Churn Prediction, orchestrated with Airflow and powered by BigQuery, XGBoost, and Looker.",
+          desc1:
+            "Built and scheduled an Airflow DAG to automatically retrain churn prediction models on weekly HR data updates in BigQuery. This ensured the model stayed current with evolving employee behavior.",
+          desc2:
+            "Trained XGBoost models on ~5M employee records, applied SHAP for feature explainability, and validated fairness across departments and demographics to maintain trust in predictions.",
+          desc3:
+            "Integrated churn probability outputs into BigQuery and Looker dashboards with ROI simulations, enabling leadership to identify at-risk employees and measure the cost savings of targeted retention campaigns.",
+          image: require("@/assets/cal_fire.jpeg"),
+          // github:
+          //   "https://github.com/hariravi-ds/Traffic-Flow-Forecasting-Using-Spatial-CNNs",
+          showContent: false,
+        },
+        {
           title: "AWS-Based Conversational AI for Banking Support",
           subtitle: "Feb 2025 - Apr 2025",
           shortDesc:
@@ -110,22 +126,6 @@ export default {
             "Implemented secure, scalable infrastructure for real-time chatbot interactions, including logging with CloudWatch, user context storage with DynamoDB, and automated alerting via SNS for critical cases like fraud detection.",
           image: require("@/assets/chatbot.jpeg"),
           github: "https://github.com/DarsiniLakshmiah/BankingIT_ChatBot",
-          showContent: false,
-        },
-        {
-          title: "Wildfire Data Analysis",
-          subtitle: "Feb 2025 - Apr 2025",
-          shortDesc:
-            "Analyzed the multifaceted impact of California wildfires using Tableau, combining structural, financial, and air quality data to inform disaster awareness and prevention strategies.",
-          desc1:
-            "Designed a comprehensive data visualization dashboard in Tableau to analyze the impact of California wildfires using multi-source datasets on structural damage, financial loss, air quality, and casualties.",
-          desc2:
-            "Integrated EPA air quality data (2000–2023) to examine the health and environmental effects of wildfires, identifying pollutant spikes and high-risk regions.",
-          desc3:
-            "Extended the analysis to a national scale, evaluating total disaster-related deaths and financial costs to contextualize California’s wildfire crisis within broader U.S. disaster trends.",
-          image: require("@/assets/cal_fire.jpeg"),
-          // github:
-          //   "https://github.com/hariravi-ds/Traffic-Flow-Forecasting-Using-Spatial-CNNs",
           showContent: false,
         },
         {
@@ -202,6 +202,22 @@ export default {
             require("@/assets/vehicle/image2.png"),
             require("@/assets/vehicle/image3.png"),
           ],
+          showContent: false,
+        },
+        {
+          title: "Wildfire Data Analysis",
+          subtitle: "Feb 2025 - Apr 2025",
+          shortDesc:
+            "Analyzed the multifaceted impact of California wildfires using Tableau, combining structural, financial, and air quality data to inform disaster awareness and prevention strategies.",
+          desc1:
+            "Designed a comprehensive data visualization dashboard in Tableau to analyze the impact of California wildfires using multi-source datasets on structural damage, financial loss, air quality, and casualties.",
+          desc2:
+            "Integrated EPA air quality data (2000–2023) to examine the health and environmental effects of wildfires, identifying pollutant spikes and high-risk regions.",
+          desc3:
+            "Extended the analysis to a national scale, evaluating total disaster-related deaths and financial costs to contextualize California’s wildfire crisis within broader U.S. disaster trends.",
+          image: require("@/assets/cal_fire.jpeg"),
+          // github:
+          //   "https://github.com/hariravi-ds/Traffic-Flow-Forecasting-Using-Spatial-CNNs",
           showContent: false,
         },
         {
