@@ -21,13 +21,10 @@
         </p>
         <p style="font-size: 1.5em">
           Aspiring
-          <span class="dynamic-role" id="dynamic-role">Data Analyst</span>
+          <span class="dynamic-role" id="dynamic-role">Data Scientist</span>
         </p>
         <div class="header-icons">
-          <a
-            href="mailto:hariprasannaa.thangavelravi@gwu.edu"
-            aria-label="E-Mail"
-          >
+          <a href="mailto:hariprasannaa2001@gmail.com" aria-label="E-Mail">
             <i class="fas fa-envelope fa-xl"></i>
           </a>
           <a
@@ -111,46 +108,46 @@ export default {
       console.error("particles-js container not found.");
     }
 
-    const roles = [
-      "Data Analyst",
-      "Data Scientist",
-      "Data Engineer",
-      "ML Engineer",
-    ];
-    let roleIndex = 0;
-    const dynamicRoleElement = document.getElementById("dynamic-role");
+    // const roles = [
+    //   "Data Analyst",
+    //   "Data Scientist",
+    //   "Data Engineer",
+    //   "ML Engineer",
+    // ];
+    // let roleIndex = 0;
+    // const dynamicRoleElement = document.getElementById("dynamic-role");
 
-    function updateRole() {
-      let currentRole = roles[roleIndex];
-      let i = 0;
+    // function updateRole() {
+    //   let currentRole = roles[roleIndex];
+    //   let i = 0;
 
-      const removeInterval = setInterval(() => {
-        if (i <= currentRole.length) {
-          dynamicRoleElement.textContent = currentRole.substring(
-            0,
-            currentRole.length - i
-          );
-          i++;
-        } else {
-          clearInterval(removeInterval);
+    //   const removeInterval = setInterval(() => {
+    //     if (i <= currentRole.length) {
+    //       dynamicRoleElement.textContent = currentRole.substring(
+    //         0,
+    //         currentRole.length - i
+    //       );
+    //       i++;
+    //     } else {
+    //       clearInterval(removeInterval);
 
-          roleIndex = (roleIndex + 1) % roles.length;
-          let nextRole = roles[roleIndex];
-          let j = 0;
+    //       roleIndex = (roleIndex + 1) % roles.length;
+    //       let nextRole = roles[roleIndex];
+    //       let j = 0;
 
-          const addInterval = setInterval(() => {
-            if (j <= nextRole.length) {
-              dynamicRoleElement.textContent = nextRole.substring(0, j);
-              j++;
-            } else {
-              clearInterval(addInterval);
-            }
-          }, 100);
-        }
-      }, 100);
-    }
-    updateRole();
-    setInterval(updateRole, 4000);
+    //       const addInterval = setInterval(() => {
+    //         if (j <= nextRole.length) {
+    //           dynamicRoleElement.textContent = nextRole.substring(0, j);
+    //           j++;
+    //         } else {
+    //           clearInterval(addInterval);
+    //         }
+    //       }, 100);
+    //     }
+    //   }, 100);
+    // }
+    // updateRole();
+    // setInterval(updateRole, 4000);
   },
 };
 </script>
