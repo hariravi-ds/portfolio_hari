@@ -109,8 +109,7 @@ export default {
           desc3:
             "Integrated churn probability outputs into BigQuery and Looker dashboards with ROI simulations, enabling leadership to identify at-risk employees and measure the cost savings of targeted retention campaigns.",
           image: require("@/assets/churn.png"),
-          // github:
-          //   "https://github.com/hariravi-ds/Traffic-Flow-Forecasting-Using-Spatial-CNNs",
+          github: "https://github.com/hariravi-ds/employee-churn-pred-pipeline",
           showContent: false,
         },
         {
@@ -155,7 +154,7 @@ export default {
           desc3:
             "Developed and optimized predictive models using Linear Regression, Ridge Regression, Support Vector Regression (SVR), and Gaussian Process Regression (GPR), achieving up to 86% R² in SVR and 81% R² in GPR for predicting asthma prevalence.",
           image: require("@/assets/asthma.jpg"),
-          github: "https://github.com/hariravi-ds/DATS_6103_Project2",
+          github: "https://github.com/hariravi-ds/asthma_prevalance ",
           images: [
             require("@/assets/casthma/image1.png"),
             require("@/assets/casthma/image2.png"),
@@ -271,7 +270,7 @@ export default {
           desc3:
             "Optimized machine learning models, including Random Forest and Decision Tree classifiers, improving prediction accuracy to 95.18%, and coordinated team efforts to meet project milestones. ",
           image: require("@/assets/heart.jpg"),
-          github: "https://github.com/hariravi-ds/heart-disease-predictor",
+          github: "https://github.com/hariravi-ds/heart_disease_pred",
           images: [
             require("@/assets/heart/image1.png"),
             require("@/assets/heart/image2.png"),
