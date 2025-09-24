@@ -53,7 +53,7 @@ export default {
       image: require("@/assets/subtle2.jpeg"),
       journey: [
         {
-          date: "Mar 2025 - Present",
+          date: "May 2025 - Aug 2025",
           experience: "3 months",
           title: "Data Science Intern",
           work: "MyEdMaster",
@@ -66,8 +66,8 @@ export default {
           },
         },
         {
-          date: "Mar 2025 - Present",
-          experience: "3 months",
+          date: "Apr 2025 - Present",
+          experience: "6 months",
           title: "Data Scientist",
           work: "Data Science for Sustainable Development",
           location: "Washington, DC",
