@@ -41,29 +41,17 @@
         </div>
       </div>
     </div>
-    <div class="timeline">
-      <div v-for="(event, index) in journey" :key="index" class="timeline-item">
-        <div class="timeline-date">{{ event.date }}</div>
-        <div class="timeline-icon-wrapper">
-          <div class="timeline-point"></div>
-          <div v-if="index !== journey.length - 1" class="timeline-line"></div>
-        </div>
-        <div class="timeline-content">
-          <div class="title">{{ event.title }}</div>
-          <div class="subtitle">{{ event.college }}</div>
-          <div v-if="event.description" class="description">
-            {{ event.description }}
-          </div>
-          <div v-if="event.award" class="award">{{ event.award }}</div>
-        </div>
-      </div>
-    </div>
+    <Timeline :journey="journey" />
   </div>
 </template>
 
 <script>
+import Timeline from "./Timeline.vue";
 export default {
   name: "AboutSection",
+  components: {
+    Timeline,
+  },
   data() {
     return {
       img: require("@/assets/subtle.jpeg"),
@@ -71,15 +59,15 @@ export default {
         {
           date: "Aug 2024 - May 2026 (Expected)",
           title: "Master of Science in Data Science",
-          college: "The George Washington University, Washington, DC",
-          description: "CGPA: 3.88 out of 4",
+          place: "The George Washington University, Washington, DC",
+          gpa: "CGPA: 3.88 out of 4",
           award: "Global Leaders Award",
         },
         {
           date: "Jun 2019 - Apr 2023",
           title: "Bachelor of Engineering in ECE",
-          college: "Sri Venkateswara College of Engineering, Chennai, India",
-          description: "CGPA: 3.97 out of 4",
+          place: "Sri Venkateswara College of Engineering, Chennai, India",
+          gpa: "CGPA: 3.97 out of 4",
         },
       ],
       about: [
@@ -114,97 +102,6 @@ export default {
   color: #212529;
 }
 
-.timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  position: relative;
-  padding: 24px 12px;
-  margin: 0 auto;
-  width: 85%;
-}
-
-.timeline-item {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 8px;
-}
-
-.timeline-date {
-  width: 10%;
-  font-size: 12px;
-  color: #6c757d;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.timeline-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  flex: 1;
-  padding: 12px;
-  background-color: #3b3f4a;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  border: 1px solid #6c757d;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.timeline-content:hover {
-  background-color: #4b566e;
-  transform: translateY(-5px);
-}
-
-.title {
-  font-size: 18px;
-  margin-bottom: 5px;
-  color: #d1d8e0;
-}
-
-.subtitle {
-  font-size: 14px;
-  margin-bottom: 8px;
-  color: #a5a5a5;
-}
-
-.description {
-  font-size: 14px;
-  color: #ecf0f1;
-}
-
-.award {
-  font-size: 12px;
-  margin-top: 8px;
-  color: #1abc9c;
-  font-style: italic;
-}
-.timeline-icon-wrapper {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 4px;
-  margin-right: 8px;
-  width: 20px;
-}
-.timeline-point {
-  width: 10px;
-  height: 10px;
-  background-color: teal;
-  border: 2px solid teal;
-  border-radius: 50%;
-  z-index: 1;
-}
-
-.timeline-line {
-  width: 2px;
-  flex-grow: 1;
-  background-color: teal;
-  margin-top: 8px;
-}
 .project-image {
   width: 500px;
   height: 500px;

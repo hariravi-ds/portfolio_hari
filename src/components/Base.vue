@@ -21,7 +21,9 @@
         </p>
         <p style="font-size: 1.5em">
           Aspiring
-          <span class="dynamic-role" id="dynamic-role">Data Scientist</span>
+          <span class="dynamic-role" id="dynamic-role"
+            >AI/ML Software Engineer</span
+          >
         </p>
         <div class="header-icons">
           <a href="mailto:hariprasannaa2001@gmail.com" aria-label="E-Mail">
