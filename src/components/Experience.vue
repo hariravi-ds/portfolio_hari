@@ -64,17 +64,32 @@ export default {
           title: "Member Technical Staff",
           place: "Facilio Technology Solutions, Chennai, India",
           description: {
-            "Interactive BI Platform Development":
-              "Engineered Business Intelligence (BI) platform using JavaScript and Java, enabling real-time monitoring and customizable widgets, driving 8% customer base growth over two years.",
-            "Automation of KPI & Report Generation":
-              "Automated KPI and report generation processes by developing a core framework using optimized SQL indexing, time-series data aggregation, and dynamic ETL processes, reducing manual effort by 30%.",
-            "SQL Optimization":
-              "Streamlined ETL workflows and time series data aggregation by optimizing SQL queries reducing manual work and improving report generation speed by 15%.",
-            "Development of RESTful APIs":
-              "Developed RESTful APIs with well-defined endpoints for internal and external use, leveraging Swagger for documentation and Postman for unit testing, ensuring performance.",
-            "Promotion Ahead of Schedule":
-              "Secured a full-time position three months ahead of the typical promotion timeline after transitioning from an intern role, due to exceptional contributions and consistent performance in project delivery.",
+            "Built Low-Code Analytics Platform":
+              "Developed a low-code analytics platform using Java and Javascript enabling clients to create dynamic dashboards with real-time anomaly detection and AI-driven consumption forecasts, leading to improved customer adoption.",
+            "Integrated Predictive Analytics Modules":
+              "Integrated time-series ML models to detect abnormal energy usage patterns across 10K+ IoT devices, achieving faster anomaly detection and enhancing predictive insights.",
+            "Developed Scalable Microservices":
+              "Built and deployed scalable Java microservices and Kafka pipelines to stream and aggregate telemetry data for ML-based energy benchmarking across multi-site portfolios.",
+            "Enhanced Front-End Visualization Engine":
+              "Enhanced the Vue.js visualization engine to support live data-driven charts and smart filters powered by backend inference APIs, enabling interactive energy insights.",
+            "Engineered SQL-Based ETL Pipelines":
+              "Engineered SQL-based ETL pipelines to optimize data extraction and transformation from relational databases, improving reporting and API performance.",
+            "Collaborated on AI-Ready Data Pipelines":
+              "Worked with data science and product teams to design AI-ready data pipelines on AWS, enabling portfolio-level predictive modeling and analytics delivery to enterprise clients.",
           },
+          tech_stack: [
+            "JavaScript",
+            "Java",
+            "REST API",
+            "SQL",
+            "ETL",
+            "Kafka",
+            "Python",
+            "AWS",
+            "Docker",
+            "Bitbucket",
+            "JIRA",
+          ],
         },
       ],
     };
