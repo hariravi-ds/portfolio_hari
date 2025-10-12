@@ -98,6 +98,21 @@ export default {
       showRightButton: true,
       projects: [
         {
+          title: "Intelligent Document Q&A Assistant with RAG",
+          subtitle: "July 2025 - Sep 2025",
+          shortDesc:
+            "Developed an LLM-powered retrieval system with FAISS and embeddings, enabling real-time, context-aware Q&A over enterprise documents.",
+          desc1:
+            "Built an LLM-powered retrieval system using embeddings and FAISS vector DB, enabling context-aware Q&A over enterprise knowledge bases.",
+          desc2:
+            "Designed and deployed a RAG pipeline, improving answer relevance by 8% compared to keyword search baselines.",
+          desc3:
+            "Implemented monitoring for latency, token usage, and hallucination rates, reducing inaccuracies by 12% while maintaining sub-500ms response times.",
+          image: require("@/assets/document_rag.png"),
+          // github: "https://github.com/hariravi-ds/employee-churn-pred-pipeline",
+          showContent: false,
+        },
+        {
           title: "Employee Churn Prediction Pipeline",
           subtitle: "July 2025 - Sep 2025",
           shortDesc:
@@ -110,6 +125,36 @@ export default {
             "Integrated churn probability outputs into BigQuery and Looker dashboards with ROI simulations, enabling leadership to identify at-risk employees and measure the cost savings of targeted retention campaigns.",
           image: require("@/assets/churn.png"),
           github: "https://github.com/hariravi-ds/employee-churn-pred-pipeline",
+          showContent: false,
+        },
+        {
+          title: "Real-Time Transaction Anomaly Detection System ",
+          subtitle: "Feb 2025 - Mar 2025",
+          shortDesc:
+            "Engineered a Kafka–FastAPI streaming pipeline with ML models for fraud detection, delivering 300 ms alert latency and 0.91 precision in production.",
+          desc1:
+            "Designed a streaming alert pipeline with Kafka, FastAPI, and Redis, detecting anomalies within 300 ms and lowering false-positive rates by 10%.",
+          desc2:
+            "Trained isolation forest and autoencoder models in Python, reaching 0.91 precision on real-world transaction datasets.",
+          desc3:
+            "Deployed system on AWS ECS using CI/CD pipelines; partnered with DevOps engineers to enable versioned rollouts and automated drift monitoring.",
+          image: require("@/assets/anomly_det.png"),
+          // github: "https://github.com/hariravi-ds/employee-churn-pred-pipeline",
+          showContent: false,
+        },
+        {
+          title: "Low-Latency Recommendation Engine",
+          subtitle: "July 2025 - Sep 2025",
+          shortDesc:
+            "Built a high-throughput C++ inference service using FAISS ANN search, achieving <10 ms latency and 50K QPS scalability for production workloads.",
+          desc1:
+            "Built a C++ inference service for candidate retrieval using FAISS-based approximate nearest neighbor search, achieving <10ms latency per request.",
+          desc2:
+            "Optimized cache-aware data structures and quantization methods, reducing memory footprint by 22% while sustaining recall within 1% of baseline.",
+          desc3:
+            "Benchmarked system at 50K QPS on simulated ad-serving traffic, validating scalability for production deployment.",
+          image: require("@/assets/recommandation.png"),
+          // github: "https://github.com/hariravi-ds/employee-churn-pred-pipeline",
           showContent: false,
         },
         {

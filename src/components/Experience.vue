@@ -17,7 +17,7 @@
       A summary of my professional experience, highlighting key roles and
       achievements.
     </div>
-    <Timeline :journey="journey" />
+    <Timeline :journey="journey" type="experience" />
   </div>
 </template>
 
@@ -34,33 +34,58 @@ export default {
       journey: [
         {
           date: "May 2025 - Aug 2025",
-          experience: "3 months",
           title: "Data Science Intern",
           place: "MyEdMaster, Ashburn, Virginia",
           description: {
-            "Behavior-Driven Matching Algorithm":
-              "Developed a behavior-driven algorithm to match equity-based candidates with startups, increasing user engagement and match relevance by 12%.",
             "Recommendation Logic Optimization":
-              "Refined recommendation logic by analyzing engagement and interaction patterns, improving startup–candidate connection success rate by 3%.",
+              "Designed and implemented a collaborative filtering and clustering-based recommendation system to match students with mentors and advisors, improving personalization and engagement.",
+            "Backend Development":
+              "Built and maintained Django-based REST APIs for model inference, data ingestion, and recommendation delivery, ensuring low-latency integration with the frontend.",
+            "Frontend Engineering":
+              "Developed React-based frontend pages for user dashboards and recommendation results, enabling interactive and dynamic visualization of matches.",
           },
+          tech_stack: [
+            "Python",
+            "Django",
+            "React",
+            "JavaScript",
+            "SQL",
+            "AWS",
+            "scikit-learn",
+            "REST API",
+            "Docker",
+            "Pandas",
+            "NumPy",
+          ],
         },
         {
           date: "Apr 2025 - Present",
-          experience: "6 months",
           title: "Data Scientist",
           place: "Data Science for Sustainable Development, Washington, DC",
           description: {
-            "Energy Demand Forecasting":
-              "Built and deployed predictive models to forecast campus energy demand with 91% accuracy, reducing energy waste by 16%.",
-            "Anomaly Detection & Clustering":
-              "Conducted anomaly detection using PCA and clustering on energy usage data across 50+ buildings to optimize resource allocation.",
-            "Operational Trend Analysis":
-              "Applied Random Forest models to uncover operational trends, enhancing decision-making in university-wide energy strategy.",
+            "ML Model Deployment and Integration":
+              "Architected and deployed ML models for energy-demand forecasting with 91% accuracy, integrating predictions into backend APIs to support real-time decision systems that reduced operational waste by 16%.",
+            "Backend and Frontend Development":
+              "Developed scalable backend services in Django and REST APIs to serve model inferences, and built a React-based web interface to visualize analytics and model outcomes for end users.",
+            "ML Pipeline Optimization":
+              "Implemented and optimized ML pipelines using Random Forests and unsupervised learning (PCA, clustering) for anomaly detection and trend analysis across 50+ university buildings.",
           },
+          tech_stack: [
+            "Python",
+            "scikit-learn",
+            "Django",
+            "Flask",
+            "React",
+            "JavaScript",
+            "SQL",
+            "AWS",
+            "Docker",
+            "Pandas",
+            "NumPy",
+          ],
         },
         {
-          date: "May 2022 - July 2024",
-          experience: "2+ years",
+          date: "May 2022 - Jul 2024",
           title: "Member Technical Staff",
           place: "Facilio Technology Solutions, Chennai, India",
           description: {

@@ -41,7 +41,7 @@
         </div>
       </div>
     </div>
-    <Timeline :journey="journey" />
+    <Timeline :journey="journey" type="education" />
   </div>
 </template>
 
