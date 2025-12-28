@@ -1,58 +1,71 @@
 <template>
-  <div class="particle-container image-card" id="home">
+  <div
+    class="particle-container image-card"
+    id="home"
+    :style="{
+      backgroundImage: 'url(' + img + ')',
+      backgroundAttachment: 'fixed',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+    }"
+  >
     <div class="app-header">
       <AppHeader />
     </div>
-    <div class="main-header">
+    <div class="content-scroll">
       <div id="particles-js"></div>
-      <div class="header">
-        <p class="stdName">HARI PRASANNAA THANGAVEL RAVI</p>
-        <hr
-          style="
-            width: 100px;
-            height: 1px;
-            border: none;
-            color: #333;
-            background-color: #333;
-          "
-        />
-        <p style="font-size: 1.5em">
-          Graduate Student at The George Washington University
-        </p>
-        <p style="font-size: 1.5em">
-          Aspiring
-          <span class="dynamic-role" id="dynamic-role"
-            >AI/ML Software Engineer</span
-          >
-        </p>
-        <div class="header-icons">
-          <a href="mailto:hariprasannaa2001@gmail.com" aria-label="E-Mail">
-            <i class="fas fa-envelope fa-xl"></i>
-          </a>
-          <a
-            href="https://github.com/hariravi-ds"
-            target="_blank"
-            aria-label="GitHub"
-          >
-            <i class="fab fa-github fa-xl"></i>
-          </a>
-          <a
-            href="https://www.linkedin.com/in/hari-prasannaa"
-            target="_blank"
-            aria-label="LinkedIn"
-          >
-            <i class="fab fa-linkedin fa-xl"></i>
-          </a>
+
+      <div class="main-header">
+        <div class="header">
+          <p class="stdName">HARI PRASANNAA THANGAVEL RAVI</p>
+          <hr
+            style="
+              width: 100px;
+              height: 1px;
+              border: none;
+              color: #333;
+              background-color: #333;
+            "
+          />
+          <p style="font-size: 1.5em">
+            Graduate Student at The George Washington University
+          </p>
+          <p style="font-size: 1.5em">
+            Aspiring
+            <span class="dynamic-role" id="dynamic-role"
+              >AI/ML Software Engineer</span
+            >
+          </p>
+          <div class="header-icons">
+            <a href="mailto:hariprasannaa2001@gmail.com" aria-label="E-Mail">
+              <i class="fas fa-envelope fa-xl"></i>
+            </a>
+            <a
+              href="https://github.com/hariravi-ds"
+              target="_blank"
+              aria-label="GitHub"
+            >
+              <i class="fab fa-github fa-xl"></i>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/hari-prasannaa"
+              target="_blank"
+              aria-label="LinkedIn"
+            >
+              <i class="fab fa-linkedin fa-xl"></i>
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="sections">
-      <About id="about"></About>
-      <Experience id="experience"></Experience>
-      <Skills id="skills"></Skills>
-      <Projects id="projects"></Projects>
-      <Organization id="organizations"></Organization>
-      <Contact id="contact"></Contact>
+      <div class="sections" style="padding: 96px">
+        <About id="about"></About>
+        <Experience id="experience"></Experience>
+        <Skills id="skills"></Skills>
+        <Projects id="projects"></Projects>
+        <Organization id="organizations"></Organization>
+        <Contact id="contact"></Contact>
+      </div>
     </div>
   </div>
 </template>
@@ -70,7 +83,7 @@ import "particles.js";
 export default {
   name: "HeaderWithParticles",
   data() {
-    return {};
+    return { img: require("@/assets/logo.png") };
   },
   components: {
     AppHeader,
@@ -83,7 +96,7 @@ export default {
   },
   mounted() {
     const particlesContainer = document.getElementById("particles-js");
-    if (particlesContainer) {
+    if (particlesContainer && window.particlesJS) {
       window.particlesJS("particles-js", {
         particles: {
           number: { value: 75, density: { enable: true, value_area: 1000 } },
@@ -106,8 +119,6 @@ export default {
           },
         },
       });
-    } else {
-      console.error("particles-js container not found.");
     }
 
     // const roles = [
@@ -161,17 +172,28 @@ export default {
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
-body,
-html {
+
+html,
+body {
   width: 100%;
   height: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .particle-container {
-  position: relative;
+  position: fixed;
+  inset: 0;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
+  z-index: 0;
+}
+
+.content-scroll {
+  position: relative;
+  height: 100vh;
+  overflow-y: auto;
+  z-index: 1;
+  -webkit-overflow-scrolling: touch;
 }
 
 #particles-js {
@@ -187,7 +209,7 @@ html {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 2;
+  z-index: 3;
   background: transparent;
   padding: 10px 15px;
 }
@@ -196,7 +218,7 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   text-align: center;
   z-index: 1;
   position: relative;
@@ -238,24 +260,31 @@ html {
 
 .sections {
   margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 46px;
+  position: relative;
+  z-index: 1;
 }
 
 .sections > * {
-  /* padding: 20px; */
   color: white;
 }
+
 .dynamic-role {
   color: black;
   font-weight: bold;
   font-size: 1.5em;
   transition: all 0.3s ease-in-out;
 }
+
 .stdName {
   display: inline;
   font-size: 35px;
   padding-left: 30px;
   color: #000000;
 }
+
 .cv-button {
   background: #000000;
   color: white;
@@ -267,6 +296,7 @@ html {
   transition: all 0.3s ease;
   cursor: pointer;
 }
+
 .cv-button:hover {
   background: #1e90ff;
   border-color: #1e90ff;
