@@ -60,7 +60,7 @@ export default {
           date: "Aug 2024 - May 2026 (Expected)",
           title: "Master of Science in Data Science",
           place: "The George Washington University, Washington, DC",
-          gpa: "CGPA: 3.88 out of 4",
+          gpa: "CGPA: 3.92 out of 4",
           award: "Global Leaders Award",
         },
         {

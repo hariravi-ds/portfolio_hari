@@ -67,6 +67,10 @@
         <Contact id="contact"></Contact>
       </div>
     </div>
+    <div v-if="isShow && !isOpen" class="chatbot-icon" @click="isOpen = true">
+      🤖
+    </div>
+    <Chatbot v-if="isOpen" @close-bot="isOpen = false" />
   </div>
 </template>
 
@@ -79,11 +83,16 @@ import Projects from "./Projects.vue";
 import Contact from "./Contact.vue";
 import Organization from "./Organisations.vue";
 import "particles.js";
+import Chatbot from "./chatBot.vue";
 
 export default {
   name: "HeaderWithParticles",
   data() {
-    return { img: require("@/assets/logo.png") };
+    return {
+      isOpen: false,
+      isShow: false,
+      img: require("@/assets/logo.png"),
+    };
   },
   components: {
     AppHeader,
@@ -93,6 +102,7 @@ export default {
     Projects,
     Contact,
     Organization,
+    Chatbot,
   },
   mounted() {
     const particlesContainer = document.getElementById("particles-js");
