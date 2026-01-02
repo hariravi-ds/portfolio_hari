@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="journey-section image-card"
-    :style="{ backgroundImage: 'url(' + image + ')' }"
-  >
+  <div class="journey-section">
     <div class="section-title">Organizations</div>
     <hr class="divider" />
     <div class="section-subtitle">
@@ -16,8 +13,8 @@
       >
         <div class="org-icon">{{ key.charAt(0) }}</div>
         <div class="org-content">
-          <h3 class="org-title">{{ key }}</h3>
-          <p class="role">{{ value.role }}</p>
+          <h3 class="org-title">{{ value.role }}</h3>
+          <p class="role">{{ key }}</p>
           <p class="date">{{ value.timeline }}</p>
           <p class="description">{{ value.desc }}</p>
         </div>
@@ -73,14 +70,7 @@ export default {
 
 <style scoped>
 .journey-section {
-  padding: 20px;
-  background-color: white;
-}
-
-.section-title {
-  text-align: center;
-  font-size: 35px;
-  color: #212529;
+  padding: 20px 40px;
 }
 
 .main-block {
@@ -122,6 +112,7 @@ export default {
 
 .org-content {
   flex: 1;
+  text-align: start;
 }
 
 .org-title {
@@ -148,5 +139,6 @@ export default {
 .description {
   font-size: 14px;
   color: #ecf0f1;
+  text-align: start;
 }
 </style>

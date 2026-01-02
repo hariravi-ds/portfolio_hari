@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="projects-section image-card"
-    :style="{ backgroundImage: 'url(' + image + ')' }"
-  >
+  <div class="projects-section">
     <div class="title">Projects</div>
     <hr class="section-divider" />
     <div class="subtitle">
@@ -91,7 +88,6 @@ export default {
   name: "ProjectsSection",
   data() {
     return {
-      image: require("@/assets/ai.jpg"),
       dialogVisible: false,
       selectedProject: null,
       showLeftButton: false,

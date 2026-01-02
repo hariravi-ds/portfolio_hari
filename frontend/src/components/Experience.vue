@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="journey-section image-card"
-    :style="{ backgroundImage: 'url(' + image + ')' }"
-  >
+  <div class="journey-section">
     <div class="section-title">Experience</div>
     <hr
       style="
@@ -30,7 +27,6 @@ export default {
   },
   data() {
     return {
-      image: require("@/assets/subtle2.jpeg"),
       journey: [
         {
           date: "May 2025 - Aug 2025",
@@ -125,13 +121,6 @@ export default {
 <style scoped>
 .journey-section {
   padding: 20px;
-  background-color: white;
   color: #ecf0f1;
-}
-
-.section-title {
-  text-align: center;
-  font-size: 35px;
-  color: #212529;
 }
 </style>
