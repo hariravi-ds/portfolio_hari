@@ -11,7 +11,7 @@
         :key="category"
         class="skill-category"
       >
-        <h2 class="category-title">{{ category }}</h2>
+        <div class="category-title">{{ category }}</div>
         <div class="skill-list">
           <span v-for="skill in skills" :key="skill" class="skill-pill">
             {{ skill }}
@@ -143,7 +143,8 @@ export default {
 }
 
 .category-title {
-  font-size: 1.3em;
+  font-size: 16px;
+  font-weight: 1000;
   margin-bottom: 15px;
   color: #212529;
 }
@@ -159,7 +160,7 @@ export default {
   color: white;
   padding: 6px 14px;
   border-radius: 20px;
-  font-size: 0.95em;
+  font-size: 14px;
   transition: background 0.3s ease, transform 0.2s ease;
 }
 
