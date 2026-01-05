@@ -102,7 +102,7 @@
           </div>
         </div>
       </div>
-      <div class="sections" style="padding: 96px">
+      <div class="sections" style="padding: 0px 96px">
         <About id="about"></About>
         <Experience id="experience"></Experience>
         <Skills id="skills"></Skills>
@@ -427,7 +427,7 @@ body {
   margin-top: 0;
   display: flex;
   flex-direction: column;
-  gap: 46px;
+  gap: 24px;
   position: relative;
   z-index: 1;
 }

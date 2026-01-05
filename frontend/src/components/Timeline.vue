@@ -232,7 +232,7 @@ export default {
 
 .timeline-row {
   display: grid;
-  grid-template-columns: 170px 28px 1fr;
+  grid-template-columns: 150px 28px 1fr;
   gap: 18px;
   align-items: start;
   margin-bottom: 26px;
@@ -390,11 +390,6 @@ export default {
   font-weight: 700;
   margin-top: 16px;
   margin-left: 0;
-}
-
-.journey-section {
-  padding: 20px;
-  color: #ecf0f1;
 }
 
 @media (max-width: 920px) {

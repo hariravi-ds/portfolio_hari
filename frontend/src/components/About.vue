@@ -76,11 +76,6 @@ export default {
 </script>
 
 <style scoped>
-.journey-section {
-  padding: 20px;
-  color: #ecf0f1;
-}
-
 .project-image {
   width: 450px;
   height: 450px;

@@ -69,10 +69,6 @@ export default {
 </script>
 
 <style scoped>
-.journey-section {
-  padding: 20px 40px;
-}
-
 .main-block {
   display: flex;
   flex-direction: column;

@@ -164,10 +164,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.journey-section {
-  padding: 20px;
-  color: #ecf0f1;
-}
-</style>

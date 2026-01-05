@@ -1,5 +1,5 @@
 <template>
-  <div class="projects-section">
+  <div class="journey-section">
     <div class="title">Projects</div>
     <hr class="section-divider" />
     <div class="subtitle">
@@ -355,12 +355,6 @@ export default {
 </script>
 
 <style scoped>
-.projects-section {
-  padding: 64px;
-  color: #ecf0f1;
-  position: relative;
-}
-
 .title {
   text-align: center;
   font-size: 35px;

@@ -1,5 +1,5 @@
 <template>
-  <div class="skills-section">
+  <div class="journey-section">
     <div class="section-title">Skills</div>
     <hr class="divider" />
     <div class="section-subtitle">
@@ -126,10 +126,6 @@ export default {
 </script>
 
 <style scoped>
-.skills-section {
-  padding: 20px;
-}
-
 .skills-container {
   display: flex;
   flex-wrap: wrap;
