@@ -53,14 +53,14 @@ export default {
           date: "Aug 2024 - May 2026 (Expected)",
           title: "Master of Science in Data Science",
           place: "The George Washington University, Washington, DC",
-          gpa: "CGPA: 3.92 out of 4",
+          gpa: "3.92 / 4.0",
           award: "Global Leaders Award",
         },
         {
           date: "Jun 2019 - Apr 2023",
           title: "Bachelor of Engineering in ECE",
           place: "Sri Venkateswara College of Engineering, Chennai, India",
-          gpa: "CGPA: 3.97 out of 4",
+          gpa: "3.97 / 4.0",
         },
       ],
       about: [
