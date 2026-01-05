@@ -28,7 +28,6 @@ export default {
   name: "OrganisationSection",
   data() {
     return {
-      image: require("@/assets/subtle2.jpeg"),
       details: [
         {
           "George Washington University Student Association": {
