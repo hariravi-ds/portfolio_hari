@@ -107,6 +107,7 @@
         <Experience id="experience"></Experience>
         <Skills id="skills"></Skills>
         <Projects id="projects"></Projects>
+        <FeaturedResearch id="research"></FeaturedResearch>
         <Organization id="organizations"></Organization>
         <Contact id="contact"></Contact>
       </div>
@@ -119,13 +120,14 @@
 </template>
 
 <script>
-import AppHeader from "./AppHeader.vue";
-import Skills from "./Skills.vue";
-import About from "./About.vue";
-import Experience from "./Experience.vue";
-import Projects from "./Projects.vue";
-import Contact from "./Contact.vue";
-import Organization from "./Organisations.vue";
+import AppHeader from "./appHeader.vue";
+import Skills from "./skills.vue";
+import About from "./about.vue";
+import Experience from "./experience.vue";
+import Projects from "./projects.vue";
+import Contact from "./contact.vue";
+import Organization from "./organisations.vue";
+import FeaturedResearch from "./featuredResearch.vue";
 import "particles.js";
 import Chatbot from "./chatBot.vue";
 
@@ -147,6 +149,7 @@ export default {
     Projects,
     Contact,
     Organization,
+    FeaturedResearch,
     Chatbot,
   },
   mounted() {

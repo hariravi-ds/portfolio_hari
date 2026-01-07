@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import Timeline from "./Timeline.vue";
+import Timeline from "./timeline.vue";
 export default {
   name: "ExperienceSection",
   components: {

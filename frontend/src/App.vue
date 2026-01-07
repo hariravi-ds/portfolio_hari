@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import BaseComp from "./components/Base.vue";
+import BaseComp from "./components/base.vue";
 
 export default {
   name: "App",
