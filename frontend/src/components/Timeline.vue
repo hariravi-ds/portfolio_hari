@@ -22,7 +22,7 @@
               </div>
 
               <div class="role-title">{{ item.title }}</div>
-              <div class="role-place">{{ item.place }}</div>
+              <div class="role-place">{{ item.place || item.desc }}</div>
 
               <div v-if="type === 'education'" class="edu-meta">
                 <div v-if="item.gpa" class="edu-line">
@@ -34,7 +34,10 @@
               </div>
 
               <div
-                v-if="type === 'experience' && item.tech_stack?.length"
+                v-if="
+                  (type === 'experience' || type === 'research') &&
+                  item.tech_stack?.length
+                "
                 class="tech-wrap"
               >
                 <div class="tech-label">Tech Stack:</div>
@@ -63,7 +66,10 @@
               </div>
 
               <div
-                v-if="type === 'experience' && item.description"
+                v-if="
+                  (type === 'experience' || type === 'research') &&
+                  item.description
+                "
                 class="desc-wrap"
               >
                 <div
