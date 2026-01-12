@@ -1,0 +1,66 @@
+.image-card {
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
+    background-image 0.3s ease;
+  background-size: cover;
+  background-position: center;
+  background-color: rgb(255, 255, 255, 05);
+}
+
+.flex {
+  display: flex;
+}
+
+.el-dialog__header {
+  color: black;
+  height: 85px;
+}
+
+.el-dialog {
+  padding: 24px 48px;
+  width: 1000px;
+  border-radius: 16px;
+}
+
+.f16 {
+  font-size: 16px;
+}
+
+.f24 {
+  font-size: 24px;
+}
+
+.mb16 {
+  margin-bottom: 16px;
+}
+
+.el-dialog__body {
+  text-align: start;
+}
+
+.divider {
+  width: 100px;
+  height: 1px;
+  border: none;
+  color: #333;
+  background-color: #333;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-style: italic;
+  color: #6c757d;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 35px;
+  color: #212529;
+}
+
+.journey-section {
+  padding: 20px;
+  color: #ecf0f1;
+}
