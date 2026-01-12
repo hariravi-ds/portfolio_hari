@@ -1,50 +1,101 @@
 <template>
   <section class="timeline-section">
     <div class="timeline">
-      <div
-        v-for="(event, index) in localJourney"
-        :key="index"
-        class="timeline-item"
-        v-intersect="() => activateItem(index)"
-        :class="{ active: activeIndex === index }"
-      >
-        <div class="timeline-date">{{ event.date }}</div>
-
-        <div class="timeline-icon-wrapper">
-          <div class="timeline-point"></div>
-          <div v-if="index !== journey.length - 1" class="timeline-line"></div>
+      <div v-for="(item, idx) in journey" :key="idx" class="timeline-row">
+        <div class="date-col">
+          <div class="date-text">{{ item.date }}</div>
         </div>
 
-        <div class="timeline-content">
-          <div v-if="event.logo" class="company-logo">
-            <img :src="event.logo" :alt="event.title" />
-          </div>
+        <div class="line-col">
+          <div class="dot" />
+          <div v-if="idx !== journey.length - 1" class="vline" />
+        </div>
 
-          <div v-if="event.experience" class="subtitle">
-            {{ event.experience }}
-          </div>
-          <div class="title">{{ event.title }}</div>
-          <div class="subtitle">{{ event.place }}</div>
-          <div v-if="event.gpa" class="description">{{ event.gpa }}</div>
+        <div class="card-col">
+          <div class="card">
+            <div class="card-inner">
+              <div
+                v-if="type === 'experience' && getDurationLabel(item.date)"
+                class="duration"
+              >
+                {{ getDurationLabel(item.date) }}
+              </div>
 
-          <div v-if="event.tech_stack" class="tech-stack">
-            <el-icon class="tech-icon"><Cpu /></el-icon>
-            <span class="tech-label">Tech Stack:</span>
-            <span class="tech-list">{{ event.tech_stack.join(" • ") }}</span>
-          </div>
+              <div class="role-title">{{ item.title }}</div>
+              <div class="role-place">{{ item.place || item.desc }}</div>
 
-          <div v-if="event.description">
-            <div
-              v-for="(desc, label) in event.description"
-              :key="label"
-              class="description-item"
-            >
-              <div class="description-key">{{ label }}</div>
-              <div class="description-value">{{ desc }}</div>
+              <div v-if="type === 'education'" class="edu-meta">
+                <div v-if="item.gpa" class="edu-line">
+                  <span class="muted">GPA:</span> {{ item.gpa }}
+                </div>
+                <div v-if="item.award" class="edu-line">
+                  <span class="muted">Award:</span> {{ item.award }}
+                </div>
+              </div>
+
+              <div
+                v-if="
+                  (type === 'experience' || type === 'research') &&
+                  item.tech_stack?.length
+                "
+                class="tech-wrap"
+              >
+                <div class="tech-label">Tech Stack:</div>
+
+                <div class="tech-chips">
+                  <span
+                    v-for="(t, i) in visibleTech(item, idx)"
+                    :key="t + i"
+                    class="chip"
+                    >{{ t }}</span
+                  >
+
+                  <button
+                    v-if="item.tech_stack.length > TECH_LIMIT"
+                    class="link-btn"
+                    type="button"
+                    @click="toggleTech(idx)"
+                  >
+                    {{
+                      techExpanded[idx]
+                        ? "Show less"
+                        : `+${item.tech_stack.length - TECH_LIMIT} more`
+                    }}
+                  </button>
+                </div>
+              </div>
+
+              <div
+                v-if="
+                  (type === 'experience' || type === 'research') &&
+                  item.description
+                "
+                class="desc-wrap"
+              >
+                <div
+                  v-for="[k, v] in visibleDescEntries(item, idx)"
+                  :key="k"
+                  class="desc-item"
+                >
+                  <div class="desc-title">{{ k }}</div>
+                  <div class="desc-text">{{ v }}</div>
+                </div>
+
+                <button
+                  v-if="descEntries(item).length > DESC_LIMIT"
+                  class="link-btn desc-toggle"
+                  type="button"
+                  @click="toggleDesc(idx)"
+                >
+                  {{
+                    descExpanded[idx]
+                      ? "Show fewer highlights"
+                      : `Show all highlights (${descEntries(item).length})`
+                  }}
+                </button>
+              </div>
             </div>
           </div>
-
-          <div v-if="event.award" class="award">{{ event.award }}</div>
         </div>
       </div>
     </div>
@@ -52,11 +103,29 @@
 </template>
 
 <script>
+const MONTHS = {
+  jan: 0,
+  feb: 1,
+  mar: 2,
+  apr: 3,
+  may: 4,
+  jun: 5,
+  jul: 6,
+  aug: 7,
+  sep: 8,
+  oct: 9,
+  nov: 10,
+  dec: 11,
+};
 export default {
   name: "TheTimeline",
   props: ["journey", "type"],
   data() {
     return {
+      TECH_LIMIT: 10,
+      DESC_LIMIT: 3,
+      techExpanded: {},
+      descExpanded: {},
       activeIndex: null,
       localJourney: [],
     };
@@ -74,274 +143,275 @@ export default {
       },
     },
   },
-  mounted() {
-    let { type, journey } = this;
-    if (type != "education") {
-      let { journey } = this;
-      const months = {
-        Jan: 1,
-        Feb: 2,
-        Mar: 3,
-        Apr: 4,
-        May: 5,
-        Jun: 6,
-        Jul: 7,
-        Aug: 8,
-        Sep: 9,
-        Oct: 10,
-        Nov: 11,
-        Dec: 12,
-      };
-      let updatedJourney = journey.map((exp) => {
-        let [startDate, endDate] = exp.date.split(" - ");
-        endDate == "Present" ? (endDate = new Date()) : endDate;
-        let [endMonth, endYear] = [0, 0];
-        if (typeof endDate == "object") {
-          endMonth = endDate.getMonth();
-          endYear = endDate.getFullYear();
-        } else {
-          [endMonth, endYear] = endDate.split(" ");
-          endMonth = months[endMonth];
-        }
-        let [startMonth, startYear] = startDate.split(" ");
-        let duration =
-          (Number(endYear) - Number(startYear)) * 12 +
-          (endMonth - months[startMonth]);
-        duration =
-          duration > 12
-            ? Math.floor(duration / 12) + "+ years"
-            : duration + " months";
-        return { ...exp, experience: duration };
-      });
-      this.localJourney = updatedJourney;
-    } else {
-      this.localJourney = journey;
-    }
-  },
   methods: {
-    activateItem(index) {
-      this.activeIndex = index;
+    toggleTech(idx) {
+      this.techExpanded = {
+        ...this.techExpanded,
+        [idx]: !this.techExpanded[idx],
+      };
+    },
+    toggleDesc(idx) {
+      this.descExpanded = {
+        ...this.descExpanded,
+        [idx]: !this.descExpanded[idx],
+      };
+    },
+
+    visibleTech(item, idx) {
+      const all = item.tech_stack || [];
+      if (this.techExpanded[idx]) return all;
+      return all.slice(0, this.TECH_LIMIT);
+    },
+
+    descEntries(item) {
+      if (!item.description) return [];
+      return Object.entries(item.description);
+    },
+    visibleDescEntries(item, idx) {
+      const entries = this.descEntries(item);
+      if (this.descExpanded[idx]) return entries;
+      return entries.slice(0, this.DESC_LIMIT);
+    },
+
+    getDurationLabel(dateStr) {
+      const { start, end } = this.parseRange(dateStr);
+      if (!start) return null;
+
+      const endDate = end || new Date();
+      const months = this.monthDiff(start, endDate);
+
+      if (months <= 0) return null;
+      if (months === 1) return "1 month";
+      if (months < 12) {
+        return `${months} months`;
+      } else {
+        return `${parseInt(months / 12)}+ years`;
+      }
+    },
+
+    parseRange(s) {
+      if (!s || typeof s !== "string") return { start: null, end: null };
+      const cleaned = s.replace("–", "-");
+      const parts = cleaned.split(" - ").map((p) => p.trim());
+      if (parts.length < 2)
+        return { start: this.parseMonthYear(parts[0]), end: null };
+
+      const start = this.parseMonthYear(parts[0]);
+      const endText = parts[1].toLowerCase();
+
+      if (endText.includes("present")) return { start, end: null };
+
+      const endClean = parts[1].replace(/\(.*?\)/g, "").trim();
+      const end = this.parseMonthYear(endClean);
+      return { start, end };
+    },
+
+    parseMonthYear(text) {
+      if (!text) return null;
+      const m = text.trim().toLowerCase().split(/\s+/);
+      if (m.length < 2) return null;
+
+      const monthKey = m[0].replace(".", "");
+      const year = parseInt(m[1], 10);
+      if (!Number.isFinite(year)) return null;
+
+      const month = MONTHS[monthKey];
+      if (month === undefined) return null;
+
+      return new Date(year, month, 1);
+    },
+
+    monthDiff(a, b) {
+      const years = b.getFullYear() - a.getFullYear();
+      const months = b.getMonth() - a.getMonth();
+      return years * 12 + months + 1;
     },
   },
 };
 </script>
 
 <style scoped>
-.timeline-section {
-  /* background: radial-gradient(circle at center, #1c1f29, #0f1118); */
-  padding: 60px 0;
-  position: relative;
-  overflow: hidden;
-}
-
-.timeline-header {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.timeline-header h2 {
-  font-size: 28px;
-  color: #e8eaed;
-  margin-bottom: 8px;
-}
-
-.timeline-intro {
-  font-size: 14px;
-  color: #9aa0a6;
-  font-style: italic;
-}
-
 .timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  position: relative;
-  width: 85%;
-  margin: 0 auto;
+  width: 100%;
+  margin-top: 24px;
 }
 
-.timeline-date {
-  width: 12%;
+.timeline-row {
+  display: grid;
+  grid-template-columns: 150px 28px 1fr;
+  gap: 18px;
+  align-items: start;
+  margin-bottom: 26px;
+}
+
+.date-col {
+  padding-top: 18px;
+  text-align: right;
+}
+.date-text {
   font-size: 12px;
-  color: #9aa0a6;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.line-col {
+  position: relative;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  padding-top: 12px;
+  align-self: stretch;
 }
-
-.timeline-icon-wrapper {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 24px;
-}
-
-.timeline-point {
+.dot {
   width: 12px;
   height: 12px;
-  background-color: #1abc9c;
-  border-radius: 50%;
-  box-shadow: 0 0 12px rgba(26, 188, 156, 0.7);
-  animation: pulse 2s infinite;
+  border-radius: 999px;
+  background: #34d399;
+  margin-top: 20px;
+  box-shadow: 0 0 0 6px rgba(52, 211, 153, 0.15);
 }
-
-.timeline-line {
-  width: 2px;
-  flex-grow: 1;
-  background: linear-gradient(to bottom, #1abc9c, rgba(26, 188, 156, 0.1));
-  margin-top: 4px;
-}
-
-.timeline-item {
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.timeline-content {
-  flex: 1;
-  background-color: #2f3441;
-  border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 20px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  transition: all 0.4s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.timeline-content::before {
-  content: "";
+.vline {
   position: absolute;
-  top: -40%;
-  left: -40%;
-  width: 180%;
-  height: 180%;
-  background: radial-gradient(
-    circle at var(--x, 50%) var(--y, 50%),
-    rgba(26, 188, 156, 0.08),
-    transparent 50%
-  );
-  transition: background 0.3s;
+  top: 38px;
+  width: 2px;
+  bottom: -26px;
+  background: rgba(52, 211, 153, 0.35);
 }
 
-.timeline-content:hover::before {
-  background: radial-gradient(
-    circle at var(--x, 50%) var(--y, 50%),
-    rgba(26, 188, 156, 0.15),
-    transparent 50%
-  );
+.card-col {
+  width: 100%;
+}
+.card {
+  border-radius: 14px;
+  background: #1f2a35;
+  border: 2px solid rgba(52, 211, 153, 0.55);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
 }
 
-.timeline-item:hover {
-  transform: translateY(-6px);
+.card-inner {
+  padding: 18px 18px 16px 18px;
 }
 
-.timeline-item.active .timeline-content {
-  border: 1px solid #1abc9c;
-  box-shadow: 0 0 12px rgba(26, 188, 156, 0.4);
-}
-
-.title {
-  font-size: 18px;
-  font-weight: 600;
-  color: #e8eaed;
-}
-
-.subtitle {
-  font-size: 14px;
-  color: #a5aab0;
+.duration {
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.62);
   margin-bottom: 6px;
 }
 
-.description-item {
+.role-title {
+  text-align: center;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 16px;
+}
+
+.role-place {
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.62);
+  margin-top: 8px;
+  margin-bottom: 12px;
+}
+
+.edu-meta {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.edu-line {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 14px;
+  margin-top: 6px;
+}
+.muted {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.tech-wrap {
+  margin-top: 10px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.tech-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(52, 211, 153, 0.95);
+  font-weight: 700;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.tech-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.88);
+  white-space: nowrap;
+}
+
+.desc-wrap {
+  margin-top: 14px;
+}
+
+.desc-item {
+  margin-top: 16px;
+}
+
+.desc-title {
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 14px;
+  margin-bottom: 8px;
   text-align: left;
 }
 
-.description-key {
-  font-weight: 600;
-  font-size: 15px;
-  color: #ffffff;
-  margin-top: 8px;
+.desc-text {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.75;
+  text-align: left;
 }
 
-.description-value {
-  font-weight: 300;
-  color: #d0d2d6;
-  line-height: 1.6;
-}
-
-.award {
+.link-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin-left: 8px;
+  cursor: pointer;
   font-size: 12px;
-  color: #1abc9c;
-  font-style: italic;
-  margin-top: 10px;
+  color: rgba(52, 211, 153, 0.95);
+  text-decoration: underline;
+}
+.link-btn:hover {
+  color: rgba(52, 211, 153, 1);
+}
+.desc-toggle {
+  font-weight: 700;
+  margin-top: 16px;
+  margin-left: 0;
 }
 
-.tech-stack {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding: 8px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  margin: 10px 0;
-}
-
-.tech-icon {
-  font-size: 18px;
-  color: #1abc9c;
-}
-
-.tech-label {
-  font-weight: 500;
-  font-size: 14px;
-  color: #cfd2d6;
-}
-
-.tech-list {
-  font-size: 14px;
-  color: #e1e4e7;
-}
-
-.company-logo {
-  position: absolute;
-  top: 10px;
-  right: 16px;
-  opacity: 0.1;
-}
-
-.company-logo img {
-  width: 48px;
-  height: 48px;
-  object-fit: contain;
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 0.8;
+@media (max-width: 920px) {
+  .timeline-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
   }
-  50% {
-    transform: scale(1.3);
-    opacity: 1;
+  .date-col {
+    text-align: left;
+    padding-top: 0;
   }
-}
-
-.timeline-item {
-  opacity: 0.5;
-  transform: translateY(10px);
-  transition: all 0.6s ease-out;
-}
-
-.timeline-item.active {
-  opacity: 1;
-  transform: translateY(0);
+  .line-col {
+    display: none;
+  }
+  .card-inner {
+    max-width: 100%;
+  }
 }
 </style>

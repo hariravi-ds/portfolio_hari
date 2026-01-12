@@ -1,6 +1,14 @@
 <template>
   <div class="footer">
     <div class="footer-content">
+      <div class="footer-text">
+        <div class="section-title">Let’s Connect</div>
+        <p>
+          I'm always open to discussing new opportunities, collaborations, or
+          just having a conversation about technology.
+        </p>
+      </div>
+
       <div class="header-icons">
         <a
           href="mailto:hariprasannaa.thangavelravi@gwu.edu"
@@ -11,7 +19,7 @@
         <a
           href="https://x.com/sangeehariravi"
           target="_blank"
-          aria-label="GitHub"
+          aria-label="Twitter"
         >
           <i class="fab fa-twitter fa-sm"></i>
         </a>
@@ -23,6 +31,7 @@
           <i class="fab fa-linkedin fa-sm"></i>
         </a>
       </div>
+
       <p>&copy; Hari Prasannaa Thangavel Ravi 2024</p>
     </div>
   </div>

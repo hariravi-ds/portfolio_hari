@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="skills-section image-card"
-    :style="{ backgroundImage: 'url(' + img + ')' }"
-  >
+  <div class="journey-section">
     <div class="section-title">Skills</div>
     <hr class="divider" />
     <div class="section-subtitle">
@@ -14,7 +11,7 @@
         :key="category"
         class="skill-category"
       >
-        <h2 class="category-title">{{ category }}</h2>
+        <div class="category-title">{{ category }}</div>
         <div class="skill-list">
           <span v-for="skill in skills" :key="skill" class="skill-pill">
             {{ skill }}
@@ -32,23 +29,35 @@ export default {
     return {
       img: require("@/assets/subtle.jpeg"),
       skillCategories: {
-        "Programming Languages": ["Python", "C++", "Java", "SQL", "C", "R"],
-        Frontend: ["JavaScript", "React", "Vue.js", "HTML", "CSS"],
-        "Backend & APIs": ["Django", "FastAPI", "Spring Boot", "REST"],
-        "Databases & Caches": [
-          "PostgreSQL",
-          "MySQL",
-          "MongoDB",
-          "Neo4j",
-          "Redis",
-          "BigQuery",
-        ],
-        "Streaming & Messaging": ["Apache Kafka"],
-        "LLM / RAG / Vector Search": [
-          "LangChain",
-          "FAISS",
+        "LLM / GenAI Engineering": [
           "OpenAI API",
-          "RAG",
+          "Hugging Face (Transformers, Hub)",
+          "LangChain",
+          "Embeddings",
+          "Pinecone",
+          "ChromaDB",
+        ],
+        "RAG / Retrieval": [
+          "Chunking & Context Assembly",
+          "Vector Search",
+          "Lexical Search (BM25)",
+          "Hybrid Search",
+          "Reranking",
+          "RAG Evaluation",
+        ],
+        "LLM Training & Adaptation": [
+          "Supervised Fine-Tuning (SFT)",
+          "Instruction Tuning",
+          "PEFT",
+          "LoRA",
+          "QLoRA",
+        ],
+        "Reinforcement Learning": [
+          "RL Basics (MDP, Policy/Value)",
+          "Q-Learning",
+          "Policy Gradients",
+          "PPO",
+          "Gymnasium",
         ],
         "ML / AI": [
           "Scikit-learn",
@@ -56,12 +65,10 @@ export default {
           "Keras",
           "Tree Models",
           "SHAP",
-          "Regression",
-          "Classification",
           "Clustering",
           "PCA",
-          "Autoencoders",
         ],
+        "Backend & APIs": ["FastAPI", "Django", "Spring Boot", "REST APIs"],
         "Data Engineering & Orchestration": [
           "SQL/ETL",
           "Apache Airflow",
@@ -69,23 +76,32 @@ export default {
         ],
         "Cloud & Infra": [
           "AWS (ECS, Lambda, S3, CloudWatch, SNS)",
-          "GCP (BigQuery)",
+          "GCP",
+          "Kubernetes",
+        ],
+        "Databases & Caches": [
+          "PostgreSQL",
+          "MySQL",
+          "MongoDB",
+          "Redis",
+          "BigQuery",
+          "Neo4j",
         ],
         "Containers & CI/CD": [
           "Docker",
-          "Bitbucket Pipelines",
           "GitHub Actions",
+          "Bitbucket Pipelines",
         ],
-        "Data Visualization & BI": [
+        "Data Analysis / BI": [
           "Pandas",
           "NumPy",
           "Matplotlib",
-          "Seaborn",
           "Tableau",
           "Power BI",
           "Looker",
-          "IBM Cognos",
         ],
+        "UI / Web": ["React", "Vue.js", "HTML", "CSS"],
+        "Streaming & Messaging": ["Apache Kafka"],
         Tools: [
           "Git",
           "JIRA",
@@ -95,6 +111,14 @@ export default {
           "RStudio",
           "Excel",
         ],
+        "Programming Languages": [
+          "Python",
+          "SQL",
+          "JavaScript",
+          "Java",
+          "C++",
+          "R",
+        ],
       },
     };
   },
@@ -102,17 +126,6 @@ export default {
 </script>
 
 <style scoped>
-.skills-section {
-  padding: 20px;
-  background-color: #f8f9fa;
-}
-
-.section-title {
-  text-align: center;
-  font-size: 35px;
-  color: #212529;
-}
-
 .skills-container {
   display: flex;
   flex-wrap: wrap;
@@ -130,7 +143,8 @@ export default {
 }
 
 .category-title {
-  font-size: 1.3em;
+  font-size: 16px;
+  font-weight: 1000;
   margin-bottom: 15px;
   color: #212529;
 }
@@ -146,7 +160,7 @@ export default {
   color: white;
   padding: 6px 14px;
   border-radius: 20px;
-  font-size: 0.95em;
+  font-size: 14px;
   transition: background 0.3s ease, transform 0.2s ease;
 }
 

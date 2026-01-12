@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="journey-section image-card"
-    :style="{ backgroundImage: 'url(' + image + ')' }"
-  >
+  <div class="journey-section">
     <div class="section-title">Experience</div>
     <hr
       style="
@@ -22,40 +19,59 @@
 </template>
 
 <script>
-import Timeline from "./Timeline.vue";
+import Timeline from "./timeline.vue";
 export default {
   name: "ExperienceSection",
   components: {
     Timeline,
   },
+  props: {
+    type: {
+      type: String,
+      default: "experience",
+    },
+  },
   data() {
     return {
-      image: require("@/assets/subtle2.jpeg"),
       journey: [
         {
-          date: "May 2025 - Aug 2025",
+          date: "May 2025 - Sep 2025",
           title: "Data Science Intern",
           place: "MyEdMaster, Ashburn, Virginia",
           description: {
-            "Recommendation Logic Optimization":
-              "Designed and implemented a collaborative filtering and clustering-based recommendation system to match students with mentors and advisors, improving personalization and engagement.",
-            "Backend Development":
-              "Built and maintained Django-based REST APIs for model inference, data ingestion, and recommendation delivery, ensuring low-latency integration with the frontend.",
-            "Frontend Engineering":
-              "Developed React-based frontend pages for user dashboards and recommendation results, enabling interactive and dynamic visualization of matches.",
+            "RAG Knowledge Assistant + Evaluation":
+              "Built a RAG-based knowledge assistant (LlamaIndex + Pinecone) over unstructured internal resources and shipped an eval harness (faithfulness, context precision, citation coverage) with citation enforcement → improved self-serve resolution by 10% and reduced repeat escalations by 5%.",
+
+            "Semantic Search + Hybrid Retrieval":
+              "Implemented semantic search using OpenAI embeddings + Pinecone across 10K+ resources; added hybrid retrieval (BM25 + vector) to improve ranking → reduced zero-result queries by 15% and increased results CTR by 5%.",
+
+            "Personalized Recommendations":
+              "Developed a personalized recommendation system using hybrid ranking (content + interaction signals) with offline training + online serving → increased coverage including cold-start users and improved recommendation CTR by 8% in A/B tests with guardrails.",
+
+            "Experimentation (A/B Testing Framework)":
+              "Built an A/B testing framework with traffic bucketing, exposure logging, and metric guardrails that reduced time-to-launch experiments from ~10 business days to ~5 and increased throughput from ~1–2/month to ~3–4/month.",
+
+            "Backend Performance & APIs":
+              "Designed and implemented Django REST/GraphQL services backed by PostgreSQL, defining stable APIs for projects/tasks/matches/resources; optimized high-traffic endpoints with Redis caching (feed tiles/filters/recommendations) → reduced API error rate from 0.8% to 0.5%, cut integration churn by 10–15%, improved p95 latency ~800ms→~500ms, achieved 50–60% cache hit rate, and lowered DB query load by 15–25%.",
           },
           tech_stack: [
+            "LlamaIndex",
+            "Pinecone",
+            "Embeddings",
+            "RAG & Evaluation",
+            "Hybrid Retrieval",
             "Python",
             "Django",
+            "GraphQL",
+            "PostgreSQL",
+            "Redis",
             "React",
+            "Next.js",
             "JavaScript",
+            "A/B Testing",
+            "Metric Guardrails",
             "SQL",
             "AWS",
-            "scikit-learn",
-            "REST API",
-            "Docker",
-            "Pandas",
-            "NumPy",
           ],
         },
         {
@@ -63,25 +79,34 @@ export default {
           title: "Data Scientist",
           place: "Data Science for Sustainable Development, Washington, DC",
           description: {
-            "ML Model Deployment and Integration":
-              "Architected and deployed ML models for energy-demand forecasting with 91% accuracy, integrating predictions into backend APIs to support real-time decision systems that reduced operational waste by 16%.",
-            "Backend and Frontend Development":
-              "Developed scalable backend services in Django and REST APIs to serve model inferences, and built a React-based web interface to visualize analytics and model outcomes for end users.",
-            "ML Pipeline Optimization":
-              "Implemented and optimized ML pipelines using Random Forests and unsupervised learning (PCA, clustering) for anomaly detection and trend analysis across 50+ university buildings.",
+            "Energy Forecasting (XGBoost + AWS)":
+              "Architected and deployed building-level energy-demand forecasting using XGBoost + AWS to serve real-time API predictions → achieved 12% MAPE and reduced operational waste by 16% across 50+ university buildings.",
+
+            "Productization (APIs + Analytics UI)":
+              "Productized forecasts by building Django REST inference services and a React analytics UI with drilldowns on building trends/outliers → saved ~90 minutes/week of manual reporting and accelerated intervention workflows across buildings.",
+
+            "ML Delivery Workflow (AWS Pipelines + CI/CD)":
+              "Modernized ML delivery by migrating to AWS-native pipelines (containerized training, scheduled retrains, CI/CD) → cut release cycle time by 40% and enabled reliable cross-team access to sustainability forecasts.",
+
+            "Anomaly Detection + Alerting":
+              "Implemented automated anomaly detection using STL residual monitoring with CloudWatch/SNS alerting → continuously monitored 50+ buildings and surfaced abnormal usage early to speed investigations and interventions.",
           },
           tech_stack: [
             "Python",
-            "scikit-learn",
-            "Django",
-            "Flask",
-            "React",
-            "JavaScript",
             "SQL",
-            "AWS",
+            "XGBoost",
+            "Time-Series Forecasting",
+            "Anomaly Detection",
+            "Django",
+            "REST APIs",
+            "React",
             "Docker",
-            "Pandas",
-            "NumPy",
+            "AWS",
+            "CloudWatch",
+            "SNS",
+            "CI/CD",
+            "Vercel",
+            "Supabase",
           ],
         },
         {
@@ -89,28 +114,46 @@ export default {
           title: "Member Technical Staff",
           place: "Facilio Technology Solutions, Chennai, India",
           description: {
-            "Built Low-Code Analytics Platform":
-              "Developed a low-code analytics platform using Java and Javascript enabling clients to create dynamic dashboards with real-time anomaly detection and AI-driven consumption forecasts, leading to improved customer adoption.",
-            "Integrated Predictive Analytics Modules":
-              "Integrated time-series ML models to detect abnormal energy usage patterns across 10K+ IoT devices, achieving faster anomaly detection and enhancing predictive insights.",
-            "Developed Scalable Microservices":
-              "Built and deployed scalable Java microservices and Kafka pipelines to stream and aggregate telemetry data for ML-based energy benchmarking across multi-site portfolios.",
-            "Enhanced Front-End Visualization Engine":
-              "Enhanced the Vue.js visualization engine to support live data-driven charts and smart filters powered by backend inference APIs, enabling interactive energy insights.",
-            "Engineered SQL-Based ETL Pipelines":
-              "Engineered SQL-based ETL pipelines to optimize data extraction and transformation from relational databases, improving reporting and API performance.",
-            "Collaborated on AI-Ready Data Pipelines":
-              "Worked with data science and product teams to design AI-ready data pipelines on AWS, enabling portfolio-level predictive modeling and analytics delivery to enterprise clients.",
+            "Self-Serve BI Platform (Vue + Java)":
+              "Engineered a Tableau-like self-serve BI platform (Vue + Java REST APIs) enabling dashboards, pivots, and drilldowns → increased adoption +35% to ~1,200 WAU across 30+ enterprise customers in 4 regions.",
+
+            "Anomaly Detection (Isolation Forest / Autoencoder)":
+              "Built and productionized anomaly detection over energy telemetry using Kafka + ClickHouse + Java; trained Isolation Forest and autoencoder models on time-window features with threshold calibration → improved alert precision 0.62→0.78, reducing investigation time across 1M+ IoT devices.",
+
+            "Forecasting (XGBoost / Prophet)":
+              "Developed time-series forecasting services (Kafka→ClickHouse + Java) using XGBoost / Prophet with rolling-origin backtests and per-tenant calibration → improved MAPE 18%→11% across ~8K buildings and integrated forecasts into dashboards/alerts.",
+
+            "Drilldowns + Query Engine Performance (ClickHouse)":
+              "Built end-to-end drilldown workflows using Vue + Java + ClickHouse while preserving filter context; developed a query generation/orchestration layer (Java + SQL/ClickHouse) to compile user filters/group-bys into optimized queries → reduced time-to-insight 25 min→8 min and improved p95 dashboard load time 4.8s→1.9s across 500+ tenants.",
+
+            "Caching, Rollups & Cost":
+              "Optimized latency and cost using Redis caching + ClickHouse pre-aggregated rollups for hot KPIs → reduced ClickHouse query volume ~45% and improved p95 latency 2.6s→1.4s on core flows.",
+
+            "Streaming Telemetry Pipelines (Kafka → ClickHouse on AWS)":
+              "Implemented near-real-time ingestion on AWS (Kafka→ClickHouse) with idempotent processing/replay safety → improved freshness lag 30 min→3 min at ~3,000 events/sec peak; supported ~50M events/day with 99.95% pipeline uptime.",
+
+            "Reliability, Observability & Security":
+              "Instrumented analytics with Datadog APM/metrics/logs, added guardrails (timeouts/pagination), and enforced tenant isolation via auth + row-level constraints → reduced MTTR 1.5 hrs→25 min, lowered timeout/error rate 2.1%→0.4%, and reduced audit findings 3→0.",
           },
           tech_stack: [
-            "JavaScript",
-            "Java",
-            "REST API",
-            "SQL",
-            "ETL",
-            "Kafka",
+            "JavaScript (Vue)",
             "Python",
-            "AWS",
+            "Java",
+            "REST APIs",
+            "Microservices",
+            "Kafka",
+            "SQL",
+            "ClickHouse",
+            "ETL",
+            "Redis",
+            "Pre-aggregated Rollups",
+            "Datadog",
+            "Anomaly Detection",
+            "Time-Series Forecasting",
+            "Isolation Forest",
+            "LightGBM",
+            "Prophet",
+            "Neural Networks",
             "Docker",
             "Bitbucket",
             "JIRA",
@@ -121,17 +164,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.journey-section {
-  padding: 20px;
-  background-color: white;
-  color: #ecf0f1;
-}
-
-.section-title {
-  text-align: center;
-  font-size: 35px;
-  color: #212529;
-}
-</style>

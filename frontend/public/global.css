@@ -53,3 +53,14 @@
   color: #6c757d;
   margin-bottom: 20px;
 }
+
+.section-title {
+  text-align: center;
+  font-size: 35px;
+  color: #212529;
+}
+
+.journey-section {
+  padding: 20px;
+  color: #ecf0f1;
+}

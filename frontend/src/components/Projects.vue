@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="projects-section image-card"
-    :style="{ backgroundImage: 'url(' + image + ')' }"
-  >
+  <div class="journey-section">
     <div class="title">Projects</div>
     <hr class="section-divider" />
     <div class="subtitle">
@@ -61,8 +58,11 @@
       </template>
       <div>Description</div>
       <hr style="border-top: 1px solid rgba(0, 0, 0, 0.1); margin: 16px 0px" />
-      <div class="mb16">{{ selectedProject.desc1 }}</div>
-      <div class="mb16">{{ selectedProject.desc2 }}</div>
+      <ul class="dlg-bullets">
+        <li v-for="(item, index) in selectedProject.desc" :key="index">
+          {{ item }}
+        </li>
+      </ul>
       <div v-if="selectedProject.images" class="image-wrapper">
         <div
           v-for="(img, index) in selectedProject.images"
@@ -72,15 +72,19 @@
           <img :src="img" alt="photo" />
         </div>
       </div>
-      <div class="mb16">{{ selectedProject.desc3 }}</div>
-      <div>
+      <div class="dlg-actions">
         <a
           v-if="selectedProject.github"
           :href="selectedProject.github"
           target="_blank"
-          class="project-link"
-          >View Code</a
+          rel="noreferrer"
+          class="pill pill--github"
         >
+          <span class="pill__icon" aria-hidden="true">
+            <i class="fab fa-github fa-lg"></i>
+          </span>
+          <span class="pill__text">View on GitHub</span>
+        </a>
       </div>
     </el-dialog>
   </div>
@@ -91,23 +95,54 @@ export default {
   name: "ProjectsSection",
   data() {
     return {
-      image: require("@/assets/ai.jpg"),
       dialogVisible: false,
       selectedProject: null,
       showLeftButton: false,
       showRightButton: true,
       projects: [
         {
+          title: "LLM Gateway",
+          subtitle: "Oct 2025 - Dec 2025",
+          shortDesc:
+            "Built a LLM+RAG gateway (Llama 3) with semantic caching, hybrid retrieval, safety redaction, and Ragas-driven evaluation to improve answer quality while cutting latency and redundant model calls.",
+          desc: [
+            "Built an LLM-powered RAG gateway for enterprise Q&A using Python/FastAPI + Pinecone (retrieval) + Llama 3 (Ollama), routing requests through retrieve→augment→generate with versioned prompts/contexts, reducing repeated LLM calls via write-through caching and enabling low-latency reuse on duplicates.",
+            "Developed an ML evaluation harness to improve RAG answer quality using Ragas (faithfulness, answer relevancy, context precision/recall), iterating on recursive character chunking + top-k retrieval based on metric regressions, increasing faithfulness by 15% (relative) vs baseline settings.",
+            "Implemented a semantic cache correctness layer to prevent wrong cached answers using Redis/RediSearch vectors + a cross-encoder verifier (MiniLM), re-checking borderline cosine matches before serving from cache, reducing cache false-hit rate by 22% vs cosine-only baseline.",
+            "Engineered a hybrid retrieval pipeline to improve recall on keyword-heavy edge cases using BM25 + dense vectors fused with Reciprocal Rank Fusion (RRF), merging sparse+dense candidate sets before context assembly, improving Recall@5 by 12% on a 500-query benchmark.",
+            "Built a PII redaction firewall to prevent sensitive data leakage to the LLM using a multi-stage NER + heuristics pipeline, detecting/redacting entities under adversarial formatting before generation, achieving 99.2% PII recall on labeled tests vs regex-only filters.",
+          ],
+          image: require("@/assets/llm_gateway.jpeg"),
+          github: "https://github.com/hariravi-ds/llm_gateway",
+          showContent: false,
+        },
+        {
+          title: "Reinforcement Learning for Airport Taxi Route Management",
+          subtitle: "Nov 2025 - Dec 2025",
+          shortDesc:
+            "Built a reinforcement learning system for airport taxi route management, comparing tabular Q-Learning/SARSA vs. a Double Dueling DQN to minimize taxi times and congestion under stochastic demand and weather.",
+          desc: [
+            "Designed a custom airport taxi routing simulator with multiple routes, Poisson aircraft arrivals, mean-reverting weather, and a reward shaped as negative cost over taxi time, queue length, and system congestion.",
+            "Implemented and compared three policy families: tabular Q-Learning & SARSA (discretized state), a Double Dueling DQN with replay buffer and soft (Polyak) target updates, and non-learning baselines (Random, Always-A, Min-Congestion heuristic).",
+            "Built the full Deep RL stack in PyTorch for DQN: dueling value/advantage heads, Double DQN target computation, epsilon-greedy exploration, replay buffer training loop, and evaluation with confidence-band plots.",
+            "Ran large-scale experiments (up to 800k environment steps) and logged learning curves, taxi times, and action distributions to compare stability and performance across methods.",
+            "Results: DQN converged to ~11.7 min average taxi time vs ~17–18 min for tabular methods (≈32% reduction) and improved average reward (negative cost) by 200+ points vs SARSA, clearly outperforming all non-learning baselines.",
+            "DQN learned an interpretable, capacity-aware policy that routes almost all traffic through Routes A and B while effectively avoiding high-cost configurations, showing how richer state + function approximation leads to better congestion management.",
+          ],
+          image: require("@/assets/taxiing.png"),
+          github: "https://github.com/hariravi-ds/airport-taxi-rl",
+          showContent: false,
+        },
+        {
           title: "Intelligent Document Q&A Assistant with RAG",
           subtitle: "July 2025 - Sep 2025",
           shortDesc:
             "Developed an LLM-powered retrieval system with FAISS and embeddings, enabling real-time, context-aware Q&A over enterprise documents.",
-          desc1:
+          desc: [
             "Built an LLM-powered retrieval system using embeddings and FAISS vector DB, enabling context-aware Q&A over enterprise knowledge bases.",
-          desc2:
             "Designed and deployed a RAG pipeline, improving answer relevance by 8% compared to keyword search baselines.",
-          desc3:
             "Implemented monitoring for latency, token usage, and hallucination rates, reducing inaccuracies by 12% while maintaining sub-500ms response times.",
+          ],
           image: require("@/assets/document_rag.png"),
           // github: "https://github.com/hariravi-ds/employee-churn-pred-pipeline",
           showContent: false,
@@ -117,12 +152,11 @@ export default {
           subtitle: "July 2025 - Sep 2025",
           shortDesc:
             "End-to-end ML pipeline for Employee Churn Prediction, orchestrated with Airflow and powered by BigQuery, XGBoost, and Looker.",
-          desc1:
+          desc: [
             "Built and scheduled an Airflow DAG to automatically retrain churn prediction models on weekly HR data updates in BigQuery. This ensured the model stayed current with evolving employee behavior.",
-          desc2:
             "Trained XGBoost models on ~5M employee records, applied SHAP for feature explainability, and validated fairness across departments and demographics to maintain trust in predictions.",
-          desc3:
             "Integrated churn probability outputs into BigQuery and Looker dashboards with ROI simulations, enabling leadership to identify at-risk employees and measure the cost savings of targeted retention campaigns.",
+          ],
           image: require("@/assets/churn.png"),
           github: "https://github.com/hariravi-ds/employee-churn-pred-pipeline",
           showContent: false,
@@ -132,12 +166,13 @@ export default {
           subtitle: "Feb 2025 - Mar 2025",
           shortDesc:
             "Engineered a Kafka–FastAPI streaming pipeline with ML models for fraud detection, delivering 300 ms alert latency and 0.91 precision in production.",
-          desc1:
+          desc: [
             "Designed a streaming alert pipeline with Kafka, FastAPI, and Redis, detecting anomalies within 300 ms and lowering false-positive rates by 10%.",
-          desc2:
+
             "Trained isolation forest and autoencoder models in Python, reaching 0.91 precision on real-world transaction datasets.",
-          desc3:
+
             "Deployed system on AWS ECS using CI/CD pipelines; partnered with DevOps engineers to enable versioned rollouts and automated drift monitoring.",
+          ],
           image: require("@/assets/anomly_det.png"),
           // github: "https://github.com/hariravi-ds/employee-churn-pred-pipeline",
           showContent: false,
@@ -147,12 +182,13 @@ export default {
           subtitle: "July 2025 - Sep 2025",
           shortDesc:
             "Built a high-throughput C++ inference service using FAISS ANN search, achieving <10 ms latency and 50K QPS scalability for production workloads.",
-          desc1:
+          desc: [
             "Built a C++ inference service for candidate retrieval using FAISS-based approximate nearest neighbor search, achieving <10ms latency per request.",
-          desc2:
+
             "Optimized cache-aware data structures and quantization methods, reducing memory footprint by 22% while sustaining recall within 1% of baseline.",
-          desc3:
+
             "Benchmarked system at 50K QPS on simulated ad-serving traffic, validating scalability for production deployment.",
+          ],
           image: require("@/assets/recommandation.png"),
           // github: "https://github.com/hariravi-ds/employee-churn-pred-pipeline",
           showContent: false,
@@ -162,12 +198,13 @@ export default {
           subtitle: "Feb 2025 - Apr 2025",
           shortDesc:
             "Built an AWS-powered banking support chatbot with custom ML inference, real-time user interaction, and automated fraud alerting.",
-          desc1:
+          desc: [
             "Developed a banking support chatbot using AWS Lex and Lambda, enabling users to handle tasks such as card activation, balance inquiries, and fraud alerts through natural language interaction.",
-          desc2:
+
             "Integrated a custom-built machine learning model via Amazon ECR for handling low-confidence queries, improving accuracy and response quality in sensitive banking scenarios.",
-          desc3:
+
             "Implemented secure, scalable infrastructure for real-time chatbot interactions, including logging with CloudWatch, user context storage with DynamoDB, and automated alerting via SNS for critical cases like fraud detection.",
+          ],
           image: require("@/assets/chatbot.jpeg"),
           github: "https://github.com/DarsiniLakshmiah/BankingIT_ChatBot",
           showContent: false,
@@ -177,12 +214,13 @@ export default {
           subtitle: "Mar 2025 - Apr 2025",
           shortDesc:
             "Built a deep learning model to forecast traffic patterns using CNNs and unsupervised clustering on spatially mapped sensor data.",
-          desc1:
+          desc: [
             "Designed and implemented a spatiotemporal traffic forecasting system using CNNs on synthetic heatmap data generated from real-world sensor layouts.",
-          desc2:
+
             "Mapped urban sensor networks into a 2D grid using MDS and built a supervised deep learning pipeline achieving low MSE (≈45) on future traffic prediction.",
-          desc3:
+
             "Applied KMeans clustering and PCA for unsupervised pattern discovery, enabling comparative analysis of traffic states with interpretability across sequences.",
+          ],
           image: require("@/assets/traffic.jpeg"),
           github:
             "https://github.com/hariravi-ds/Traffic-Flow-Forecasting-Using-Spatial-CNNs",
@@ -192,12 +230,13 @@ export default {
           title: "Current Asthma Prevalence",
           subtitle: "Nov 2024 - Dec 2024",
           shortDesc: "Assessed the current asthma prevalence across the US",
-          desc1:
+          desc: [
             "Analyzed a large-scale dataset (241k rows, 22 columns) sourced from CDC PLACES, identifying key patterns using exploratory data analysis (EDA) and visualizations, including U.S. choropleth maps, residual plots, and Q-Q plots to validate model assumptions and assess residual normality.",
-          desc2:
+
             "Conducted advanced feature engineering techniques, including cyclic encoding for spatial features (latitude/longitude), target encoding, and handling multicollinearity using Ridge Regression. Improved target variable distribution through log transformation and Winsorization to reduce skewness and outliers.",
-          desc3:
+
             "Developed and optimized predictive models using Linear Regression, Ridge Regression, Support Vector Regression (SVR), and Gaussian Process Regression (GPR), achieving up to 86% R² in SVR and 81% R² in GPR for predicting asthma prevalence.",
+          ],
           image: require("@/assets/asthma.jpg"),
           github: "https://github.com/hariravi-ds/asthma_prevalance ",
           images: [
@@ -212,12 +251,13 @@ export default {
           subtitle: "Nov 2024 - Jan 2025",
           shortDesc:
             "Developed a machine learning model to detect credit card fraud with optimized recall and precision",
-          desc1:
+          desc: [
             "Developed end-to-end pipelines for data preprocessing, including feature engineering, outlier detection, and class imbalance handling using advanced resampling techniques such as SMOTE and Tomek Links to optimize model performance.",
-          desc2:
+
             "Designed and implemented machine learning models, including Logistic Regression, Random Forest, and Neural Networks, achieving a 25% improvement in fraud detection recall through hyperparameter tuning and ensemble modeling.",
-          desc3:
+
             "Created interactive visualizations using Matplotlib and Seaborn to interpret data trends and model performance metrics, including ROC-AUC and Precision-Recall curves, enabling actionable insights for fraud detection strategies.",
+          ],
           image: require("@/assets/credit.jpg"),
           github: "https://github.com/hariravi-ds/Fraud_Detection",
           images: [
@@ -233,12 +273,11 @@ export default {
           subtitle: "Nov 2024 - Dec 2024",
           shortDesc:
             "Analyzed vehicle attributes to uncover relationships with CO2 emissions",
-          desc1:
+          desc: [
             "Developed statistical and machine learning models, including linear regression, clustering, and classification trees, to analyze relationships between vehicle attributes and CO2 emissions from a dataset of 40,000+ records.",
-          desc2:
             "Implemented feature selection techniques like exhaustive methods and VIF analysis to identify key predictors of vehicle emissions, optimizing model performance and interpretability.",
-          desc3:
             "Preprocessed high-dimensional data by handling missing values, encoding categorical variables, and removing irrelevant features, ensuring a robust pipeline for focused analysis on diesel and petrol vehicles.",
+          ],
           image: require("@/assets/co2.jpeg"),
           github: "https://github.com/hariravi-ds/DATS6101-Team4-Project2",
           images: [
@@ -253,12 +292,11 @@ export default {
           subtitle: "Feb 2025 - Apr 2025",
           shortDesc:
             "Analyzed the multifaceted impact of California wildfires using Tableau, combining structural, financial, and air quality data to inform disaster awareness and prevention strategies.",
-          desc1:
+          desc: [
             "Designed a comprehensive data visualization dashboard in Tableau to analyze the impact of California wildfires using multi-source datasets on structural damage, financial loss, air quality, and casualties.",
-          desc2:
             "Integrated EPA air quality data (2000–2023) to examine the health and environmental effects of wildfires, identifying pollutant spikes and high-risk regions.",
-          desc3:
             "Extended the analysis to a national scale, evaluating total disaster-related deaths and financial costs to contextualize California’s wildfire crisis within broader U.S. disaster trends.",
+          ],
           image: require("@/assets/cal_fire.jpeg"),
           // github:
           //   "https://github.com/hariravi-ds/Traffic-Flow-Forecasting-Using-Spatial-CNNs",
@@ -269,12 +307,11 @@ export default {
           subtitle: "Nov 2024 - Dec 2025",
           shortDesc:
             "Comparative Analysis of SQL and MongoDB for Efficient Healthcare Data Management",
-          desc1:
+          desc: [
             "Conducted a comparative analysis of SQL and MongoDB for managing large healthcare datasets, including patient records and appointment data, by simulating real-world scenarios with 100,000+ records",
-          desc2:
             "Demonstrated SQL's superiority in transactional operations and data integrity, while highlighting MongoDB's scalability and flexibility in handling semi-structured data, providing actionable insights for hybrid database adoption",
-          desc3:
             "Proposed a hybrid database model leveraging SQL for structured data and MongoDB for dynamic datasets, ensuring adaptability for evolving healthcare workflows",
+          ],
           image: require("@/assets/dbms.jpg"),
           images: [
             require("@/assets/dbms/image1.png"),
@@ -288,12 +325,11 @@ export default {
           subtitle: "Sep 2024 - Oct 2024",
           shortDesc:
             "Analyzed and visualized key trends in global rice production",
-          desc1:
+          desc: [
             "Spearheaded the development of a predictive model with 20,000+ observations, employing statistical testing, feature selection, hyperparameter tuning, and cross-validation to boost forecasting accuracy.",
-          desc2:
             "Performed advanced exploratory data analysis in R, applying techniques such as data normalization, outlier detection, and multicollinearity analysis, followed by linear regression to uncover key trends.",
-          desc3:
             "Designed and developed 5 interactive dashboards in Power BI, utilizing DAX functions and custom visualizations to transform complex data into actionable insights, ensuring interpretability for analysis. ",
+          ],
           image: require("@/assets/rice.jpg"),
           github: "https://github.com/hariravi-ds/DATS6101-Team4",
           images: [
@@ -308,12 +344,11 @@ export default {
           subtitle: "IBM | Jul 2022 - Nov 2022",
           shortDesc:
             "Developed a heart disease prediction system with an interactive dashboard to identify high-risk individuals",
-          desc1:
+          desc: [
             "Led a team of 4 members to design an IBM-supported heart disease prediction system using IBM Cognos, creating an interactive dashboard to visualize patient data and identify high-risk individuals.",
-          desc2:
             "Performed data preprocessing in Python, including data cleaning, transformation, and exploratory data analysis on 10,000+ patient records, ensuring high-quality inputs for accurate model training. ",
-          desc3:
             "Optimized machine learning models, including Random Forest and Decision Tree classifiers, improving prediction accuracy to 95.18%, and coordinated team efforts to meet project milestones. ",
+          ],
           image: require("@/assets/heart.jpg"),
           github: "https://github.com/hariravi-ds/heart_disease_pred",
           images: [
@@ -359,12 +394,6 @@ export default {
 </script>
 
 <style scoped>
-.projects-section {
-  padding: 64px;
-  color: #ecf0f1;
-  position: relative;
-}
-
 .title {
   text-align: center;
   font-size: 35px;
@@ -499,5 +528,42 @@ export default {
   width: 100%;
   height: 175px;
   object-fit: cover;
+}
+
+.dlg-bullets {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 10px;
+  line-height: 1.7;
+  font-size: 14px;
+  color: rgba(15, 23, 42, 0.82);
+}
+
+.dlg-actions {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 18px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 24px;
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  background: rgba(15, 23, 42, 0.06);
+  color: rgba(15, 23, 42, 0.92);
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 13px;
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+.pill:hover {
+  transform: translateY(-1px);
+  background: rgba(15, 23, 42, 0.08);
+  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.1);
 }
 </style>

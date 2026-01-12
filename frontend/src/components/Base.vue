@@ -17,52 +17,97 @@
       <div id="particles-js"></div>
 
       <div class="main-header">
-        <div class="header">
+        <div class="hero-card">
           <p class="stdName">HARI PRASANNAA THANGAVEL RAVI</p>
-          <hr
-            style="
-              width: 100px;
-              height: 1px;
-              border: none;
-              color: #333;
-              background-color: #333;
-            "
-          />
-          <p style="font-size: 1.5em">
-            Graduate Student at The George Washington University
+          <div class="hero-divider"></div>
+          <p class="hero-sub">
+            MS Data Science @ George Washington University • May 2026
           </p>
-          <p style="font-size: 1.5em">
-            Aspiring
-            <span class="dynamic-role" id="dynamic-role"
-              >AI/ML Software Engineer</span
+          <p class="hero-role">AI/ML Software Engineer</p>
+          <!-- <p class="hero-value">
+            Building LLM applications with retrieval (RAG), fine-tuning, and
+            scalable APIs.
+          </p> -->
+          <div class="cta-row">
+            <a
+              class="cv-button"
+              :href="resumeUrl"
+              target="_blank"
+              rel="noopener"
             >
-          </p>
+              Download Resume
+            </a>
+            <a class="secondary-button" href="#projects">View Projects</a>
+          </div>
+
+          <div class="chips-wrap">
+            <div class="chips-label">Open to roles</div>
+            <div class="chips">
+              <span class="chip">AI/ML Engineer</span>
+              <span class="chip">Data Scientist</span>
+              <span class="chip">ML Software Engineer</span>
+            </div>
+          </div>
+
+          <div class="quick-grid">
+            <div class="quick-card">
+              <div class="quick-title">Location</div>
+              <div class="quick-text">Washington, DC • Open to Relocation</div>
+            </div>
+
+            <div class="quick-card">
+              <div class="quick-title">Availability</div>
+              <div class="quick-text">May 2026 • Full-time / Internships</div>
+            </div>
+
+            <div class="quick-card">
+              <div class="quick-title">Focus</div>
+              <div class="quick-text">
+                LLMs • RAG • Reinforcement Learning • AWS • Full-Stack
+              </div>
+            </div>
+
+            <div class="quick-card">
+              <div class="quick-title">Currently Building</div>
+              <div class="quick-text">End-to-end GenAI agents</div>
+            </div>
+          </div>
+
           <div class="header-icons">
-            <a href="mailto:hariprasannaa2001@gmail.com" aria-label="E-Mail">
-              <i class="fas fa-envelope fa-xl"></i>
+            <a
+              href="mailto:hariprasannaa2001@gmail.com"
+              aria-label="Email"
+              title="Email"
+            >
+              <i class="fas fa-envelope fa-lg"></i>
             </a>
             <a
               href="https://github.com/hariravi-ds"
               target="_blank"
+              rel="noopener"
               aria-label="GitHub"
+              title="GitHub"
             >
-              <i class="fab fa-github fa-xl"></i>
+              <i class="fab fa-github fa-lg"></i>
             </a>
             <a
               href="https://www.linkedin.com/in/hari-prasannaa"
               target="_blank"
+              rel="noopener"
               aria-label="LinkedIn"
+              title="LinkedIn"
             >
-              <i class="fab fa-linkedin fa-xl"></i>
+              <i class="fab fa-linkedin fa-lg"></i>
             </a>
           </div>
         </div>
       </div>
-      <div class="sections" style="padding: 96px">
+      <div class="sections" style="padding: 0px 96px">
         <About id="about"></About>
         <Experience id="experience"></Experience>
         <Skills id="skills"></Skills>
         <Projects id="projects"></Projects>
+        <FeaturedResearch id="research"></FeaturedResearch>
         <Organization id="organizations"></Organization>
         <Contact id="contact"></Contact>
       </div>
@@ -75,13 +120,14 @@
 </template>
 
 <script>
-import AppHeader from "./AppHeader.vue";
-import Skills from "./Skills.vue";
-import About from "./About.vue";
-import Experience from "./Experience.vue";
-import Projects from "./Projects.vue";
-import Contact from "./Contact.vue";
-import Organization from "./Organisations.vue";
+import AppHeader from "./appHeader.vue";
+import Skills from "./skills.vue";
+import About from "./about.vue";
+import Experience from "./experience.vue";
+import Projects from "./projects.vue";
+import Contact from "./contact.vue";
+import Organization from "./organisations.vue";
+import FeaturedResearch from "./featuredResearch.vue";
 import "particles.js";
 import Chatbot from "./chatBot.vue";
 
@@ -91,7 +137,8 @@ export default {
     return {
       isOpen: false,
       isShow: false,
-      img: require("@/assets/logo.png"),
+      img: require("@/assets/subtle.jpeg"),
+      resumeUrl: "/resume.pdf",
     };
   },
   components: {
@@ -102,6 +149,7 @@ export default {
     Projects,
     Contact,
     Organization,
+    FeaturedResearch,
     Chatbot,
   },
   mounted() {
@@ -114,7 +162,7 @@ export default {
           shape: { type: "circle" },
           opacity: { value: 0.5 },
           size: { value: 3 },
-          move: { enable: true, speed: 5 },
+          move: { enable: true, speed: 3 },
           line_linked: {
             enable: true,
             distance: 150,
@@ -130,47 +178,6 @@ export default {
         },
       });
     }
-
-    // const roles = [
-    //   "Data Analyst",
-    //   "Data Scientist",
-    //   "Data Engineer",
-    //   "ML Engineer",
-    // ];
-    // let roleIndex = 0;
-    // const dynamicRoleElement = document.getElementById("dynamic-role");
-
-    // function updateRole() {
-    //   let currentRole = roles[roleIndex];
-    //   let i = 0;
-
-    //   const removeInterval = setInterval(() => {
-    //     if (i <= currentRole.length) {
-    //       dynamicRoleElement.textContent = currentRole.substring(
-    //         0,
-    //         currentRole.length - i
-    //       );
-    //       i++;
-    //     } else {
-    //       clearInterval(removeInterval);
-
-    //       roleIndex = (roleIndex + 1) % roles.length;
-    //       let nextRole = roles[roleIndex];
-    //       let j = 0;
-
-    //       const addInterval = setInterval(() => {
-    //         if (j <= nextRole.length) {
-    //           dynamicRoleElement.textContent = nextRole.substring(0, j);
-    //           j++;
-    //         } else {
-    //           clearInterval(addInterval);
-    //         }
-    //       }, 100);
-    //     }
-    //   }, 100);
-    // }
-    // updateRole();
-    // setInterval(updateRole, 4000);
   },
 };
 </script>
@@ -232,35 +239,186 @@ body {
   text-align: center;
   z-index: 1;
   position: relative;
+  padding: 120px 16px 48px;
 }
 
-.header {
-  z-index: 2;
+.hero-card {
+  width: min(980px, 94vw);
+  padding: 36px 28px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.stdName {
+  font-size: 42px;
+  letter-spacing: 0.4px;
+  color: #0f172a;
+  line-height: 1.1;
+}
+
+.hero-divider {
+  width: 120px;
+  height: 2px;
+  background: rgba(15, 23, 42, 0.22);
+  margin: 14px auto 6px;
+  border-radius: 999px;
+}
+
+.hero-sub {
+  font-size: 18px;
+  color: rgba(15, 23, 42, 0.78);
+  margin-top: 12px;
+}
+
+.hero-role {
+  font-size: 24px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-top: 12px;
+}
+
+.hero-role-sub {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 16px;
+  color: rgba(15, 23, 42, 0.6);
+  margin-left: 8px;
+}
+
+.hero-value {
+  margin-top: 10px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgba(15, 23, 42, 0.72);
+  max-width: 70ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-row {
   display: flex;
-  align-items: center;
-  flex-direction: column;
   justify-content: center;
-  gap: 16px;
+  gap: 12px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+
+.cv-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #0f172a;
+  color: white;
+  font-size: 1.05em;
+  font-weight: 800;
+  border: 2px solid #0f172a;
+  padding: 10px 18px;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.cv-button:hover {
+  background: #1e90ff;
+  border-color: #1e90ff;
+  color: white;
+}
+
+.secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: 2px solid rgba(15, 23, 42, 0.18);
+  color: #0f172a;
+  text-decoration: none;
+  font-weight: 800;
+  background: rgba(255, 255, 255, 0.6);
+  transition: all 0.2s ease;
+}
+
+.secondary-button:hover {
+  border-color: rgba(30, 144, 255, 0.9);
+  color: rgba(30, 144, 255, 1);
+}
+
+.chips-wrap {
+  margin-top: 18px;
+  text-align: left;
+}
+
+.chips-label {
+  font-weight: 900;
+  color: rgba(15, 23, 42, 0.7);
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chip {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.06);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  color: rgba(15, 23, 42, 0.88);
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.quick-grid {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  text-align: left;
+}
+
+.quick-card {
+  padding: 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(15, 23, 42, 0.1);
+}
+
+.quick-title {
+  font-weight: 900;
+  color: #0f172a;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.quick-text {
+  color: rgba(15, 23, 42, 0.75);
+  font-size: 14px;
+  line-height: 1.4;
 }
 
 .header-icons {
   display: flex;
   justify-content: center;
+  margin-top: 16px;
+  gap: 10px;
 }
 
 .header-icons a {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
-  height: 50px;
-  margin: 0 8px;
+  width: 44px;
+  height: 44px;
   color: white;
-  background: black;
+  background: #0f172a;
   text-decoration: none;
-  border: 2px solid black;
+  border: 2px solid #0f172a;
   border-radius: 50%;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .header-icons a:hover {
@@ -272,44 +430,31 @@ body {
   margin-top: 0;
   display: flex;
   flex-direction: column;
-  gap: 46px;
+  gap: 24px;
   position: relative;
   z-index: 1;
 }
 
-.sections > * {
-  color: white;
+@media (max-width: 640px) {
+  .stdName {
+    font-size: 30px;
+  }
+  .hero-role {
+    font-size: 18px;
+  }
+  .hero-role-sub {
+    display: block;
+    margin-left: 0;
+    margin-top: 6px;
+  }
+  .quick-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
-.dynamic-role {
-  color: black;
-  font-weight: bold;
-  font-size: 1.5em;
-  transition: all 0.3s ease-in-out;
-}
-
-.stdName {
-  display: inline;
-  font-size: 35px;
-  padding-left: 30px;
-  color: #000000;
-}
-
-.cv-button {
-  background: #000000;
-  color: white;
-  font-size: 1.2em;
-  font-weight: bold;
-  border: 2px solid #000000;
-  padding: 10px 20px;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.cv-button:hover {
-  background: #1e90ff;
-  border-color: #1e90ff;
-  color: white;
+@media (max-width: 768px) {
+  .particle-container.image-card {
+    background-attachment: scroll !important;
+  }
 }
 </style>
