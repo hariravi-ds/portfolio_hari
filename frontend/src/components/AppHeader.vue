@@ -47,6 +47,7 @@ export default {
         "Experience",
         "Skills",
         "Projects",
+        "Research",
         "Organizations",
         // "Contact",
       ],

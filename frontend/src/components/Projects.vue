@@ -117,6 +117,23 @@ export default {
           showContent: false,
         },
         {
+          title: "Reinforcement Learning for Airport Taxi Route Management",
+          subtitle: "Nov 2025 - Dec 2025",
+          shortDesc:
+            "Built a reinforcement learning system for airport taxi route management, comparing tabular Q-Learning/SARSA vs. a Double Dueling DQN to minimize taxi times and congestion under stochastic demand and weather.",
+          desc: [
+            "Designed a custom airport taxi routing simulator with multiple routes, Poisson aircraft arrivals, mean-reverting weather, and a reward shaped as negative cost over taxi time, queue length, and system congestion.",
+            "Implemented and compared three policy families: tabular Q-Learning & SARSA (discretized state), a Double Dueling DQN with replay buffer and soft (Polyak) target updates, and non-learning baselines (Random, Always-A, Min-Congestion heuristic).",
+            "Built the full Deep RL stack in PyTorch for DQN: dueling value/advantage heads, Double DQN target computation, epsilon-greedy exploration, replay buffer training loop, and evaluation with confidence-band plots.",
+            "Ran large-scale experiments (up to 800k environment steps) and logged learning curves, taxi times, and action distributions to compare stability and performance across methods.",
+            "Results: DQN converged to ~11.7 min average taxi time vs ~17–18 min for tabular methods (≈32% reduction) and improved average reward (negative cost) by 200+ points vs SARSA, clearly outperforming all non-learning baselines.",
+            "DQN learned an interpretable, capacity-aware policy that routes almost all traffic through Routes A and B while effectively avoiding high-cost configurations, showing how richer state + function approximation leads to better congestion management.",
+          ],
+          image: require("@/assets/taxiing.png"),
+          github: "https://github.com/hariravi-ds/airport-taxi-rl",
+          showContent: false,
+        },
+        {
           title: "Intelligent Document Q&A Assistant with RAG",
           subtitle: "July 2025 - Sep 2025",
           shortDesc:
