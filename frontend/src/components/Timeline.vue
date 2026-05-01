@@ -32,7 +32,7 @@
                   <span class="muted">Award:</span> {{ item.award }}
                 </div>
               </div>
-
+<!-- 
               <div
                 v-if="
                   (type === 'experience' || type === 'research') &&
@@ -63,7 +63,7 @@
                     }}
                   </button>
                 </div>
-              </div>
+              </div> -->
 
               <div
                 v-if="

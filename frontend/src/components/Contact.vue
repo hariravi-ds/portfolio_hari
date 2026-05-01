@@ -11,7 +11,7 @@
 
       <div class="header-icons">
         <a
-          href="mailto:hariprasannaa.thangavelravi@gwu.edu"
+          href="mailto:hariprasannaa2001@gmail.com"
           aria-label="E-Mail"
         >
           <i class="fas fa-envelope fa-sm"></i>
@@ -32,7 +32,7 @@
         </a>
       </div>
 
-      <p>&copy; Hari Prasannaa Thangavel Ravi 2024</p>
+      <p>&copy; Hari Prasannaa Thangavel Ravi 2026</p>
     </div>
   </div>
 </template>

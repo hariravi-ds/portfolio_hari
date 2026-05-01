@@ -45,7 +45,9 @@
             <div class="chips">
               <span class="chip">AI/ML Engineer</span>
               <span class="chip">Data Scientist</span>
-              <span class="chip">ML Software Engineer</span>
+              <span class="chip">ML Engineer</span>
+              <span class="chip">AI Infrastructure Engineer</span>
+              <span class="chip">ML Platform Engineer</span>
             </div>
           </div>
 
@@ -63,7 +65,7 @@
             <div class="quick-card">
               <div class="quick-title">Focus</div>
               <div class="quick-text">
-                LLMs • RAG • Reinforcement Learning • AWS • Full-Stack
+                ML Infrastructure • LLM Pipelines • Full-Stack • AWS • Kubernetes
               </div>
             </div>
 

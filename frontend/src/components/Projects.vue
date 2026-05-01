@@ -101,36 +101,37 @@ export default {
       showRightButton: true,
       projects: [
         {
-          title: "LLM Gateway",
-          subtitle: "Oct 2025 - Dec 2025",
-          shortDesc:
-            "Built a LLM+RAG gateway (Llama 3) with semantic caching, hybrid retrieval, safety redaction, and Ragas-driven evaluation to improve answer quality while cutting latency and redundant model calls.",
+          title: "BRIDGE — Multi-Agent Healthcare AI System",
+          subtitle: "January 2026 – Present",
+          shortDesc: "Designed a role-specific multi-agent AI clinical training simulator using RAG, AWS Bedrock, domain-specific fine-tuning with LoRA, prompt chaining, and Pydantic-based validation with Braintrust evaluation for complex collaborative scenario training.",
           desc: [
-            "Built an LLM-powered RAG gateway for enterprise Q&A using Python/FastAPI + Pinecone (retrieval) + Llama 3 (Ollama), routing requests through retrieve→augment→generate with versioned prompts/contexts, reducing repeated LLM calls via write-through caching and enabling low-latency reuse on duplicates.",
-            "Developed an ML evaluation harness to improve RAG answer quality using Ragas (faithfulness, answer relevancy, context precision/recall), iterating on recursive character chunking + top-k retrieval based on metric regressions, increasing faithfulness by 15% (relative) vs baseline settings.",
-            "Implemented a semantic cache correctness layer to prevent wrong cached answers using Redis/RediSearch vectors + a cross-encoder verifier (MiniLM), re-checking borderline cosine matches before serving from cache, reducing cache false-hit rate by 22% vs cosine-only baseline.",
-            "Engineered a hybrid retrieval pipeline to improve recall on keyword-heavy edge cases using BM25 + dense vectors fused with Reciprocal Rank Fusion (RRF), merging sparse+dense candidate sets before context assembly, improving Recall@5 by 12% on a 500-query benchmark.",
-            "Built a PII redaction firewall to prevent sensitive data leakage to the LLM using a multi-stage NER + heuristics pipeline, detecting/redacting entities under adversarial formatting before generation, achieving 99.2% PII recall on labeled tests vs regex-only filters.",
+            "Designed a role-specific multi-agent AI clinical training simulator using RAG, AWS Bedrock, domain-specific fine-tuning with LoRA fine tuning, prompt chaining for complex clinical reasoning workflows, and Pydantic-based structured output validation with Braintrust evaluation to enable complex collaborative scenario training at scale.",
           ],
-          image: require("@/assets/llm_gateway.jpeg"),
-          github: "https://github.com/hariravi-ds/llm_gateway",
+          image: require("@/assets/heart.jpg"),
+          github: "https://github.com/Anusha-raju/bridge-test",
           showContent: false,
         },
         {
           title: "Reinforcement Learning for Airport Taxi Route Management",
           subtitle: "Nov 2025 - Dec 2025",
           shortDesc:
-            "Built a reinforcement learning system for airport taxi route management, comparing tabular Q-Learning/SARSA vs. a Double Dueling DQN to minimize taxi times and congestion under stochastic demand and weather.",
+            "Built a reinforcement learning system for airport taxi route management.", 
           desc: [
-            "Designed a custom airport taxi routing simulator with multiple routes, Poisson aircraft arrivals, mean-reverting weather, and a reward shaped as negative cost over taxi time, queue length, and system congestion.",
-            "Implemented and compared three policy families: tabular Q-Learning & SARSA (discretized state), a Double Dueling DQN with replay buffer and soft (Polyak) target updates, and non-learning baselines (Random, Always-A, Min-Congestion heuristic).",
-            "Built the full Deep RL stack in PyTorch for DQN: dueling value/advantage heads, Double DQN target computation, epsilon-greedy exploration, replay buffer training loop, and evaluation with confidence-band plots.",
-            "Ran large-scale experiments (up to 800k environment steps) and logged learning curves, taxi times, and action distributions to compare stability and performance across methods.",
-            "Results: DQN converged to ~11.7 min average taxi time vs ~17–18 min for tabular methods (≈32% reduction) and improved average reward (negative cost) by 200+ points vs SARSA, clearly outperforming all non-learning baselines.",
-            "DQN learned an interpretable, capacity-aware policy that routes almost all traffic through Routes A and B while effectively avoiding high-cost configurations, showing how richer state + function approximation leads to better congestion management.",
+            "Trained PPO reinforcement learning agents in PyTorch on NVIDIA T4 GPUs for real-time route optimization and sequential decision-making — demonstrating end-to-end neural network training on GPU-accelerated hardware."
           ],
           image: require("@/assets/taxiing.png"),
           github: "https://github.com/hariravi-ds/airport-taxi-rl",
+          showContent: false,
+        },
+        {
+          title: "LLM Gateway — Multi-Provider Routing System",
+          subtitle: "November 2025 – December 2025",
+          shortDesc: "Improved Recall@5 by 12% and reduced retrieval failure rate by building a FastAPI-based LLM gateway with Pinecone vector search, dense vector embeddings, multi-provider routing, semantic caching, prompt versioning, and evaluation guardrails.",
+          desc: [
+            "Improved Recall@5 by 12% and reduced retrieval failure rate by building a FastAPI-based LLM gateway with Pinecone vector search, dense vector embeddings for semantic retrieval, multi-provider model routing, semantic caching, prompt versioning, and evaluation guardrails.",
+          ],
+          image: require("@/assets/llm_gateway.jpeg"),
+          github: "https://github.com/hariravi-ds/llm_gateway",
           showContent: false,
         },
         {

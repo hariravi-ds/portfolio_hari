@@ -64,10 +64,10 @@ export default {
         },
       ],
       about: [
-        "Hi, I’m Hari Prasannaa, an MS Data Science student at George Washington University (May 2026) based in Washington, DC (open to relocation). I build GenAI + ML systems end-to-end: RAG assistants, recommendation systems, forecasting/anomaly detection pipelines, and scalable APIs.",
-        "At MyEdMaster, I built a RAG-based knowledge assistant (Pinecone/Chroma + LlamaIndex) that improved self-serve resolution by 10%, implemented semantic search that reduced zero-result queries by 15%, and optimized high-traffic endpoints with Redis caching (p95 ~800ms → ~500ms). With Data Science for Sustainable Development, I build and deploy energy forecasting and anomaly detection workflows on AWS to support sustainability operations across campus.",
-        "Previously, I spent 2 years at Facilio (Member Technical Staff) developing end-to-end production systems including Java services, Kafka-based pipelines, ClickHouse(SQL) analytics, and performance-optimized APIs for a smart-building platform.",
-        "Tech I use most: Python, SQL, AWS, FastAPI/Django, Redis, React, and scikit-learn/TensorFlow, with a strong focus on LLMs (RAG, fine-tuning, evaluation). Outside work, I mentor peers through Python/ML sessions and serve as a Graduate Senator at GWU.",
+        "I'm an AI Infrastructure and ML Platform engineer with 3+ years building the systems that make machine learning work at scale and not just the models, but the pipelines, orchestration, dashboards, and infrastructure underneath them.",
+        "At CogentAI, I architect the backend that sustains 10,000+ daily ML training runs at 97% completion, async orchestration with FastAPI and RabbitMQ, Graph RAG pipelines with Neo4j and MongoDB, and Langfuse-integrated prompt tracking across agentic experiment workflows. Before that, at Facilio, I built a Kafka + Spark streaming pipeline ingesting 3,000 events/sec from 1M+ IoT devices at 99.95% uptime, React/Redux dashboards that cut p95 load from 4.8s to 1.9s, and a full MLOps stack on Kubernetes and Terraform that reduced model release cycles by 40%.",
+        "I'm equally comfortable in a terminal optimizing SQL bottlenecks, designing a retrieval pipeline, or shipping a frontend dashboard and I've trained PPO reinforcement learning agents on NVIDIA T4 GPUs, so I understand what researchers need from the platform, not just how to build it.",
+        "Tech stack: Python, JavaScript, Java, SQL · LangChain, LlamaIndex, PyTorch, FastAPI, Django, React/Redux · Kafka, Spark, Neo4j, Pinecone, Redis, PostgreSQL, MongoDB · AWS, Kubernetes, Terraform, Docker, CI/CD, Langfuse, Datadog",
       ],
       image: require("@/assets/photo.png"),
     };
